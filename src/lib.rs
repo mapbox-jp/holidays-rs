@@ -32,20 +32,16 @@ pub fn init() -> Result<()> {
 pub fn get(country: Country, date: NaiveDate) -> Result<Option<Holiday>> {
     let Some(data) = Lazy::get(&DATA) else { return Err(Error::Uninitialized); };
 
-    match data.read() {
-        Ok(data) => {
-            let Some(map) = data.get(&country) else {
-                return Err(Error::CountryNotAvailable);
-            };
+    let data = data.read().map_err(|e| Error::LockError(e.to_string()))?;
+    let Some(map) = data.get(&country) else {
+        return Err(Error::CountryNotAvailable);
+    };
 
-            let Some(map) = map.get(&date.year()) else {
-                return Err(Error::YearNotAvailable);
-            };
+    let Some(map) = map.get(&date.year()) else {
+        return Err(Error::YearNotAvailable);
+    };
 
-            Ok(map.get(&date).cloned())
-        }
-        Err(e) => Err(Error::LockError(e.to_string())),
-    }
+    Ok(map.get(&date).cloned())
 }
 
 /// Check if the specified date is a holiday. If the specified country or year is
@@ -54,20 +50,16 @@ pub fn get(country: Country, date: NaiveDate) -> Result<Option<Holiday>> {
 pub fn contains(country: Country, date: NaiveDate) -> Result<bool> {
     let Some(data) = Lazy::get(&DATA) else { return Err(Error::Uninitialized); };
 
-    match data.read() {
-        Ok(data) => {
-            let Some(map) = data.get(&country) else {
-                return Err(Error::CountryNotAvailable);
-            };
+    let data = data.read().map_err(|e| Error::LockError(e.to_string()))?;
+    let Some(map) = data.get(&country) else {
+        return Err(Error::CountryNotAvailable);
+    };
 
-            let Some(map) = map.get(&date.year()) else {
-                return Err(Error::YearNotAvailable);
-            };
+    let Some(map) = map.get(&date.year()) else {
+        return Err(Error::YearNotAvailable);
+    };
 
-            Ok(map.get(&date).is_some())
-        }
-        Err(e) => Err(Error::LockError(e.to_string())),
-    }
+    Ok(map.get(&date).is_some())
 }
 
 #[derive(Debug)]
@@ -103,20 +95,16 @@ pub fn iter(country: Country, since: NaiveDate, until: NaiveDate) -> Result<Iter
 
     let mut y = since.year();
     while y <= until.year() {
-        match data.read() {
-            Ok(data) => {
-                let Some(map) = data.get(&country) else {
-                    return Err(Error::CountryNotAvailable);
-                };
+        let data = data.read().map_err(|e| Error::LockError(e.to_string()))?;
+        let Some(map) = data.get(&country) else {
+            return Err(Error::CountryNotAvailable);
+        };
 
-                let Some(map) = map.get(&y) else {
-                    break;
-                };
+        let Some(map) = map.get(&y) else {
+            break;
+        };
 
-                buf.extend(map.values().cloned())
-            }
-            Err(e) => return Err(Error::LockError(e.to_string())),
-        }
+        buf.extend(map.values().cloned());
 
         y += 1;
     }
