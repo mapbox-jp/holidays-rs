@@ -149,6 +149,20 @@ impl AsRef<str> for Country {
   }
 }
 
+impl std::str::FromStr for Country {
+  type Err = Error;
+
+  fn from_str(s: &str) -> std::result::Result<Self, Self::Err> {
+    match s {
+{%- for country in countries %}
+      #[cfg(feature = "{{country.code}}")]
+      "{{country.code}}" => Ok(Country::{{country.code}}),
+{%- endfor %}
+      _ => Err(Error::CountryNotAvailable),
+    }
+  }
+}
+
 """
 
 build = """
