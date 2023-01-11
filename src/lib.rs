@@ -3,10 +3,7 @@ use once_cell::sync::Lazy;
 use std::{
     collections::{BTreeMap, HashMap, HashSet, VecDeque},
     ops::{DerefMut, Range},
-    sync::{
-        atomic::{AtomicBool, Ordering},
-        RwLock,
-    },
+    sync::RwLock,
 };
 
 /// Type alias for Holiday map.
@@ -20,8 +17,6 @@ pub type Result<T> = std::result::Result<T, Error>;
 
 static DATA: Lazy<RwLock<HolidayMap>> = Lazy::new(|| RwLock::new(HolidayMap::new()));
 
-static INITIALIZED: AtomicBool = AtomicBool::new(false);
-
 /// Initialize holiday database for all the supported countries and years.
 /// Note that this will use quite lots of memory. Please consider using
 /// `Builder` to specify countries and years to load for if you're concerned
@@ -31,21 +26,13 @@ pub fn init() -> Result<()> {
     init_holiday(map)
 }
 
-fn check_initialized() -> Result<()> {
-    if INITIALIZED.load(Ordering::Acquire) {
-        Ok(())
-    } else {
-        Err(Error::Uninitialized)
-    }
-}
-
 /// Get holiday by ISO 3166-1 alpha-2 country code and date. If the specified country or year is
 /// not available, it will return `Err(Error)`. If the specified date is not a holiday, it
 /// will return `Ok(None)`. Otherwise, it will return `Ok(Some(Holiday))`.
 pub fn get(country: Country, date: NaiveDate) -> Result<Option<Holiday>> {
-    check_initialized()?;
+    let Some(data) = Lazy::get(&DATA) else { return Err(Error::Uninitialized); };
 
-    match DATA.read() {
+    match data.read() {
         Ok(data) => {
             let Some(map) = data.get(&country) else {
                 return Err(Error::CountryNotAvailable);
@@ -65,9 +52,9 @@ pub fn get(country: Country, date: NaiveDate) -> Result<Option<Holiday>> {
 /// not available, it will return `Err(Error)`. If the date is not a holiday, it
 /// will return `Ok(false)`. Otherwise, it will return `Ok(true)`.
 pub fn contains(country: Country, date: NaiveDate) -> Result<bool> {
-    check_initialized()?;
+    let Some(data) = Lazy::get(&DATA) else { return Err(Error::Uninitialized); };
 
-    match DATA.read() {
+    match data.read() {
         Ok(data) => {
             let Some(map) = data.get(&country) else {
                 return Err(Error::CountryNotAvailable);
@@ -110,13 +97,13 @@ impl std::iter::Iterator for Iter {
 
 /// Iterate holidays by dates.
 pub fn iter(country: Country, since: NaiveDate, until: NaiveDate) -> Result<Iter> {
-    check_initialized()?;
+    let Some(data) = Lazy::get(&DATA) else { return Err(Error::Uninitialized); };
 
     let mut buf = VecDeque::new();
 
     let mut y = since.year();
     while y <= until.year() {
-        match DATA.read() {
+        match data.read() {
             Ok(data) => {
                 let Some(map) = data.get(&country) else {
                     return Err(Error::CountryNotAvailable);
@@ -228,8 +215,6 @@ fn init_holiday(mut map: HolidayMap) -> Result<()> {
     match DATA.write() {
         Ok(mut data) => {
             std::mem::swap(data.deref_mut(), &mut map);
-            INITIALIZED.store(true, Ordering::Release);
-
             Ok(())
         }
         Err(e) => Err(Error::LockError(e.to_string())),
