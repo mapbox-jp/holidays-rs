@@ -2,7 +2,7 @@ use chrono::{Datelike, NaiveDate};
 use once_cell::sync::Lazy;
 use std::{
     collections::{BTreeMap, HashMap, HashSet, VecDeque},
-    ops::{DerefMut, Range},
+    ops::Range,
     sync::RwLock,
 };
 
@@ -199,10 +199,10 @@ pub enum Error {
     Unexpected(String),
 }
 
-fn init_holiday(mut map: HolidayMap) -> Result<()> {
+fn init_holiday(map: HolidayMap) -> Result<()> {
     match DATA.write() {
         Ok(mut data) => {
-            std::mem::swap(data.deref_mut(), &mut map);
+            *data = map;
             Ok(())
         }
         Err(e) => Err(Error::LockError(e.to_string())),
