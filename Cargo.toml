@@ -1,0 +1,220 @@
+[package]
+name = "holidays"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+chrono = "0.4"
+once_cell = "1"
+thiserror = "1"
+
+[dev-dependencies]
+anyhow = "1"
+serial_test = "0.10"
+
+[features]
+default = [
+  "AO",
+  "AR",
+  "AM",
+  "AW",
+  "AU",
+  "AT",
+  "AZ",
+  "BD",
+  "BY",
+  "BE",
+  "BO",
+  "BA",
+  "BW",
+  "BR",
+  "BG",
+  "BI",
+  "CA",
+  "CL",
+  "CN",
+  "CO",
+  "HR",
+  "CU",
+  "CW",
+  "CY",
+  "CZ",
+  "DK",
+  "DJ",
+  "DO",
+  "EG",
+  "EE",
+  "ET",
+  "FI",
+  "FR",
+  "GE",
+  "DE",
+  "GR",
+  "HN",
+  "HK",
+  "HU",
+  "IS",
+  "IN",
+  "ID",
+  "IE",
+  "IM",
+  "IL",
+  "IT",
+  "JM",
+  "JP",
+  "KZ",
+  "KE",
+  "LV",
+  "LS",
+  "LI",
+  "LT",
+  "LU",
+  "MG",
+  "MY",
+  "MW",
+  "MT",
+  "MX",
+  "MD",
+  "MA",
+  "MZ",
+  "NL",
+  "NA",
+  "NZ",
+  "NI",
+  "NG",
+  "MK",
+  "NO",
+  "PK",
+  "PY",
+  "PE",
+  "PL",
+  "PT",
+  "RO",
+  "RU",
+  "SA",
+  "RS",
+  "SG",
+  "SK",
+  "SI",
+  "ZA",
+  "KR",
+  "ES",
+  "SZ",
+  "SE",
+  "CH",
+  "TW",
+  "TR",
+  "TN",
+  "UA",
+  "AE",
+  "GB",
+  "US",
+  "UY",
+  "UZ",
+  "VE",
+  "VN",
+  "ZM",
+  "ZW",
+]
+
+AO = []
+AR = []
+AM = []
+AW = []
+AU = []
+AT = []
+AZ = []
+BD = []
+BY = []
+BE = []
+BO = []
+BA = []
+BW = []
+BR = []
+BG = []
+BI = []
+CA = []
+CL = []
+CN = []
+CO = []
+HR = []
+CU = []
+CW = []
+CY = []
+CZ = []
+DK = []
+DJ = []
+DO = []
+EG = []
+EE = []
+ET = []
+FI = []
+FR = []
+GE = []
+DE = []
+GR = []
+HN = []
+HK = []
+HU = []
+IS = []
+IN = []
+ID = []
+IE = []
+IM = []
+IL = []
+IT = []
+JM = []
+JP = []
+KZ = []
+KE = []
+LV = []
+LS = []
+LI = []
+LT = []
+LU = []
+MG = []
+MY = []
+MW = []
+MT = []
+MX = []
+MD = []
+MA = []
+MZ = []
+NL = []
+NA = []
+NZ = []
+NI = []
+NG = []
+MK = []
+NO = []
+PK = []
+PY = []
+PE = []
+PL = []
+PT = []
+RO = []
+RU = []
+SA = []
+RS = []
+SG = []
+SK = []
+SI = []
+ZA = []
+KR = []
+ES = []
+SZ = []
+SE = []
+CH = []
+TW = []
+TR = []
+TN = []
+UA = []
+AE = []
+GB = []
+US = []
+UY = []
+UZ = []
+VE = []
+VN = []
+ZM = []
+ZW = []
