@@ -2,6 +2,13 @@
 name = "holidays"
 version = "0.1.0"
 edition = "2021"
+description = "Rust library to provide accurate and up-to-date holiday dates based on Python holidays package"
+readme = "README.md"
+homepage = "https://github.com/mapbox-jp/holidays-rs"
+repository = "https://github.com/mapbox-jp/holidays-rs"
+license-file = "LICENSE"
+keywords = ["holiday", "date", "time"]
+categories = ["Date and time"]
 
 [dependencies]
 chrono = "0.4"
