@@ -6,9 +6,9 @@ description = "Rust library to provide accurate and up-to-date holiday dates bas
 readme = "README.md"
 homepage = "https://github.com/mapbox-jp/holidays-rs"
 repository = "https://github.com/mapbox-jp/holidays-rs"
-license-file = "LICENSE"
+license = "MIT"
 keywords = ["holiday", "date", "time"]
-categories = ["Date and time"]
+categories = ["date-and-time"]
 
 [dependencies]
 chrono = "0.4"
