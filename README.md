@@ -1,4 +1,13 @@
-# holidays-rs
+<h1 align="center">holidays-rs</h1>
+<p align="center">Rust library to provide accurate and up-to-date holiday dates based on Python holidays package</p>
+<p align="center">
+  <a href="https://crates.io/crates/holidays">
+    <img alt="Crates.io" src="https://img.shields.io/crates/v/holidays.svg">
+  </a>
+  <a href="https://github.com/mapbox-jp/holidays-rs/actions/workflows/test.yml">
+    <img alt="GithubActions" src="https://github.com/mapbox-jp/holidays-rs/actions/workflows/test.yml/badge.svg">
+  </a>
+</p>
 
 ## Design
 [python-holidays](https://github.com/dr-prodigy/python-holidays) is a well maintained package to generate holidays dynamically. This crate is on the other hand, rather than porting `python-holidays` into Rust, statically generates the Rust code of holidays by the script using `python-holidays`. Since the holiday database of this crate boils down to a thread-safe `HashMap` (There is an option for single thread use case) in Rust, it's ultra fast and flexible to use in most of the cases.
