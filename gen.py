@@ -193,14 +193,21 @@ pub fn build(years: &Option<&std::ops::Range<Year>>) -> Result<HashMap<Year, BTr
 
 {%- for year in years %}
   {% if holiday(years=year) %}
-  if years.is_none() || years.unwrap().contains(&{{year}}) {
-    let mut m = BTreeMap::new();
+  build_year(
+    years,
+    {{year}},
+    vec![
 {% for date, name in holiday(years=year).items() %}
-    let date = NaiveDate::from_ymd_res({{date|year}}, {{date|month}}, {{date|day}})?;
-    m.insert(date, Holiday::new(Country::{{code}}, "{{country}}", date, "{{name}}"));
+      Holiday::new(
+        Country::{{code}},
+        "{{country}}",
+        NaiveDate::from_ymd_res({{date|year}}, {{date|month}}, {{date|day}})?,
+        "{{name}}"
+      ),
 {%- endfor %}
-    map.insert({{year}}, m);
-  }
+    ],
+    &mut map,
+  );
 {%- endif %}
 {%- endfor  %}
 
