@@ -184,35 +184,32 @@ build_country = """
 /// {{country}}.
 #[cfg(feature = "{{code}}")]
 pub mod {{code|escape}} {
-use super::*;
+  use super::*;
 
-/// Generate holiday map for {{country}}.
-#[allow(unused_mut, unused_variables)]
-pub fn build(years: &Option<&std::ops::Range<Year>>) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
-  let mut map = HashMap::new();
+  /// Generate holiday map for {{country}}.
+  #[allow(unused_mut, unused_variables)]
+  pub fn build(years: &Option<&std::ops::Range<Year>>) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+    let mut map = HashMap::new();
 
 {%- for year in years %}
-  {% if holiday(years=year) %}
-  build_year(
-    years,
-    {{year}},
-    vec![
+{% if holiday(years=year) %}
+    build_year(
+      years,
+      {{year}},
+      vec![
 {% for date, name in holiday(years=year).items() %}
-      Holiday::new(
-        Country::{{code}},
-        "{{country}}",
-        NaiveDate::from_ymd_res({{date|year}}, {{date|month}}, {{date|day}})?,
-        "{{name}}"
-      ),
+        (NaiveDate::from_ymd_res({{date|year}}, {{date|month}}, {{date|day}})?, "{{name}}"),
 {%- endfor %}
-    ],
-    &mut map,
-  );
+      ],
+      &mut map,
+      Country::{{code}},
+      "{{country}}",
+    );
 {%- endif %}
 {%- endfor  %}
 
-  Ok(map)
-}
+    Ok(map)
+  }
 }
 """
 
@@ -241,13 +238,15 @@ if __name__ == "__main__":
     env.filters["day"] = lambda d: d.day
     env.filters["escape"] = escape
     env.filters["lower"] = lower
-    with open("src/data.rs", "w") as f:
+    with open("src/country.rs", "w") as f:
         rendered = env.from_string(country).render(countries=countries)
         f.write(rendered)
 
+    with open("src/build.rs", "w") as f:
         rendered = env.from_string(build).render(countries=countries)
         f.write(rendered)
-
+    
+    with open("src/data.rs", "w") as f:
         for country in countries:
             holiday = getattr(holidays, country.code, None)
             rendered = env.from_string(build_country).render(

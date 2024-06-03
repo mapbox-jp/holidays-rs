@@ -7,7 +7,8 @@ use std::{
 };
 
 /// Type alias for Holiday map.
-pub type HolidayMap = HashMap<Country, HashMap<Year, BTreeMap<NaiveDate, Holiday>>>;
+pub type HolidayPerCountryMap = HashMap<Year, BTreeMap<NaiveDate, Holiday>>;
+pub type HolidayMap = HashMap<Country, HolidayPerCountryMap>;
 
 /// Type alias for Year.
 pub type Year = i32;
@@ -30,7 +31,9 @@ pub fn init() -> Result<()> {
 /// not available, it will return `Err(Error)`. If the specified date is not a holiday, it
 /// will return `Ok(None)`. Otherwise, it will return `Ok(Some(Holiday))`.
 pub fn get(country: Country, date: NaiveDate) -> Result<Option<Holiday>> {
-    let Some(data) = Lazy::get(&DATA) else { return Err(Error::Uninitialized); };
+    let Some(data) = Lazy::get(&DATA) else {
+        return Err(Error::Uninitialized);
+    };
 
     let data = data.read().map_err(|e| Error::LockError(e.to_string()))?;
     let Some(map) = data.get(&country) else {
@@ -48,7 +51,9 @@ pub fn get(country: Country, date: NaiveDate) -> Result<Option<Holiday>> {
 /// not available, it will return `Err(Error)`. If the date is not a holiday, it
 /// will return `Ok(false)`. Otherwise, it will return `Ok(true)`.
 pub fn contains(country: Country, date: NaiveDate) -> Result<bool> {
-    let Some(data) = Lazy::get(&DATA) else { return Err(Error::Uninitialized); };
+    let Some(data) = Lazy::get(&DATA) else {
+        return Err(Error::Uninitialized);
+    };
 
     let data = data.read().map_err(|e| Error::LockError(e.to_string()))?;
     let Some(map) = data.get(&country) else {
@@ -89,7 +94,9 @@ impl std::iter::Iterator for Iter {
 
 /// Iterate holidays by dates.
 pub fn iter(country: Country, since: NaiveDate, until: NaiveDate) -> Result<Iter> {
-    let Some(data) = Lazy::get(&DATA) else { return Err(Error::Uninitialized); };
+    let Some(data) = Lazy::get(&DATA) else {
+        return Err(Error::Uninitialized);
+    };
 
     let mut buf = VecDeque::new();
 
@@ -220,4 +227,35 @@ pub trait NaiveDateExt {
 
 impl NaiveDateExt for NaiveDate {}
 
+fn should_build_year(years: &Option<&std::ops::Range<Year>>, year: Year) -> bool {
+    years.is_none() || years.unwrap().contains(&year)
+}
+
+fn build_year(
+    years: &Option<&std::ops::Range<Year>>,
+    year: Year,
+    holidays: impl IntoIterator<Item = (NaiveDate, &'static str)>,
+    map: &mut HolidayPerCountryMap,
+    country: Country,
+    county_name: impl ToString,
+) {
+    if !should_build_year(years, year) {
+        return;
+    }
+
+    let m = holidays
+        .into_iter()
+        .map(|h| {
+            (
+                h.0,
+                Holiday::new(country, county_name.to_string(), h.0, h.1),
+            )
+        })
+        .collect();
+
+    map.insert(year, m);
+}
+
+include!("country.rs");
+include!("build.rs");
 include!("data.rs");

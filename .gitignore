@@ -10,3 +10,5 @@ Cargo.lock
 **/*.rs.bk
 
 poetry.lock
+
+python3Env
