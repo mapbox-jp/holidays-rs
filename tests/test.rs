@@ -1,5 +1,5 @@
 use chrono::NaiveDate;
-use holidays::{contains, get, init, iter, Builder, Country, Error, NaiveDateExt};
+use holidays::{contains, get, init, iter, prelude::*, Builder, Error, NaiveDateExt};
 use serial_test::serial;
 
 #[test]

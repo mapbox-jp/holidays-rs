@@ -116,6 +116,8 @@ countries = [
 years = range(2000, 2031)
 
 country = """
+use crate::Error;
+
 /// Two-letter country codes defined in ISO 3166-1 alpha-2 .
 #[allow(dead_code)]
 #[derive(Debug, Clone, Copy, Eq, PartialEq, Hash, PartialOrd, Ord)]
@@ -166,8 +168,12 @@ impl std::str::FromStr for Country {
 """
 
 build = """
+use std::collections::HashSet;
+
+use crate::{data::*, prelude::*, HolidayMap, Result, Year};
+
 /// Generate holiday map for the specified countries and years.
-fn build(countries: Option<&HashSet<Country>>, years: Option<&std::ops::Range<Year>>) -> Result<HolidayMap> {
+pub fn build(countries: Option<&HashSet<Country>>, years: Option<&std::ops::Range<Year>>) -> Result<HolidayMap> {
   let mut map = HolidayMap::new();
 {% for country in countries %}
   #[cfg(feature = "{{country.code}}")]
@@ -184,7 +190,11 @@ build_country = """
 /// {{country}}.
 #[cfg(feature = "{{code}}")]
 pub mod {{code|escape}} {
-  use super::*;
+  use std::collections::BTreeMap;
+  use std::collections::HashMap;
+
+  use crate::{build_help::build_year, prelude::*, Holiday, NaiveDateExt, Result, Year};
+  use chrono::NaiveDate;
 
   /// Generate holiday map for {{country}}.
   #[allow(unused_mut, unused_variables)]

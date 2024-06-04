@@ -1,8 +1,18 @@
+mod build;
+mod build_help;
+pub mod builder;
+mod country;
+mod data;
+pub mod iter;
+pub mod prelude;
+
+use build::build;
+pub use prelude::*;
+
 use chrono::{Datelike, NaiveDate};
 use once_cell::sync::Lazy;
 use std::{
-    collections::{BTreeMap, HashMap, HashSet, VecDeque},
-    ops::Range,
+    collections::{BTreeMap, HashMap},
     sync::RwLock,
 };
 
@@ -65,96 +75,6 @@ pub fn contains(country: Country, date: NaiveDate) -> Result<bool> {
     };
 
     Ok(map.get(&date).is_some())
-}
-
-#[derive(Debug)]
-pub struct Iter {
-    since: NaiveDate,
-    until: NaiveDate,
-    buf: VecDeque<Holiday>,
-}
-
-impl std::iter::Iterator for Iter {
-    type Item = Holiday;
-
-    fn next(&mut self) -> Option<Self::Item> {
-        let next = self.buf.pop_front()?;
-
-        if next.date < self.since {
-            return self.next();
-        }
-
-        if next.date < self.until {
-            Some(next)
-        } else {
-            None
-        }
-    }
-}
-
-/// Iterate holidays by dates.
-pub fn iter(country: Country, since: NaiveDate, until: NaiveDate) -> Result<Iter> {
-    let Some(data) = Lazy::get(&DATA) else {
-        return Err(Error::Uninitialized);
-    };
-
-    let mut buf = VecDeque::new();
-
-    let mut y = since.year();
-    while y <= until.year() {
-        let data = data.read().map_err(|e| Error::LockError(e.to_string()))?;
-        let Some(map) = data.get(&country) else {
-            return Err(Error::CountryNotAvailable);
-        };
-
-        let Some(map) = map.get(&y) else {
-            break;
-        };
-
-        buf.extend(map.values().cloned());
-
-        y += 1;
-    }
-
-    Ok(Iter { since, until, buf })
-}
-
-/// Holiday database builder.
-#[derive(Default)]
-pub struct Builder {
-    countries: Option<HashSet<Country>>,
-    years: Option<std::ops::Range<Year>>,
-}
-
-impl Builder {
-    pub fn new() -> Self {
-        Self::default()
-    }
-
-    /// Specify ISO 3166-1 alpha-2 country codes to load.
-    pub fn countries(mut self, countries: &[Country]) -> Self {
-        self.countries = Some(countries.iter().copied().collect());
-        self
-    }
-
-    /// Specify range of years to load.
-    pub fn years(mut self, years: Range<Year>) -> Self {
-        self.years = Some(years);
-        self
-    }
-
-    /// Build and get holiday database.
-    pub fn build(self) -> Result<HolidayMap> {
-        let Builder { countries, years } = self;
-        build(countries.as_ref(), years.as_ref())
-    }
-
-    /// Build and initialize holiday database.
-    pub fn init(self) -> Result<()> {
-        let Builder { countries, years } = self;
-        let map = build(countries.as_ref(), years.as_ref())?;
-        init_holiday(map)
-    }
 }
 
 /// Represents a holiday.
@@ -226,36 +146,3 @@ pub trait NaiveDateExt {
 }
 
 impl NaiveDateExt for NaiveDate {}
-
-fn should_build_year(years: &Option<&std::ops::Range<Year>>, year: Year) -> bool {
-    years.is_none() || years.unwrap().contains(&year)
-}
-
-fn build_year(
-    years: &Option<&std::ops::Range<Year>>,
-    year: Year,
-    holidays: impl IntoIterator<Item = (NaiveDate, &'static str)>,
-    map: &mut HolidayPerCountryMap,
-    country: Country,
-    county_name: impl ToString,
-) {
-    if !should_build_year(years, year) {
-        return;
-    }
-
-    let m = holidays
-        .into_iter()
-        .map(|h| {
-            (
-                h.0,
-                Holiday::new(country, county_name.to_string(), h.0, h.1),
-            )
-        })
-        .collect();
-
-    map.insert(year, m);
-}
-
-include!("country.rs");
-include!("build.rs");
-include!("data.rs");
