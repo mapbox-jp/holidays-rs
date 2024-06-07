@@ -186,40 +186,46 @@ pub fn build(countries: Option<&HashSet<Country>>, years: Option<&std::ops::Rang
 
 """
 
+country_mod = """
+use std::collections::BTreeMap;
+use std::collections::HashMap;
+
+use crate::{build_help::build_year, prelude::*, Holiday, NaiveDateExt, Result, Year};
+use chrono::NaiveDate;
+
+{% for country in countries %}
+#[cfg(feature = "{{country.code}}")]
+pub mod {{country.code|escape}};
+{% endfor %}
+"""
+
 build_country = """
-/// {{country}}.
-#[cfg(feature = "{{code}}")]
-pub mod {{code|escape}} {
-  use std::collections::BTreeMap;
-  use std::collections::HashMap;
+//! {{country}}
+use super::*;
 
-  use crate::{build_help::build_year, prelude::*, Holiday, NaiveDateExt, Result, Year};
-  use chrono::NaiveDate;
-
-  /// Generate holiday map for {{country}}.
-  #[allow(unused_mut, unused_variables)]
-  pub fn build(years: &Option<&std::ops::Range<Year>>) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
-    let mut map = HashMap::new();
+/// Generate holiday map for {{country}}.
+#[allow(unused_mut, unused_variables)]
+pub fn build(years: &Option<&std::ops::Range<Year>>) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+  let mut map = HashMap::new();
 
 {%- for year in years %}
 {% if holiday(years=year) %}
-    build_year(
-      years,
-      {{year}},
-      vec![
+  build_year(
+    years,
+    {{year}},
+    vec![
 {% for date, name in holiday(years=year).items() %}
-        (NaiveDate::from_ymd_res({{date|year}}, {{date|month}}, {{date|day}})?, "{{name}}"),
+      (NaiveDate::from_ymd_res({{date|year}}, {{date|month}}, {{date|day}})?, "{{name}}"),
 {%- endfor %}
-      ],
-      &mut map,
-      Country::{{code}},
-      "{{country}}",
-    );
+    ],
+    &mut map,
+    Country::{{code}},
+    "{{country}}",
+  );
 {%- endif %}
 {%- endfor  %}
 
-    Ok(map)
-  }
+  Ok(map)
 }
 """
 
@@ -257,7 +263,11 @@ if __name__ == "__main__":
         f.write(rendered)
     
     with open("src/data.rs", "w") as f:
-        for country in countries:
+        rendered = env.from_string(country_mod).render(countries=countries)
+        f.write(rendered)
+        
+    for country in countries:
+        with open("src/data/{}.rs".format(country.code.lower()), "w") as f:
             holiday = getattr(holidays, country.code, None)
             rendered = env.from_string(build_country).render(
                     code=country.code,

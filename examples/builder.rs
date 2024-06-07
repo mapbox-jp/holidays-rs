@@ -1,5 +1,5 @@
 use chrono::NaiveDate;
-use holidays::prelude::*;
+use holidays::Country;
 
 fn main() -> anyhow::Result<()> {
     holidays::Builder::new()
