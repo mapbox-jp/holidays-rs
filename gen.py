@@ -129,15 +129,10 @@ pub enum Country {
 {%- endfor %}
 }
 
-impl ToString for Country {
-  fn to_string(&self) -> String {
-    match self {
-{%- for country in countries %}
-      #[cfg(feature = "{{country.code}}")]
-      Country::{{country.code}} => "{{country.code}}".into(),
-{%- endfor %}
+impl std::fmt::Display for Country {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_ref())
     }
-  }
 }
 
 impl AsRef<str> for Country {
@@ -155,13 +150,13 @@ impl std::str::FromStr for Country {
   type Err = Error;
 
   fn from_str(s: &str) -> std::result::Result<Self, Self::Err> {
-    match s {
+    Ok(match s {
 {%- for country in countries %}
       #[cfg(feature = "{{country.code}}")]
-      "{{country.code}}" => Ok(Country::{{country.code}}),
+      "{{country.code}}" => Country::{{country.code}}, 
 {%- endfor %}
-      _ => Err(Error::CountryNotAvailable),
-    }
+      _ => return Err(Error::CountryNotAvailable),
+    })
   }
 }
 
