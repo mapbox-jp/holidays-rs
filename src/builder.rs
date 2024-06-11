@@ -1,4 +1,4 @@
-use crate::{build, init_holiday, prelude::*, HolidayMap, Result, Year};
+use crate::{build::build, init_holiday, prelude::*, HolidayMap, Result, Year};
 use std::{collections::HashSet, ops::Range};
 
 /// Holiday database builder.

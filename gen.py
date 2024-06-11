@@ -182,11 +182,14 @@ pub fn build(countries: Option<&HashSet<Country>>, years: Option<&std::ops::Rang
 """
 
 country_mod = """
+mod helper;
+
+use crate::{prelude::*, Holiday, NaiveDateExt, Result, Year};
+use helper::build_year;
+
+use chrono::NaiveDate;
 use std::collections::BTreeMap;
 use std::collections::HashMap;
-
-use crate::{build_help::build_year, prelude::*, Holiday, NaiveDateExt, Result, Year};
-use chrono::NaiveDate;
 
 {% for country in countries %}
 #[cfg(feature = "{{country.code}}")]
@@ -257,7 +260,7 @@ if __name__ == "__main__":
         rendered = env.from_string(build).render(countries=countries)
         f.write(rendered)
     
-    with open("src/data.rs", "w") as f:
+    with open("src/data/mod.rs", "w") as f:
         rendered = env.from_string(country_mod).render(countries=countries)
         f.write(rendered)
         
