@@ -1,6 +1,9 @@
 <h1 align="center">holidays-rs</h1>
-<p align="center">Rust library to provide accurate and up-to-date holiday dates based on Python holidays package</p>
 <p align="center">
+<img src="logo.png" width="30%"/><br />
+Rust library to provide accurate and up-to-date holiday dates based on Python holidays package</p>
+<p align="center">
+
   <a href="https://crates.io/crates/holidays">
     <img alt="Crates.io" src="https://img.shields.io/crates/v/holidays.svg">
   </a>
@@ -61,11 +64,11 @@ https://github.com/dr-prodigy/python-holidays#available-countries
 ## FAQ
 
 * Q: How can I use this crate in a single threaded environment?
-* A: Don't call `init` nor `holidays::Builder`s `init` methods. Instead, you can get the internal HashMap by calling `holidays::Builder`'s `build` method. 
+* A: Don't call `init` nor `holidays::Builder`s `init` methods. Instead, you can get the internal HashMap by calling `holidays::Builder`'s `build` method.
 
 ## Acknowledgement
 
-Thank you so much [python-holidays contributors](https://github.com/dr-prodigy/python-holidays/graphs/contributors) for maintaining such a great package! 🙏
+Thank you so much [python-holidays contributors](https://github.com/vacanza/python-holidays/graphs/contributors) for maintaining such a great package! 🙏
 
 ## License
 
