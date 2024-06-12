@@ -116,6 +116,8 @@ countries = [
 years = range(2000, 2031)
 
 country = """
+use crate::Error;
+
 /// Two-letter country codes defined in ISO 3166-1 alpha-2 .
 #[allow(dead_code)]
 #[derive(Debug, Clone, Copy, Eq, PartialEq, Hash, PartialOrd, Ord)]
@@ -127,15 +129,10 @@ pub enum Country {
 {%- endfor %}
 }
 
-impl ToString for Country {
-  fn to_string(&self) -> String {
-    match self {
-{%- for country in countries %}
-      #[cfg(feature = "{{country.code}}")]
-      Country::{{country.code}} => "{{country.code}}".into(),
-{%- endfor %}
+impl std::fmt::Display for Country {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_ref())
     }
-  }
 }
 
 impl AsRef<str> for Country {
@@ -153,21 +150,25 @@ impl std::str::FromStr for Country {
   type Err = Error;
 
   fn from_str(s: &str) -> std::result::Result<Self, Self::Err> {
-    match s {
+    Ok(match s {
 {%- for country in countries %}
       #[cfg(feature = "{{country.code}}")]
-      "{{country.code}}" => Ok(Country::{{country.code}}),
+      "{{country.code}}" => Country::{{country.code}}, 
 {%- endfor %}
-      _ => Err(Error::CountryNotAvailable),
-    }
+      _ => return Err(Error::CountryNotAvailable),
+    })
   }
 }
 
 """
 
 build = """
+use std::collections::HashSet;
+
+use crate::{data::*, prelude::*, HolidayMap, Result, Year};
+
 /// Generate holiday map for the specified countries and years.
-fn build(countries: Option<&HashSet<Country>>, years: Option<&std::ops::Range<Year>>) -> Result<HolidayMap> {
+pub fn build(countries: Option<&HashSet<Country>>, years: Option<&std::ops::Range<Year>>) -> Result<HolidayMap> {
   let mut map = HolidayMap::new();
 {% for country in countries %}
   #[cfg(feature = "{{country.code}}")]
@@ -180,10 +181,24 @@ fn build(countries: Option<&HashSet<Country>>, years: Option<&std::ops::Range<Ye
 
 """
 
+country_mod = """
+mod helper;
+
+use crate::{prelude::*, Holiday, NaiveDateExt, Result, Year};
+use helper::build_year;
+
+use chrono::NaiveDate;
+use std::collections::BTreeMap;
+use std::collections::HashMap;
+
+{% for country in countries %}
+#[cfg(feature = "{{country.code}}")]
+pub mod {{country.code|escape}};
+{% endfor %}
+"""
+
 build_country = """
-/// {{country}}.
-#[cfg(feature = "{{code}}")]
-pub mod {{code|escape}} {
+//! {{country}}
 use super::*;
 
 /// Generate holiday map for {{country}}.
@@ -192,20 +207,23 @@ pub fn build(years: &Option<&std::ops::Range<Year>>) -> Result<HashMap<Year, BTr
   let mut map = HashMap::new();
 
 {%- for year in years %}
-  {% if holiday(years=year) %}
-  if years.is_none() || years.unwrap().contains(&{{year}}) {
-    let mut m = BTreeMap::new();
+{% if holiday(years=year) %}
+  build_year(
+    years,
+    {{year}},
+    vec![
 {% for date, name in holiday(years=year).items() %}
-    let date = NaiveDate::from_ymd_res({{date|year}}, {{date|month}}, {{date|day}})?;
-    m.insert(date, Holiday::new(Country::{{code}}, "{{country}}", date, "{{name}}"));
+      (NaiveDate::from_ymd_res({{date|year}}, {{date|month}}, {{date|day}})?, "{{name}}"),
 {%- endfor %}
-    map.insert({{year}}, m);
-  }
+    ],
+    &mut map,
+    Country::{{code}},
+    "{{country}}",
+  );
 {%- endif %}
 {%- endfor  %}
 
   Ok(map)
-}
 }
 """
 
@@ -234,14 +252,20 @@ if __name__ == "__main__":
     env.filters["day"] = lambda d: d.day
     env.filters["escape"] = escape
     env.filters["lower"] = lower
-    with open("src/data.rs", "w") as f:
+    with open("src/country.rs", "w") as f:
         rendered = env.from_string(country).render(countries=countries)
         f.write(rendered)
 
+    with open("src/build.rs", "w") as f:
         rendered = env.from_string(build).render(countries=countries)
         f.write(rendered)
-
-        for country in countries:
+    
+    with open("src/data/mod.rs", "w") as f:
+        rendered = env.from_string(country_mod).render(countries=countries)
+        f.write(rendered)
+        
+    for country in countries:
+        with open("src/data/{}.rs".format(country.code.lower()), "w") as f:
             holiday = getattr(holidays, country.code, None)
             rendered = env.from_string(build_country).render(
                     code=country.code,
