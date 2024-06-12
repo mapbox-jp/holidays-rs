@@ -1,6 +1,6 @@
 use std::collections::HashSet;
 
-use crate::{data::*, prelude::*, HolidayMap, Result, Year};
+use crate::{data, prelude::*, HolidayMap, Result, Year};
 
 /// Generate holiday map for the specified countries and years.
 pub fn build(
@@ -10,508 +10,878 @@ pub fn build(
     let mut map = HolidayMap::new();
 
     #[cfg(feature = "AO")]
-    if countries.is_none() || countries.unwrap().contains(&Country::AO) {
-        map.insert(Country::AO, ao::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::AO)) {
+        map.insert(Country::AO, data::ao::build(years)?);
     }
 
     #[cfg(feature = "AR")]
-    if countries.is_none() || countries.unwrap().contains(&Country::AR) {
-        map.insert(Country::AR, ar::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::AR)) {
+        map.insert(Country::AR, data::ar::build(years)?);
     }
 
     #[cfg(feature = "AM")]
-    if countries.is_none() || countries.unwrap().contains(&Country::AM) {
-        map.insert(Country::AM, am::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::AM)) {
+        map.insert(Country::AM, data::am::build(years)?);
     }
 
     #[cfg(feature = "AW")]
-    if countries.is_none() || countries.unwrap().contains(&Country::AW) {
-        map.insert(Country::AW, aw::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::AW)) {
+        map.insert(Country::AW, data::aw::build(years)?);
     }
 
     #[cfg(feature = "AU")]
-    if countries.is_none() || countries.unwrap().contains(&Country::AU) {
-        map.insert(Country::AU, au::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::AU)) {
+        map.insert(Country::AU, data::au::build(years)?);
     }
 
     #[cfg(feature = "AT")]
-    if countries.is_none() || countries.unwrap().contains(&Country::AT) {
-        map.insert(Country::AT, at::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::AT)) {
+        map.insert(Country::AT, data::at::build(years)?);
     }
 
     #[cfg(feature = "AZ")]
-    if countries.is_none() || countries.unwrap().contains(&Country::AZ) {
-        map.insert(Country::AZ, az::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::AZ)) {
+        map.insert(Country::AZ, data::az::build(years)?);
     }
 
     #[cfg(feature = "BD")]
-    if countries.is_none() || countries.unwrap().contains(&Country::BD) {
-        map.insert(Country::BD, bd::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::BD)) {
+        map.insert(Country::BD, data::bd::build(years)?);
     }
 
     #[cfg(feature = "BY")]
-    if countries.is_none() || countries.unwrap().contains(&Country::BY) {
-        map.insert(Country::BY, by::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::BY)) {
+        map.insert(Country::BY, data::by::build(years)?);
     }
 
     #[cfg(feature = "BE")]
-    if countries.is_none() || countries.unwrap().contains(&Country::BE) {
-        map.insert(Country::BE, be::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::BE)) {
+        map.insert(Country::BE, data::be::build(years)?);
     }
 
     #[cfg(feature = "BO")]
-    if countries.is_none() || countries.unwrap().contains(&Country::BO) {
-        map.insert(Country::BO, bo::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::BO)) {
+        map.insert(Country::BO, data::bo::build(years)?);
     }
 
     #[cfg(feature = "BA")]
-    if countries.is_none() || countries.unwrap().contains(&Country::BA) {
-        map.insert(Country::BA, ba::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::BA)) {
+        map.insert(Country::BA, data::ba::build(years)?);
     }
 
     #[cfg(feature = "BW")]
-    if countries.is_none() || countries.unwrap().contains(&Country::BW) {
-        map.insert(Country::BW, bw::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::BW)) {
+        map.insert(Country::BW, data::bw::build(years)?);
     }
 
     #[cfg(feature = "BR")]
-    if countries.is_none() || countries.unwrap().contains(&Country::BR) {
-        map.insert(Country::BR, br::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::BR)) {
+        map.insert(Country::BR, data::br::build(years)?);
     }
 
     #[cfg(feature = "BG")]
-    if countries.is_none() || countries.unwrap().contains(&Country::BG) {
-        map.insert(Country::BG, bg::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::BG)) {
+        map.insert(Country::BG, data::bg::build(years)?);
     }
 
     #[cfg(feature = "BI")]
-    if countries.is_none() || countries.unwrap().contains(&Country::BI) {
-        map.insert(Country::BI, bi::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::BI)) {
+        map.insert(Country::BI, data::bi::build(years)?);
     }
 
     #[cfg(feature = "CA")]
-    if countries.is_none() || countries.unwrap().contains(&Country::CA) {
-        map.insert(Country::CA, ca::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::CA)) {
+        map.insert(Country::CA, data::ca::build(years)?);
     }
 
     #[cfg(feature = "CL")]
-    if countries.is_none() || countries.unwrap().contains(&Country::CL) {
-        map.insert(Country::CL, cl::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::CL)) {
+        map.insert(Country::CL, data::cl::build(years)?);
     }
 
     #[cfg(feature = "CN")]
-    if countries.is_none() || countries.unwrap().contains(&Country::CN) {
-        map.insert(Country::CN, cn::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::CN)) {
+        map.insert(Country::CN, data::cn::build(years)?);
     }
 
     #[cfg(feature = "CO")]
-    if countries.is_none() || countries.unwrap().contains(&Country::CO) {
-        map.insert(Country::CO, co::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::CO)) {
+        map.insert(Country::CO, data::co::build(years)?);
     }
 
     #[cfg(feature = "HR")]
-    if countries.is_none() || countries.unwrap().contains(&Country::HR) {
-        map.insert(Country::HR, hr::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::HR)) {
+        map.insert(Country::HR, data::hr::build(years)?);
     }
 
     #[cfg(feature = "CU")]
-    if countries.is_none() || countries.unwrap().contains(&Country::CU) {
-        map.insert(Country::CU, cu::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::CU)) {
+        map.insert(Country::CU, data::cu::build(years)?);
     }
 
     #[cfg(feature = "CW")]
-    if countries.is_none() || countries.unwrap().contains(&Country::CW) {
-        map.insert(Country::CW, cw::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::CW)) {
+        map.insert(Country::CW, data::cw::build(years)?);
     }
 
     #[cfg(feature = "CY")]
-    if countries.is_none() || countries.unwrap().contains(&Country::CY) {
-        map.insert(Country::CY, cy::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::CY)) {
+        map.insert(Country::CY, data::cy::build(years)?);
     }
 
     #[cfg(feature = "CZ")]
-    if countries.is_none() || countries.unwrap().contains(&Country::CZ) {
-        map.insert(Country::CZ, cz::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::CZ)) {
+        map.insert(Country::CZ, data::cz::build(years)?);
     }
 
     #[cfg(feature = "DK")]
-    if countries.is_none() || countries.unwrap().contains(&Country::DK) {
-        map.insert(Country::DK, dk::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::DK)) {
+        map.insert(Country::DK, data::dk::build(years)?);
     }
 
     #[cfg(feature = "DJ")]
-    if countries.is_none() || countries.unwrap().contains(&Country::DJ) {
-        map.insert(Country::DJ, dj::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::DJ)) {
+        map.insert(Country::DJ, data::dj::build(years)?);
     }
 
     #[cfg(feature = "DO")]
-    if countries.is_none() || countries.unwrap().contains(&Country::DO) {
-        map.insert(Country::DO, r#do::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::DO)) {
+        map.insert(Country::DO, data::r#do::build(years)?);
     }
 
     #[cfg(feature = "EG")]
-    if countries.is_none() || countries.unwrap().contains(&Country::EG) {
-        map.insert(Country::EG, eg::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::EG)) {
+        map.insert(Country::EG, data::eg::build(years)?);
     }
 
     #[cfg(feature = "EE")]
-    if countries.is_none() || countries.unwrap().contains(&Country::EE) {
-        map.insert(Country::EE, ee::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::EE)) {
+        map.insert(Country::EE, data::ee::build(years)?);
     }
 
     #[cfg(feature = "ET")]
-    if countries.is_none() || countries.unwrap().contains(&Country::ET) {
-        map.insert(Country::ET, et::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::ET)) {
+        map.insert(Country::ET, data::et::build(years)?);
     }
 
     #[cfg(feature = "FI")]
-    if countries.is_none() || countries.unwrap().contains(&Country::FI) {
-        map.insert(Country::FI, fi::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::FI)) {
+        map.insert(Country::FI, data::fi::build(years)?);
     }
 
     #[cfg(feature = "FR")]
-    if countries.is_none() || countries.unwrap().contains(&Country::FR) {
-        map.insert(Country::FR, fr::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::FR)) {
+        map.insert(Country::FR, data::fr::build(years)?);
     }
 
     #[cfg(feature = "GE")]
-    if countries.is_none() || countries.unwrap().contains(&Country::GE) {
-        map.insert(Country::GE, ge::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::GE)) {
+        map.insert(Country::GE, data::ge::build(years)?);
     }
 
     #[cfg(feature = "DE")]
-    if countries.is_none() || countries.unwrap().contains(&Country::DE) {
-        map.insert(Country::DE, de::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::DE)) {
+        map.insert(Country::DE, data::de::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_BB)) {
+        map.insert(Country::DE_BB, data::de_bb::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_BE)) {
+        map.insert(Country::DE_BE, data::de_be::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_BW)) {
+        map.insert(Country::DE_BW, data::de_bw::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_BY)) {
+        map.insert(Country::DE_BY, data::de_by::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_BYP)) {
+        map.insert(Country::DE_BYP, data::de_byp::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_HB)) {
+        map.insert(Country::DE_HB, data::de_hb::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_HE)) {
+        map.insert(Country::DE_HE, data::de_he::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_HH)) {
+        map.insert(Country::DE_HH, data::de_hh::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_MV)) {
+        map.insert(Country::DE_MV, data::de_mv::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_NI)) {
+        map.insert(Country::DE_NI, data::de_ni::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_NW)) {
+        map.insert(Country::DE_NW, data::de_nw::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_RP)) {
+        map.insert(Country::DE_RP, data::de_rp::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_SH)) {
+        map.insert(Country::DE_SH, data::de_sh::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_SL)) {
+        map.insert(Country::DE_SL, data::de_sl::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_SN)) {
+        map.insert(Country::DE_SN, data::de_sn::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_ST)) {
+        map.insert(Country::DE_ST, data::de_st::build(years)?);
+    }
+
+    #[cfg(feature = "DE")]
+    if countries.map_or(true, |c| c.contains(&Country::DE_TH)) {
+        map.insert(Country::DE_TH, data::de_th::build(years)?);
     }
 
     #[cfg(feature = "GR")]
-    if countries.is_none() || countries.unwrap().contains(&Country::GR) {
-        map.insert(Country::GR, gr::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::GR)) {
+        map.insert(Country::GR, data::gr::build(years)?);
     }
 
     #[cfg(feature = "HN")]
-    if countries.is_none() || countries.unwrap().contains(&Country::HN) {
-        map.insert(Country::HN, hn::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::HN)) {
+        map.insert(Country::HN, data::hn::build(years)?);
     }
 
     #[cfg(feature = "HK")]
-    if countries.is_none() || countries.unwrap().contains(&Country::HK) {
-        map.insert(Country::HK, hk::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::HK)) {
+        map.insert(Country::HK, data::hk::build(years)?);
     }
 
     #[cfg(feature = "HU")]
-    if countries.is_none() || countries.unwrap().contains(&Country::HU) {
-        map.insert(Country::HU, hu::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::HU)) {
+        map.insert(Country::HU, data::hu::build(years)?);
     }
 
     #[cfg(feature = "IS")]
-    if countries.is_none() || countries.unwrap().contains(&Country::IS) {
-        map.insert(Country::IS, is::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::IS)) {
+        map.insert(Country::IS, data::is::build(years)?);
     }
 
     #[cfg(feature = "IN")]
-    if countries.is_none() || countries.unwrap().contains(&Country::IN) {
-        map.insert(Country::IN, r#in::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::IN)) {
+        map.insert(Country::IN, data::r#in::build(years)?);
     }
 
     #[cfg(feature = "ID")]
-    if countries.is_none() || countries.unwrap().contains(&Country::ID) {
-        map.insert(Country::ID, id::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::ID)) {
+        map.insert(Country::ID, data::id::build(years)?);
     }
 
     #[cfg(feature = "IE")]
-    if countries.is_none() || countries.unwrap().contains(&Country::IE) {
-        map.insert(Country::IE, ie::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::IE)) {
+        map.insert(Country::IE, data::ie::build(years)?);
     }
 
     #[cfg(feature = "IM")]
-    if countries.is_none() || countries.unwrap().contains(&Country::IM) {
-        map.insert(Country::IM, im::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::IM)) {
+        map.insert(Country::IM, data::im::build(years)?);
     }
 
     #[cfg(feature = "IL")]
-    if countries.is_none() || countries.unwrap().contains(&Country::IL) {
-        map.insert(Country::IL, il::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::IL)) {
+        map.insert(Country::IL, data::il::build(years)?);
     }
 
     #[cfg(feature = "IT")]
-    if countries.is_none() || countries.unwrap().contains(&Country::IT) {
-        map.insert(Country::IT, it::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::IT)) {
+        map.insert(Country::IT, data::it::build(years)?);
     }
 
     #[cfg(feature = "JM")]
-    if countries.is_none() || countries.unwrap().contains(&Country::JM) {
-        map.insert(Country::JM, jm::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::JM)) {
+        map.insert(Country::JM, data::jm::build(years)?);
     }
 
     #[cfg(feature = "JP")]
-    if countries.is_none() || countries.unwrap().contains(&Country::JP) {
-        map.insert(Country::JP, jp::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::JP)) {
+        map.insert(Country::JP, data::jp::build(years)?);
     }
 
     #[cfg(feature = "KZ")]
-    if countries.is_none() || countries.unwrap().contains(&Country::KZ) {
-        map.insert(Country::KZ, kz::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::KZ)) {
+        map.insert(Country::KZ, data::kz::build(years)?);
     }
 
     #[cfg(feature = "KE")]
-    if countries.is_none() || countries.unwrap().contains(&Country::KE) {
-        map.insert(Country::KE, ke::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::KE)) {
+        map.insert(Country::KE, data::ke::build(years)?);
     }
 
     #[cfg(feature = "LV")]
-    if countries.is_none() || countries.unwrap().contains(&Country::LV) {
-        map.insert(Country::LV, lv::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::LV)) {
+        map.insert(Country::LV, data::lv::build(years)?);
     }
 
     #[cfg(feature = "LS")]
-    if countries.is_none() || countries.unwrap().contains(&Country::LS) {
-        map.insert(Country::LS, ls::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::LS)) {
+        map.insert(Country::LS, data::ls::build(years)?);
     }
 
     #[cfg(feature = "LI")]
-    if countries.is_none() || countries.unwrap().contains(&Country::LI) {
-        map.insert(Country::LI, li::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::LI)) {
+        map.insert(Country::LI, data::li::build(years)?);
     }
 
     #[cfg(feature = "LT")]
-    if countries.is_none() || countries.unwrap().contains(&Country::LT) {
-        map.insert(Country::LT, lt::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::LT)) {
+        map.insert(Country::LT, data::lt::build(years)?);
     }
 
     #[cfg(feature = "LU")]
-    if countries.is_none() || countries.unwrap().contains(&Country::LU) {
-        map.insert(Country::LU, lu::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::LU)) {
+        map.insert(Country::LU, data::lu::build(years)?);
     }
 
     #[cfg(feature = "MG")]
-    if countries.is_none() || countries.unwrap().contains(&Country::MG) {
-        map.insert(Country::MG, mg::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::MG)) {
+        map.insert(Country::MG, data::mg::build(years)?);
     }
 
     #[cfg(feature = "MY")]
-    if countries.is_none() || countries.unwrap().contains(&Country::MY) {
-        map.insert(Country::MY, my::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::MY)) {
+        map.insert(Country::MY, data::my::build(years)?);
     }
 
     #[cfg(feature = "MW")]
-    if countries.is_none() || countries.unwrap().contains(&Country::MW) {
-        map.insert(Country::MW, mw::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::MW)) {
+        map.insert(Country::MW, data::mw::build(years)?);
     }
 
     #[cfg(feature = "MT")]
-    if countries.is_none() || countries.unwrap().contains(&Country::MT) {
-        map.insert(Country::MT, mt::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::MT)) {
+        map.insert(Country::MT, data::mt::build(years)?);
     }
 
     #[cfg(feature = "MX")]
-    if countries.is_none() || countries.unwrap().contains(&Country::MX) {
-        map.insert(Country::MX, mx::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::MX)) {
+        map.insert(Country::MX, data::mx::build(years)?);
     }
 
     #[cfg(feature = "MD")]
-    if countries.is_none() || countries.unwrap().contains(&Country::MD) {
-        map.insert(Country::MD, md::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::MD)) {
+        map.insert(Country::MD, data::md::build(years)?);
     }
 
     #[cfg(feature = "MA")]
-    if countries.is_none() || countries.unwrap().contains(&Country::MA) {
-        map.insert(Country::MA, ma::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::MA)) {
+        map.insert(Country::MA, data::ma::build(years)?);
     }
 
     #[cfg(feature = "MZ")]
-    if countries.is_none() || countries.unwrap().contains(&Country::MZ) {
-        map.insert(Country::MZ, mz::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::MZ)) {
+        map.insert(Country::MZ, data::mz::build(years)?);
     }
 
     #[cfg(feature = "NL")]
-    if countries.is_none() || countries.unwrap().contains(&Country::NL) {
-        map.insert(Country::NL, nl::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::NL)) {
+        map.insert(Country::NL, data::nl::build(years)?);
     }
 
     #[cfg(feature = "NA")]
-    if countries.is_none() || countries.unwrap().contains(&Country::NA) {
-        map.insert(Country::NA, na::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::NA)) {
+        map.insert(Country::NA, data::na::build(years)?);
     }
 
     #[cfg(feature = "NZ")]
-    if countries.is_none() || countries.unwrap().contains(&Country::NZ) {
-        map.insert(Country::NZ, nz::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::NZ)) {
+        map.insert(Country::NZ, data::nz::build(years)?);
     }
 
     #[cfg(feature = "NI")]
-    if countries.is_none() || countries.unwrap().contains(&Country::NI) {
-        map.insert(Country::NI, ni::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::NI)) {
+        map.insert(Country::NI, data::ni::build(years)?);
     }
 
     #[cfg(feature = "NG")]
-    if countries.is_none() || countries.unwrap().contains(&Country::NG) {
-        map.insert(Country::NG, ng::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::NG)) {
+        map.insert(Country::NG, data::ng::build(years)?);
     }
 
     #[cfg(feature = "MK")]
-    if countries.is_none() || countries.unwrap().contains(&Country::MK) {
-        map.insert(Country::MK, mk::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::MK)) {
+        map.insert(Country::MK, data::mk::build(years)?);
     }
 
     #[cfg(feature = "NO")]
-    if countries.is_none() || countries.unwrap().contains(&Country::NO) {
-        map.insert(Country::NO, no::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::NO)) {
+        map.insert(Country::NO, data::no::build(years)?);
     }
 
     #[cfg(feature = "PK")]
-    if countries.is_none() || countries.unwrap().contains(&Country::PK) {
-        map.insert(Country::PK, pk::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::PK)) {
+        map.insert(Country::PK, data::pk::build(years)?);
     }
 
     #[cfg(feature = "PY")]
-    if countries.is_none() || countries.unwrap().contains(&Country::PY) {
-        map.insert(Country::PY, py::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::PY)) {
+        map.insert(Country::PY, data::py::build(years)?);
     }
 
     #[cfg(feature = "PE")]
-    if countries.is_none() || countries.unwrap().contains(&Country::PE) {
-        map.insert(Country::PE, pe::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::PE)) {
+        map.insert(Country::PE, data::pe::build(years)?);
     }
 
     #[cfg(feature = "PL")]
-    if countries.is_none() || countries.unwrap().contains(&Country::PL) {
-        map.insert(Country::PL, pl::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::PL)) {
+        map.insert(Country::PL, data::pl::build(years)?);
     }
 
     #[cfg(feature = "PT")]
-    if countries.is_none() || countries.unwrap().contains(&Country::PT) {
-        map.insert(Country::PT, pt::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::PT)) {
+        map.insert(Country::PT, data::pt::build(years)?);
     }
 
     #[cfg(feature = "RO")]
-    if countries.is_none() || countries.unwrap().contains(&Country::RO) {
-        map.insert(Country::RO, ro::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::RO)) {
+        map.insert(Country::RO, data::ro::build(years)?);
     }
 
     #[cfg(feature = "RU")]
-    if countries.is_none() || countries.unwrap().contains(&Country::RU) {
-        map.insert(Country::RU, ru::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::RU)) {
+        map.insert(Country::RU, data::ru::build(years)?);
     }
 
     #[cfg(feature = "SA")]
-    if countries.is_none() || countries.unwrap().contains(&Country::SA) {
-        map.insert(Country::SA, sa::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::SA)) {
+        map.insert(Country::SA, data::sa::build(years)?);
     }
 
     #[cfg(feature = "RS")]
-    if countries.is_none() || countries.unwrap().contains(&Country::RS) {
-        map.insert(Country::RS, rs::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::RS)) {
+        map.insert(Country::RS, data::rs::build(years)?);
     }
 
     #[cfg(feature = "SG")]
-    if countries.is_none() || countries.unwrap().contains(&Country::SG) {
-        map.insert(Country::SG, sg::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::SG)) {
+        map.insert(Country::SG, data::sg::build(years)?);
     }
 
     #[cfg(feature = "SK")]
-    if countries.is_none() || countries.unwrap().contains(&Country::SK) {
-        map.insert(Country::SK, sk::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::SK)) {
+        map.insert(Country::SK, data::sk::build(years)?);
     }
 
     #[cfg(feature = "SI")]
-    if countries.is_none() || countries.unwrap().contains(&Country::SI) {
-        map.insert(Country::SI, si::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::SI)) {
+        map.insert(Country::SI, data::si::build(years)?);
     }
 
     #[cfg(feature = "ZA")]
-    if countries.is_none() || countries.unwrap().contains(&Country::ZA) {
-        map.insert(Country::ZA, za::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::ZA)) {
+        map.insert(Country::ZA, data::za::build(years)?);
     }
 
     #[cfg(feature = "KR")]
-    if countries.is_none() || countries.unwrap().contains(&Country::KR) {
-        map.insert(Country::KR, kr::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::KR)) {
+        map.insert(Country::KR, data::kr::build(years)?);
     }
 
     #[cfg(feature = "ES")]
-    if countries.is_none() || countries.unwrap().contains(&Country::ES) {
-        map.insert(Country::ES, es::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::ES)) {
+        map.insert(Country::ES, data::es::build(years)?);
     }
 
     #[cfg(feature = "SZ")]
-    if countries.is_none() || countries.unwrap().contains(&Country::SZ) {
-        map.insert(Country::SZ, sz::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::SZ)) {
+        map.insert(Country::SZ, data::sz::build(years)?);
     }
 
     #[cfg(feature = "SE")]
-    if countries.is_none() || countries.unwrap().contains(&Country::SE) {
-        map.insert(Country::SE, se::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::SE)) {
+        map.insert(Country::SE, data::se::build(years)?);
     }
 
     #[cfg(feature = "CH")]
-    if countries.is_none() || countries.unwrap().contains(&Country::CH) {
-        map.insert(Country::CH, ch::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::CH)) {
+        map.insert(Country::CH, data::ch::build(years)?);
     }
 
     #[cfg(feature = "TW")]
-    if countries.is_none() || countries.unwrap().contains(&Country::TW) {
-        map.insert(Country::TW, tw::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::TW)) {
+        map.insert(Country::TW, data::tw::build(years)?);
     }
 
     #[cfg(feature = "TR")]
-    if countries.is_none() || countries.unwrap().contains(&Country::TR) {
-        map.insert(Country::TR, tr::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::TR)) {
+        map.insert(Country::TR, data::tr::build(years)?);
     }
 
     #[cfg(feature = "TN")]
-    if countries.is_none() || countries.unwrap().contains(&Country::TN) {
-        map.insert(Country::TN, tn::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::TN)) {
+        map.insert(Country::TN, data::tn::build(years)?);
     }
 
     #[cfg(feature = "UA")]
-    if countries.is_none() || countries.unwrap().contains(&Country::UA) {
-        map.insert(Country::UA, ua::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::UA)) {
+        map.insert(Country::UA, data::ua::build(years)?);
     }
 
     #[cfg(feature = "AE")]
-    if countries.is_none() || countries.unwrap().contains(&Country::AE) {
-        map.insert(Country::AE, ae::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::AE)) {
+        map.insert(Country::AE, data::ae::build(years)?);
     }
 
     #[cfg(feature = "GB")]
-    if countries.is_none() || countries.unwrap().contains(&Country::GB) {
-        map.insert(Country::GB, gb::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::GB)) {
+        map.insert(Country::GB, data::gb::build(years)?);
     }
 
     #[cfg(feature = "US")]
-    if countries.is_none() || countries.unwrap().contains(&Country::US) {
-        map.insert(Country::US, us::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::US)) {
+        map.insert(Country::US, data::us::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_AK)) {
+        map.insert(Country::US_AK, data::us_ak::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_AL)) {
+        map.insert(Country::US_AL, data::us_al::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_AR)) {
+        map.insert(Country::US_AR, data::us_ar::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_AS)) {
+        map.insert(Country::US_AS, data::us_as::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_AZ)) {
+        map.insert(Country::US_AZ, data::us_az::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_CA)) {
+        map.insert(Country::US_CA, data::us_ca::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_CO)) {
+        map.insert(Country::US_CO, data::us_co::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_CT)) {
+        map.insert(Country::US_CT, data::us_ct::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_DC)) {
+        map.insert(Country::US_DC, data::us_dc::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_DE)) {
+        map.insert(Country::US_DE, data::us_de::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_FL)) {
+        map.insert(Country::US_FL, data::us_fl::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_GA)) {
+        map.insert(Country::US_GA, data::us_ga::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_GU)) {
+        map.insert(Country::US_GU, data::us_gu::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_HI)) {
+        map.insert(Country::US_HI, data::us_hi::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_IA)) {
+        map.insert(Country::US_IA, data::us_ia::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_ID)) {
+        map.insert(Country::US_ID, data::us_id::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_IL)) {
+        map.insert(Country::US_IL, data::us_il::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_IN)) {
+        map.insert(Country::US_IN, data::us_in::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_KS)) {
+        map.insert(Country::US_KS, data::us_ks::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_KY)) {
+        map.insert(Country::US_KY, data::us_ky::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_LA)) {
+        map.insert(Country::US_LA, data::us_la::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_MA)) {
+        map.insert(Country::US_MA, data::us_ma::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_MD)) {
+        map.insert(Country::US_MD, data::us_md::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_ME)) {
+        map.insert(Country::US_ME, data::us_me::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_MI)) {
+        map.insert(Country::US_MI, data::us_mi::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_MN)) {
+        map.insert(Country::US_MN, data::us_mn::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_MO)) {
+        map.insert(Country::US_MO, data::us_mo::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_MP)) {
+        map.insert(Country::US_MP, data::us_mp::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_MS)) {
+        map.insert(Country::US_MS, data::us_ms::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_MT)) {
+        map.insert(Country::US_MT, data::us_mt::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_NC)) {
+        map.insert(Country::US_NC, data::us_nc::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_ND)) {
+        map.insert(Country::US_ND, data::us_nd::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_NE)) {
+        map.insert(Country::US_NE, data::us_ne::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_NH)) {
+        map.insert(Country::US_NH, data::us_nh::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_NJ)) {
+        map.insert(Country::US_NJ, data::us_nj::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_NM)) {
+        map.insert(Country::US_NM, data::us_nm::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_NV)) {
+        map.insert(Country::US_NV, data::us_nv::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_NY)) {
+        map.insert(Country::US_NY, data::us_ny::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_OH)) {
+        map.insert(Country::US_OH, data::us_oh::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_OK)) {
+        map.insert(Country::US_OK, data::us_ok::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_OR)) {
+        map.insert(Country::US_OR, data::us_or::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_PA)) {
+        map.insert(Country::US_PA, data::us_pa::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_PR)) {
+        map.insert(Country::US_PR, data::us_pr::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_RI)) {
+        map.insert(Country::US_RI, data::us_ri::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_SC)) {
+        map.insert(Country::US_SC, data::us_sc::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_SD)) {
+        map.insert(Country::US_SD, data::us_sd::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_TN)) {
+        map.insert(Country::US_TN, data::us_tn::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_TX)) {
+        map.insert(Country::US_TX, data::us_tx::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_UM)) {
+        map.insert(Country::US_UM, data::us_um::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_UT)) {
+        map.insert(Country::US_UT, data::us_ut::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_VA)) {
+        map.insert(Country::US_VA, data::us_va::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_VI)) {
+        map.insert(Country::US_VI, data::us_vi::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_VT)) {
+        map.insert(Country::US_VT, data::us_vt::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_WA)) {
+        map.insert(Country::US_WA, data::us_wa::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_WI)) {
+        map.insert(Country::US_WI, data::us_wi::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_WV)) {
+        map.insert(Country::US_WV, data::us_wv::build(years)?);
+    }
+
+    #[cfg(feature = "US")]
+    if countries.map_or(true, |c| c.contains(&Country::US_WY)) {
+        map.insert(Country::US_WY, data::us_wy::build(years)?);
     }
 
     #[cfg(feature = "UY")]
-    if countries.is_none() || countries.unwrap().contains(&Country::UY) {
-        map.insert(Country::UY, uy::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::UY)) {
+        map.insert(Country::UY, data::uy::build(years)?);
     }
 
     #[cfg(feature = "UZ")]
-    if countries.is_none() || countries.unwrap().contains(&Country::UZ) {
-        map.insert(Country::UZ, uz::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::UZ)) {
+        map.insert(Country::UZ, data::uz::build(years)?);
     }
 
     #[cfg(feature = "VE")]
-    if countries.is_none() || countries.unwrap().contains(&Country::VE) {
-        map.insert(Country::VE, ve::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::VE)) {
+        map.insert(Country::VE, data::ve::build(years)?);
     }
 
     #[cfg(feature = "VN")]
-    if countries.is_none() || countries.unwrap().contains(&Country::VN) {
-        map.insert(Country::VN, vn::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::VN)) {
+        map.insert(Country::VN, data::vn::build(years)?);
     }
 
     #[cfg(feature = "ZM")]
-    if countries.is_none() || countries.unwrap().contains(&Country::ZM) {
-        map.insert(Country::ZM, zm::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::ZM)) {
+        map.insert(Country::ZM, data::zm::build(years)?);
     }
 
     #[cfg(feature = "ZW")]
-    if countries.is_none() || countries.unwrap().contains(&Country::ZW) {
-        map.insert(Country::ZW, zw::build(&years)?);
+    if countries.map_or(true, |c| c.contains(&Country::ZW)) {
+        map.insert(Country::ZW, data::zw::build(years)?);
     }
 
     Ok(map)

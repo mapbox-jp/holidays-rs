@@ -2,6 +2,7 @@ use crate::Error;
 
 /// Two-letter country codes defined in ISO 3166-1 alpha-2 .
 #[allow(dead_code)]
+#[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, Eq, PartialEq, Hash, PartialOrd, Ord)]
 pub enum Country {
     #[cfg(feature = "AO")]
@@ -109,6 +110,57 @@ pub enum Country {
     #[cfg(feature = "DE")]
     /// Germany
     DE,
+    #[cfg(feature = "DE")]
+    /// Germany (Brandenburg)
+    DE_BB,
+    #[cfg(feature = "DE")]
+    /// Germany (Berlin)
+    DE_BE,
+    #[cfg(feature = "DE")]
+    /// Germany (Baden-Württemberg)
+    DE_BW,
+    #[cfg(feature = "DE")]
+    /// Germany (Bavaria (Bayern))
+    DE_BY,
+    #[cfg(feature = "DE")]
+    /// Germany (Bavaria (Bayern) with more protestants)
+    DE_BYP,
+    #[cfg(feature = "DE")]
+    /// Germany (Bremen)
+    DE_HB,
+    #[cfg(feature = "DE")]
+    /// Germany (Hesse (Hessen))
+    DE_HE,
+    #[cfg(feature = "DE")]
+    /// Germany (Hamburg)
+    DE_HH,
+    #[cfg(feature = "DE")]
+    /// Germany (Mecklenburg-Vorpommern)
+    DE_MV,
+    #[cfg(feature = "DE")]
+    /// Germany (Lower Saxony (Niedersachsen))
+    DE_NI,
+    #[cfg(feature = "DE")]
+    /// Germany (North Rhine-Westphalia (Nordrhein-Westfalen))
+    DE_NW,
+    #[cfg(feature = "DE")]
+    /// Germany (Rhineland-Palatinate (Rheinland-Pfalz))
+    DE_RP,
+    #[cfg(feature = "DE")]
+    /// Germany (Schleswig-Holstein)
+    DE_SH,
+    #[cfg(feature = "DE")]
+    /// Germany (Saarland)
+    DE_SL,
+    #[cfg(feature = "DE")]
+    /// Germany (Saxony (Sachsen))
+    DE_SN,
+    #[cfg(feature = "DE")]
+    /// Germany (Saxony-Anhalt (Sachsen-Anhalt))
+    DE_ST,
+    #[cfg(feature = "DE")]
+    /// Germany (Thuringia (Thüringen))
+    DE_TH,
     #[cfg(feature = "GR")]
     /// Greece
     GR,
@@ -289,6 +341,177 @@ pub enum Country {
     #[cfg(feature = "US")]
     /// United States
     US,
+    #[cfg(feature = "US")]
+    /// United States (Alaska)
+    US_AK,
+    #[cfg(feature = "US")]
+    /// United States (Alabama)
+    US_AL,
+    #[cfg(feature = "US")]
+    /// United States (Arkansas)
+    US_AR,
+    #[cfg(feature = "US")]
+    /// United States (American Samoa)
+    US_AS,
+    #[cfg(feature = "US")]
+    /// United States (Arizona)
+    US_AZ,
+    #[cfg(feature = "US")]
+    /// United States (California)
+    US_CA,
+    #[cfg(feature = "US")]
+    /// United States (Colorado)
+    US_CO,
+    #[cfg(feature = "US")]
+    /// United States (Connecticut)
+    US_CT,
+    #[cfg(feature = "US")]
+    /// United States (District of Columbia)
+    US_DC,
+    #[cfg(feature = "US")]
+    /// United States (Delaware)
+    US_DE,
+    #[cfg(feature = "US")]
+    /// United States (Florida)
+    US_FL,
+    #[cfg(feature = "US")]
+    /// United States (Georgia)
+    US_GA,
+    #[cfg(feature = "US")]
+    /// United States (Guam)
+    US_GU,
+    #[cfg(feature = "US")]
+    /// United States (Hawaii)
+    US_HI,
+    #[cfg(feature = "US")]
+    /// United States (Iowa)
+    US_IA,
+    #[cfg(feature = "US")]
+    /// United States (Idaho)
+    US_ID,
+    #[cfg(feature = "US")]
+    /// United States (Illinois)
+    US_IL,
+    #[cfg(feature = "US")]
+    /// United States (Indiana)
+    US_IN,
+    #[cfg(feature = "US")]
+    /// United States (Kansas)
+    US_KS,
+    #[cfg(feature = "US")]
+    /// United States (Kentucky)
+    US_KY,
+    #[cfg(feature = "US")]
+    /// United States (Louisiana)
+    US_LA,
+    #[cfg(feature = "US")]
+    /// United States (Massachusetts)
+    US_MA,
+    #[cfg(feature = "US")]
+    /// United States (Maryland)
+    US_MD,
+    #[cfg(feature = "US")]
+    /// United States (Maine)
+    US_ME,
+    #[cfg(feature = "US")]
+    /// United States (Michigan)
+    US_MI,
+    #[cfg(feature = "US")]
+    /// United States (Minnesota)
+    US_MN,
+    #[cfg(feature = "US")]
+    /// United States (Missouri)
+    US_MO,
+    #[cfg(feature = "US")]
+    /// United States (Northern Mariana Islands)
+    US_MP,
+    #[cfg(feature = "US")]
+    /// United States (Mississippi)
+    US_MS,
+    #[cfg(feature = "US")]
+    /// United States (Montana)
+    US_MT,
+    #[cfg(feature = "US")]
+    /// United States (North Carolina)
+    US_NC,
+    #[cfg(feature = "US")]
+    /// United States (North Dakota)
+    US_ND,
+    #[cfg(feature = "US")]
+    /// United States (Nebraska)
+    US_NE,
+    #[cfg(feature = "US")]
+    /// United States (New Hampshire)
+    US_NH,
+    #[cfg(feature = "US")]
+    /// United States (New Jersey)
+    US_NJ,
+    #[cfg(feature = "US")]
+    /// United States (New Mexico)
+    US_NM,
+    #[cfg(feature = "US")]
+    /// United States (Nevada)
+    US_NV,
+    #[cfg(feature = "US")]
+    /// United States (New York)
+    US_NY,
+    #[cfg(feature = "US")]
+    /// United States (Ohio)
+    US_OH,
+    #[cfg(feature = "US")]
+    /// United States (Oklahoma)
+    US_OK,
+    #[cfg(feature = "US")]
+    /// United States (Oregon)
+    US_OR,
+    #[cfg(feature = "US")]
+    /// United States (Pennsylvania)
+    US_PA,
+    #[cfg(feature = "US")]
+    /// United States (Puerto Rico)
+    US_PR,
+    #[cfg(feature = "US")]
+    /// United States (Rhode Island)
+    US_RI,
+    #[cfg(feature = "US")]
+    /// United States (South Carolina)
+    US_SC,
+    #[cfg(feature = "US")]
+    /// United States (South Dakota)
+    US_SD,
+    #[cfg(feature = "US")]
+    /// United States (Tennessee)
+    US_TN,
+    #[cfg(feature = "US")]
+    /// United States (Texas)
+    US_TX,
+    #[cfg(feature = "US")]
+    /// United States (United States Minor Outlying Islands)
+    US_UM,
+    #[cfg(feature = "US")]
+    /// United States (Utah)
+    US_UT,
+    #[cfg(feature = "US")]
+    /// United States (Virginia)
+    US_VA,
+    #[cfg(feature = "US")]
+    /// United States (Virgin Islands, U.S..)
+    US_VI,
+    #[cfg(feature = "US")]
+    /// United States (Vermont)
+    US_VT,
+    #[cfg(feature = "US")]
+    /// United States (Washington)
+    US_WA,
+    #[cfg(feature = "US")]
+    /// United States (Wisconsin)
+    US_WI,
+    #[cfg(feature = "US")]
+    /// United States (West Virginia)
+    US_WV,
+    #[cfg(feature = "US")]
+    /// United States (Wyoming)
+    US_WY,
     #[cfg(feature = "UY")]
     /// Uruguay
     UY,
@@ -388,6 +611,40 @@ impl AsRef<str> for Country {
             Country::GE => "GE",
             #[cfg(feature = "DE")]
             Country::DE => "DE",
+            #[cfg(feature = "DE")]
+            Country::DE_BB => "DE_BB",
+            #[cfg(feature = "DE")]
+            Country::DE_BE => "DE_BE",
+            #[cfg(feature = "DE")]
+            Country::DE_BW => "DE_BW",
+            #[cfg(feature = "DE")]
+            Country::DE_BY => "DE_BY",
+            #[cfg(feature = "DE")]
+            Country::DE_BYP => "DE_BYP",
+            #[cfg(feature = "DE")]
+            Country::DE_HB => "DE_HB",
+            #[cfg(feature = "DE")]
+            Country::DE_HE => "DE_HE",
+            #[cfg(feature = "DE")]
+            Country::DE_HH => "DE_HH",
+            #[cfg(feature = "DE")]
+            Country::DE_MV => "DE_MV",
+            #[cfg(feature = "DE")]
+            Country::DE_NI => "DE_NI",
+            #[cfg(feature = "DE")]
+            Country::DE_NW => "DE_NW",
+            #[cfg(feature = "DE")]
+            Country::DE_RP => "DE_RP",
+            #[cfg(feature = "DE")]
+            Country::DE_SH => "DE_SH",
+            #[cfg(feature = "DE")]
+            Country::DE_SL => "DE_SL",
+            #[cfg(feature = "DE")]
+            Country::DE_SN => "DE_SN",
+            #[cfg(feature = "DE")]
+            Country::DE_ST => "DE_ST",
+            #[cfg(feature = "DE")]
+            Country::DE_TH => "DE_TH",
             #[cfg(feature = "GR")]
             Country::GR => "GR",
             #[cfg(feature = "HN")]
@@ -508,6 +765,120 @@ impl AsRef<str> for Country {
             Country::GB => "GB",
             #[cfg(feature = "US")]
             Country::US => "US",
+            #[cfg(feature = "US")]
+            Country::US_AK => "US_AK",
+            #[cfg(feature = "US")]
+            Country::US_AL => "US_AL",
+            #[cfg(feature = "US")]
+            Country::US_AR => "US_AR",
+            #[cfg(feature = "US")]
+            Country::US_AS => "US_AS",
+            #[cfg(feature = "US")]
+            Country::US_AZ => "US_AZ",
+            #[cfg(feature = "US")]
+            Country::US_CA => "US_CA",
+            #[cfg(feature = "US")]
+            Country::US_CO => "US_CO",
+            #[cfg(feature = "US")]
+            Country::US_CT => "US_CT",
+            #[cfg(feature = "US")]
+            Country::US_DC => "US_DC",
+            #[cfg(feature = "US")]
+            Country::US_DE => "US_DE",
+            #[cfg(feature = "US")]
+            Country::US_FL => "US_FL",
+            #[cfg(feature = "US")]
+            Country::US_GA => "US_GA",
+            #[cfg(feature = "US")]
+            Country::US_GU => "US_GU",
+            #[cfg(feature = "US")]
+            Country::US_HI => "US_HI",
+            #[cfg(feature = "US")]
+            Country::US_IA => "US_IA",
+            #[cfg(feature = "US")]
+            Country::US_ID => "US_ID",
+            #[cfg(feature = "US")]
+            Country::US_IL => "US_IL",
+            #[cfg(feature = "US")]
+            Country::US_IN => "US_IN",
+            #[cfg(feature = "US")]
+            Country::US_KS => "US_KS",
+            #[cfg(feature = "US")]
+            Country::US_KY => "US_KY",
+            #[cfg(feature = "US")]
+            Country::US_LA => "US_LA",
+            #[cfg(feature = "US")]
+            Country::US_MA => "US_MA",
+            #[cfg(feature = "US")]
+            Country::US_MD => "US_MD",
+            #[cfg(feature = "US")]
+            Country::US_ME => "US_ME",
+            #[cfg(feature = "US")]
+            Country::US_MI => "US_MI",
+            #[cfg(feature = "US")]
+            Country::US_MN => "US_MN",
+            #[cfg(feature = "US")]
+            Country::US_MO => "US_MO",
+            #[cfg(feature = "US")]
+            Country::US_MP => "US_MP",
+            #[cfg(feature = "US")]
+            Country::US_MS => "US_MS",
+            #[cfg(feature = "US")]
+            Country::US_MT => "US_MT",
+            #[cfg(feature = "US")]
+            Country::US_NC => "US_NC",
+            #[cfg(feature = "US")]
+            Country::US_ND => "US_ND",
+            #[cfg(feature = "US")]
+            Country::US_NE => "US_NE",
+            #[cfg(feature = "US")]
+            Country::US_NH => "US_NH",
+            #[cfg(feature = "US")]
+            Country::US_NJ => "US_NJ",
+            #[cfg(feature = "US")]
+            Country::US_NM => "US_NM",
+            #[cfg(feature = "US")]
+            Country::US_NV => "US_NV",
+            #[cfg(feature = "US")]
+            Country::US_NY => "US_NY",
+            #[cfg(feature = "US")]
+            Country::US_OH => "US_OH",
+            #[cfg(feature = "US")]
+            Country::US_OK => "US_OK",
+            #[cfg(feature = "US")]
+            Country::US_OR => "US_OR",
+            #[cfg(feature = "US")]
+            Country::US_PA => "US_PA",
+            #[cfg(feature = "US")]
+            Country::US_PR => "US_PR",
+            #[cfg(feature = "US")]
+            Country::US_RI => "US_RI",
+            #[cfg(feature = "US")]
+            Country::US_SC => "US_SC",
+            #[cfg(feature = "US")]
+            Country::US_SD => "US_SD",
+            #[cfg(feature = "US")]
+            Country::US_TN => "US_TN",
+            #[cfg(feature = "US")]
+            Country::US_TX => "US_TX",
+            #[cfg(feature = "US")]
+            Country::US_UM => "US_UM",
+            #[cfg(feature = "US")]
+            Country::US_UT => "US_UT",
+            #[cfg(feature = "US")]
+            Country::US_VA => "US_VA",
+            #[cfg(feature = "US")]
+            Country::US_VI => "US_VI",
+            #[cfg(feature = "US")]
+            Country::US_VT => "US_VT",
+            #[cfg(feature = "US")]
+            Country::US_WA => "US_WA",
+            #[cfg(feature = "US")]
+            Country::US_WI => "US_WI",
+            #[cfg(feature = "US")]
+            Country::US_WV => "US_WV",
+            #[cfg(feature = "US")]
+            Country::US_WY => "US_WY",
             #[cfg(feature = "UY")]
             Country::UY => "UY",
             #[cfg(feature = "UZ")]
@@ -599,6 +970,40 @@ impl std::str::FromStr for Country {
             "GE" => Country::GE,
             #[cfg(feature = "DE")]
             "DE" => Country::DE,
+            #[cfg(feature = "DE")]
+            "DE_BB" => Country::DE_BB,
+            #[cfg(feature = "DE")]
+            "DE_BE" => Country::DE_BE,
+            #[cfg(feature = "DE")]
+            "DE_BW" => Country::DE_BW,
+            #[cfg(feature = "DE")]
+            "DE_BY" => Country::DE_BY,
+            #[cfg(feature = "DE")]
+            "DE_BYP" => Country::DE_BYP,
+            #[cfg(feature = "DE")]
+            "DE_HB" => Country::DE_HB,
+            #[cfg(feature = "DE")]
+            "DE_HE" => Country::DE_HE,
+            #[cfg(feature = "DE")]
+            "DE_HH" => Country::DE_HH,
+            #[cfg(feature = "DE")]
+            "DE_MV" => Country::DE_MV,
+            #[cfg(feature = "DE")]
+            "DE_NI" => Country::DE_NI,
+            #[cfg(feature = "DE")]
+            "DE_NW" => Country::DE_NW,
+            #[cfg(feature = "DE")]
+            "DE_RP" => Country::DE_RP,
+            #[cfg(feature = "DE")]
+            "DE_SH" => Country::DE_SH,
+            #[cfg(feature = "DE")]
+            "DE_SL" => Country::DE_SL,
+            #[cfg(feature = "DE")]
+            "DE_SN" => Country::DE_SN,
+            #[cfg(feature = "DE")]
+            "DE_ST" => Country::DE_ST,
+            #[cfg(feature = "DE")]
+            "DE_TH" => Country::DE_TH,
             #[cfg(feature = "GR")]
             "GR" => Country::GR,
             #[cfg(feature = "HN")]
@@ -719,6 +1124,120 @@ impl std::str::FromStr for Country {
             "GB" => Country::GB,
             #[cfg(feature = "US")]
             "US" => Country::US,
+            #[cfg(feature = "US")]
+            "US_AK" => Country::US_AK,
+            #[cfg(feature = "US")]
+            "US_AL" => Country::US_AL,
+            #[cfg(feature = "US")]
+            "US_AR" => Country::US_AR,
+            #[cfg(feature = "US")]
+            "US_AS" => Country::US_AS,
+            #[cfg(feature = "US")]
+            "US_AZ" => Country::US_AZ,
+            #[cfg(feature = "US")]
+            "US_CA" => Country::US_CA,
+            #[cfg(feature = "US")]
+            "US_CO" => Country::US_CO,
+            #[cfg(feature = "US")]
+            "US_CT" => Country::US_CT,
+            #[cfg(feature = "US")]
+            "US_DC" => Country::US_DC,
+            #[cfg(feature = "US")]
+            "US_DE" => Country::US_DE,
+            #[cfg(feature = "US")]
+            "US_FL" => Country::US_FL,
+            #[cfg(feature = "US")]
+            "US_GA" => Country::US_GA,
+            #[cfg(feature = "US")]
+            "US_GU" => Country::US_GU,
+            #[cfg(feature = "US")]
+            "US_HI" => Country::US_HI,
+            #[cfg(feature = "US")]
+            "US_IA" => Country::US_IA,
+            #[cfg(feature = "US")]
+            "US_ID" => Country::US_ID,
+            #[cfg(feature = "US")]
+            "US_IL" => Country::US_IL,
+            #[cfg(feature = "US")]
+            "US_IN" => Country::US_IN,
+            #[cfg(feature = "US")]
+            "US_KS" => Country::US_KS,
+            #[cfg(feature = "US")]
+            "US_KY" => Country::US_KY,
+            #[cfg(feature = "US")]
+            "US_LA" => Country::US_LA,
+            #[cfg(feature = "US")]
+            "US_MA" => Country::US_MA,
+            #[cfg(feature = "US")]
+            "US_MD" => Country::US_MD,
+            #[cfg(feature = "US")]
+            "US_ME" => Country::US_ME,
+            #[cfg(feature = "US")]
+            "US_MI" => Country::US_MI,
+            #[cfg(feature = "US")]
+            "US_MN" => Country::US_MN,
+            #[cfg(feature = "US")]
+            "US_MO" => Country::US_MO,
+            #[cfg(feature = "US")]
+            "US_MP" => Country::US_MP,
+            #[cfg(feature = "US")]
+            "US_MS" => Country::US_MS,
+            #[cfg(feature = "US")]
+            "US_MT" => Country::US_MT,
+            #[cfg(feature = "US")]
+            "US_NC" => Country::US_NC,
+            #[cfg(feature = "US")]
+            "US_ND" => Country::US_ND,
+            #[cfg(feature = "US")]
+            "US_NE" => Country::US_NE,
+            #[cfg(feature = "US")]
+            "US_NH" => Country::US_NH,
+            #[cfg(feature = "US")]
+            "US_NJ" => Country::US_NJ,
+            #[cfg(feature = "US")]
+            "US_NM" => Country::US_NM,
+            #[cfg(feature = "US")]
+            "US_NV" => Country::US_NV,
+            #[cfg(feature = "US")]
+            "US_NY" => Country::US_NY,
+            #[cfg(feature = "US")]
+            "US_OH" => Country::US_OH,
+            #[cfg(feature = "US")]
+            "US_OK" => Country::US_OK,
+            #[cfg(feature = "US")]
+            "US_OR" => Country::US_OR,
+            #[cfg(feature = "US")]
+            "US_PA" => Country::US_PA,
+            #[cfg(feature = "US")]
+            "US_PR" => Country::US_PR,
+            #[cfg(feature = "US")]
+            "US_RI" => Country::US_RI,
+            #[cfg(feature = "US")]
+            "US_SC" => Country::US_SC,
+            #[cfg(feature = "US")]
+            "US_SD" => Country::US_SD,
+            #[cfg(feature = "US")]
+            "US_TN" => Country::US_TN,
+            #[cfg(feature = "US")]
+            "US_TX" => Country::US_TX,
+            #[cfg(feature = "US")]
+            "US_UM" => Country::US_UM,
+            #[cfg(feature = "US")]
+            "US_UT" => Country::US_UT,
+            #[cfg(feature = "US")]
+            "US_VA" => Country::US_VA,
+            #[cfg(feature = "US")]
+            "US_VI" => Country::US_VI,
+            #[cfg(feature = "US")]
+            "US_VT" => Country::US_VT,
+            #[cfg(feature = "US")]
+            "US_WA" => Country::US_WA,
+            #[cfg(feature = "US")]
+            "US_WI" => Country::US_WI,
+            #[cfg(feature = "US")]
+            "US_WV" => Country::US_WV,
+            #[cfg(feature = "US")]
+            "US_WY" => Country::US_WY,
             #[cfg(feature = "UY")]
             "UY" => Country::UY,
             #[cfg(feature = "UZ")]

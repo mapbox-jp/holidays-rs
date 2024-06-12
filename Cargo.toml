@@ -225,3 +225,13 @@ VE = []
 VN = []
 ZM = []
 ZW = []
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+enum_glob_use = "forbid"
+pedantic = { level = "deny", priority = -1 }
+missing_errors_doc = "allow"
+too_many_lines = "allow"
+wildcard_imports = "allow"

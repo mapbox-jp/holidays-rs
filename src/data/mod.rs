@@ -112,6 +112,57 @@ pub mod ge;
 #[cfg(feature = "DE")]
 pub mod de;
 
+#[cfg(feature = "DE")]
+pub mod de_bb;
+
+#[cfg(feature = "DE")]
+pub mod de_be;
+
+#[cfg(feature = "DE")]
+pub mod de_bw;
+
+#[cfg(feature = "DE")]
+pub mod de_by;
+
+#[cfg(feature = "DE")]
+pub mod de_byp;
+
+#[cfg(feature = "DE")]
+pub mod de_hb;
+
+#[cfg(feature = "DE")]
+pub mod de_he;
+
+#[cfg(feature = "DE")]
+pub mod de_hh;
+
+#[cfg(feature = "DE")]
+pub mod de_mv;
+
+#[cfg(feature = "DE")]
+pub mod de_ni;
+
+#[cfg(feature = "DE")]
+pub mod de_nw;
+
+#[cfg(feature = "DE")]
+pub mod de_rp;
+
+#[cfg(feature = "DE")]
+pub mod de_sh;
+
+#[cfg(feature = "DE")]
+pub mod de_sl;
+
+#[cfg(feature = "DE")]
+pub mod de_sn;
+
+#[cfg(feature = "DE")]
+pub mod de_st;
+
+#[cfg(feature = "DE")]
+pub mod de_th;
+
 #[cfg(feature = "GR")]
 pub mod gr;
 
@@ -291,6 +342,177 @@ pub mod gb;
 
 #[cfg(feature = "US")]
 pub mod us;
+
+#[cfg(feature = "US")]
+pub mod us_ak;
+
+#[cfg(feature = "US")]
+pub mod us_al;
+
+#[cfg(feature = "US")]
+pub mod us_ar;
+
+#[cfg(feature = "US")]
+pub mod us_as;
+
+#[cfg(feature = "US")]
+pub mod us_az;
+
+#[cfg(feature = "US")]
+pub mod us_ca;
+
+#[cfg(feature = "US")]
+pub mod us_co;
+
+#[cfg(feature = "US")]
+pub mod us_ct;
+
+#[cfg(feature = "US")]
+pub mod us_dc;
+
+#[cfg(feature = "US")]
+pub mod us_de;
+
+#[cfg(feature = "US")]
+pub mod us_fl;
+
+#[cfg(feature = "US")]
+pub mod us_ga;
+
+#[cfg(feature = "US")]
+pub mod us_gu;
+
+#[cfg(feature = "US")]
+pub mod us_hi;
+
+#[cfg(feature = "US")]
+pub mod us_ia;
+
+#[cfg(feature = "US")]
+pub mod us_id;
+
+#[cfg(feature = "US")]
+pub mod us_il;
+
+#[cfg(feature = "US")]
+pub mod us_in;
+
+#[cfg(feature = "US")]
+pub mod us_ks;
+
+#[cfg(feature = "US")]
+pub mod us_ky;
+
+#[cfg(feature = "US")]
+pub mod us_la;
+
+#[cfg(feature = "US")]
+pub mod us_ma;
+
+#[cfg(feature = "US")]
+pub mod us_md;
+
+#[cfg(feature = "US")]
+pub mod us_me;
+
+#[cfg(feature = "US")]
+pub mod us_mi;
+
+#[cfg(feature = "US")]
+pub mod us_mn;
+
+#[cfg(feature = "US")]
+pub mod us_mo;
+
+#[cfg(feature = "US")]
+pub mod us_mp;
+
+#[cfg(feature = "US")]
+pub mod us_ms;
+
+#[cfg(feature = "US")]
+pub mod us_mt;
+
+#[cfg(feature = "US")]
+pub mod us_nc;
+
+#[cfg(feature = "US")]
+pub mod us_nd;
+
+#[cfg(feature = "US")]
+pub mod us_ne;
+
+#[cfg(feature = "US")]
+pub mod us_nh;
+
+#[cfg(feature = "US")]
+pub mod us_nj;
+
+#[cfg(feature = "US")]
+pub mod us_nm;
+
+#[cfg(feature = "US")]
+pub mod us_nv;
+
+#[cfg(feature = "US")]
+pub mod us_ny;
+
+#[cfg(feature = "US")]
+pub mod us_oh;
+
+#[cfg(feature = "US")]
+pub mod us_ok;
+
+#[cfg(feature = "US")]
+pub mod us_or;
+
+#[cfg(feature = "US")]
+pub mod us_pa;
+
+#[cfg(feature = "US")]
+pub mod us_pr;
+
+#[cfg(feature = "US")]
+pub mod us_ri;
+
+#[cfg(feature = "US")]
+pub mod us_sc;
+
+#[cfg(feature = "US")]
+pub mod us_sd;
+
+#[cfg(feature = "US")]
+pub mod us_tn;
+
+#[cfg(feature = "US")]
+pub mod us_tx;
+
+#[cfg(feature = "US")]
+pub mod us_um;
+
+#[cfg(feature = "US")]
+pub mod us_ut;
+
+#[cfg(feature = "US")]
+pub mod us_va;
+
+#[cfg(feature = "US")]
+pub mod us_vi;
+
+#[cfg(feature = "US")]
+pub mod us_vt;
+
+#[cfg(feature = "US")]
+pub mod us_wa;
+
+#[cfg(feature = "US")]
+pub mod us_wi;
+
+#[cfg(feature = "US")]
+pub mod us_wv;
+
+#[cfg(feature = "US")]
+pub mod us_wy;
 
 #[cfg(feature = "UY")]
 pub mod uy;

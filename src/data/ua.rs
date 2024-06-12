@@ -4,7 +4,7 @@ use super::*;
 /// Generate holiday map for Ukraine.
 #[allow(unused_mut, unused_variables)]
 pub fn build(
-    years: &Option<&std::ops::Range<Year>>,
+    years: Option<&std::ops::Range<Year>>,
 ) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
     let mut map = HashMap::new();
 

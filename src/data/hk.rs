@@ -4,7 +4,7 @@ use super::*;
 /// Generate holiday map for Hong Kong.
 #[allow(unused_mut, unused_variables)]
 pub fn build(
-    years: &Option<&std::ops::Range<Year>>,
+    years: Option<&std::ops::Range<Year>>,
 ) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
     let mut map = HashMap::new();
 
@@ -698,29 +698,29 @@ pub fn build(
     );
 
     build_year(
-    years,
-    2015,
-    vec![
+        years,
+        2015,
+        vec![
 
-      (NaiveDate::from_ymd_res(2015, 1, 1)?, "The first day of January"),
-      (NaiveDate::from_ymd_res(2015, 2, 19)?, "Lunar New Year's Day"),
-      (NaiveDate::from_ymd_res(2015, 2, 20)?, "The second day of Lunar New Year"),
-      (NaiveDate::from_ymd_res(2015, 2, 21)?, "The third day of Lunar New Year"),
-      (NaiveDate::from_ymd_res(2015, 4, 5)?, "Ching Ming Festival"),
-      (NaiveDate::from_ymd_res(2015, 4, 6)?, "Ching Ming Festival (observed)"),
-      (NaiveDate::from_ymd_res(2015, 5, 1)?, "Labour Day"),
-      (NaiveDate::from_ymd_res(2015, 6, 20)?, "Tuen Ng Festival"),
-      (NaiveDate::from_ymd_res(2015, 7, 1)?, "Hong Kong Special Administrative Region Establishment Day"),
-      (NaiveDate::from_ymd_res(2015, 9, 28)?, "The day following the Chinese Mid-Autumn Festival"),
-      (NaiveDate::from_ymd_res(2015, 10, 21)?, "Chung Yeung Festival"),
-      (NaiveDate::from_ymd_res(2015, 10, 1)?, "National Day"),
-      (NaiveDate::from_ymd_res(2015, 12, 25)?, "Christmas Day"),
-      (NaiveDate::from_ymd_res(2015, 9, 3)?, "The 70th anniversary day of the victory of the Chinese people's war of resistance against Japanese aggression"),
-    ],
-    &mut map,
-    Country::HK,
-    "Hong Kong",
-  );
+        (NaiveDate::from_ymd_res(2015, 1, 1)?, "The first day of January"),
+        (NaiveDate::from_ymd_res(2015, 2, 19)?, "Lunar New Year's Day"),
+        (NaiveDate::from_ymd_res(2015, 2, 20)?, "The second day of Lunar New Year"),
+        (NaiveDate::from_ymd_res(2015, 2, 21)?, "The third day of Lunar New Year"),
+        (NaiveDate::from_ymd_res(2015, 4, 5)?, "Ching Ming Festival"),
+        (NaiveDate::from_ymd_res(2015, 4, 6)?, "Ching Ming Festival (observed)"),
+        (NaiveDate::from_ymd_res(2015, 5, 1)?, "Labour Day"),
+        (NaiveDate::from_ymd_res(2015, 6, 20)?, "Tuen Ng Festival"),
+        (NaiveDate::from_ymd_res(2015, 7, 1)?, "Hong Kong Special Administrative Region Establishment Day"),
+        (NaiveDate::from_ymd_res(2015, 9, 28)?, "The day following the Chinese Mid-Autumn Festival"),
+        (NaiveDate::from_ymd_res(2015, 10, 21)?, "Chung Yeung Festival"),
+        (NaiveDate::from_ymd_res(2015, 10, 1)?, "National Day"),
+        (NaiveDate::from_ymd_res(2015, 12, 25)?, "Christmas Day"),
+        (NaiveDate::from_ymd_res(2015, 9, 3)?, "The 70th anniversary day of the victory of the Chinese people's war of resistance against Japanese aggression"),
+        ],
+        &mut map,
+        Country::HK,
+        "Hong Kong",
+    );
 
     build_year(
         years,

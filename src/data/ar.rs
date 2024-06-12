@@ -4,32 +4,32 @@ use super::*;
 /// Generate holiday map for Argentina.
 #[allow(unused_mut, unused_variables)]
 pub fn build(
-    years: &Option<&std::ops::Range<Year>>,
+    years: Option<&std::ops::Range<Year>>,
 ) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
     let mut map = HashMap::new();
 
     build_year(
-    years,
-    2000,
-    vec![
+        years,
+        2000,
+        vec![
 
-      (NaiveDate::from_ymd_res(2000, 1, 1)?, "Año Nuevo"),
-      (NaiveDate::from_ymd_res(2000, 4, 2)?, "Día del Veterano de Guerra"),
-      (NaiveDate::from_ymd_res(2000, 4, 21)?, "Viernes Santo"),
-      (NaiveDate::from_ymd_res(2000, 5, 1)?, "Día del Trabajo"),
-      (NaiveDate::from_ymd_res(2000, 5, 25)?, "Día de la Revolución de Mayo"),
-      (NaiveDate::from_ymd_res(2000, 6, 10)?, "Día de los Derechos Argentinos sobre las Islas Malvinas, Sandwich y del Atlántico Sur"),
-      (NaiveDate::from_ymd_res(2000, 6, 19)?, "Paso a la Inmortalidad del General Don Manuel Belgrano"),
-      (NaiveDate::from_ymd_res(2000, 7, 9)?, "Día de la Independencia"),
-      (NaiveDate::from_ymd_res(2000, 12, 8)?, "Inmaculada Concepción de María"),
-      (NaiveDate::from_ymd_res(2000, 12, 25)?, "Navidad"),
-      (NaiveDate::from_ymd_res(2000, 8, 21)?, "Paso a la Inmortalidad del General Don José de San Martin"),
-      (NaiveDate::from_ymd_res(2000, 10, 12)?, "Día de la Raza"),
-    ],
-    &mut map,
-    Country::AR,
-    "Argentina",
-  );
+        (NaiveDate::from_ymd_res(2000, 1, 1)?, "Año Nuevo"),
+        (NaiveDate::from_ymd_res(2000, 4, 2)?, "Día del Veterano de Guerra"),
+        (NaiveDate::from_ymd_res(2000, 4, 21)?, "Viernes Santo"),
+        (NaiveDate::from_ymd_res(2000, 5, 1)?, "Día del Trabajo"),
+        (NaiveDate::from_ymd_res(2000, 5, 25)?, "Día de la Revolución de Mayo"),
+        (NaiveDate::from_ymd_res(2000, 6, 10)?, "Día de los Derechos Argentinos sobre las Islas Malvinas, Sandwich y del Atlántico Sur"),
+        (NaiveDate::from_ymd_res(2000, 6, 19)?, "Paso a la Inmortalidad del General Don Manuel Belgrano"),
+        (NaiveDate::from_ymd_res(2000, 7, 9)?, "Día de la Independencia"),
+        (NaiveDate::from_ymd_res(2000, 12, 8)?, "Inmaculada Concepción de María"),
+        (NaiveDate::from_ymd_res(2000, 12, 25)?, "Navidad"),
+        (NaiveDate::from_ymd_res(2000, 8, 21)?, "Paso a la Inmortalidad del General Don José de San Martin"),
+        (NaiveDate::from_ymd_res(2000, 10, 12)?, "Día de la Raza"),
+        ],
+        &mut map,
+        Country::AR,
+        "Argentina",
+    );
 
     build_year(
         years,
@@ -576,34 +576,34 @@ pub fn build(
     );
 
     build_year(
-    years,
-    2013,
-    vec![
+        years,
+        2013,
+        vec![
 
-      (NaiveDate::from_ymd_res(2013, 1, 1)?, "Año Nuevo"),
-      (NaiveDate::from_ymd_res(2013, 2, 11)?, "Día de Carnaval"),
-      (NaiveDate::from_ymd_res(2013, 2, 12)?, "Día de Carnaval"),
-      (NaiveDate::from_ymd_res(2013, 3, 24)?, "Día Nacional de la Memoria por la Verdad y la Justicia"),
-      (NaiveDate::from_ymd_res(2013, 4, 2)?, "Día del Veterano y de los Caidos en la Guerra de Malvinas"),
-      (NaiveDate::from_ymd_res(2013, 3, 29)?, "Viernes Santo"),
-      (NaiveDate::from_ymd_res(2013, 5, 1)?, "Día del Trabajo"),
-      (NaiveDate::from_ymd_res(2013, 5, 25)?, "Día de la Revolución de Mayo"),
-      (NaiveDate::from_ymd_res(2013, 6, 20)?, "Paso a la Inmortalidad del General Don Manuel Belgrano"),
-      (NaiveDate::from_ymd_res(2013, 7, 9)?, "Día de la Independencia"),
-      (NaiveDate::from_ymd_res(2013, 12, 8)?, "Inmaculada Concepción de María"),
-      (NaiveDate::from_ymd_res(2013, 12, 25)?, "Navidad"),
-      (NaiveDate::from_ymd_res(2013, 8, 17)?, "Paso a la Inmortalidad del General Don José de San Martin"),
-      (NaiveDate::from_ymd_res(2013, 10, 12)?, "Día del Respeto a la Diversidad Cultural"),
-      (NaiveDate::from_ymd_res(2013, 11, 18)?, "Día de la Soberanía Nacional (observado)"),
-      (NaiveDate::from_ymd_res(2013, 1, 31)?, "Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente del año 1813"),
-      (NaiveDate::from_ymd_res(2013, 2, 20)?, "Bicentenario de la Batalla de Salta"),
-      (NaiveDate::from_ymd_res(2013, 4, 1)?, "Feriado con fines turísticos"),
-      (NaiveDate::from_ymd_res(2013, 6, 21)?, "Feriado con fines turísticos"),
-    ],
-    &mut map,
-    Country::AR,
-    "Argentina",
-  );
+        (NaiveDate::from_ymd_res(2013, 1, 1)?, "Año Nuevo"),
+        (NaiveDate::from_ymd_res(2013, 2, 11)?, "Día de Carnaval"),
+        (NaiveDate::from_ymd_res(2013, 2, 12)?, "Día de Carnaval"),
+        (NaiveDate::from_ymd_res(2013, 3, 24)?, "Día Nacional de la Memoria por la Verdad y la Justicia"),
+        (NaiveDate::from_ymd_res(2013, 4, 2)?, "Día del Veterano y de los Caidos en la Guerra de Malvinas"),
+        (NaiveDate::from_ymd_res(2013, 3, 29)?, "Viernes Santo"),
+        (NaiveDate::from_ymd_res(2013, 5, 1)?, "Día del Trabajo"),
+        (NaiveDate::from_ymd_res(2013, 5, 25)?, "Día de la Revolución de Mayo"),
+        (NaiveDate::from_ymd_res(2013, 6, 20)?, "Paso a la Inmortalidad del General Don Manuel Belgrano"),
+        (NaiveDate::from_ymd_res(2013, 7, 9)?, "Día de la Independencia"),
+        (NaiveDate::from_ymd_res(2013, 12, 8)?, "Inmaculada Concepción de María"),
+        (NaiveDate::from_ymd_res(2013, 12, 25)?, "Navidad"),
+        (NaiveDate::from_ymd_res(2013, 8, 17)?, "Paso a la Inmortalidad del General Don José de San Martin"),
+        (NaiveDate::from_ymd_res(2013, 10, 12)?, "Día del Respeto a la Diversidad Cultural"),
+        (NaiveDate::from_ymd_res(2013, 11, 18)?, "Día de la Soberanía Nacional (observado)"),
+        (NaiveDate::from_ymd_res(2013, 1, 31)?, "Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente del año 1813"),
+        (NaiveDate::from_ymd_res(2013, 2, 20)?, "Bicentenario de la Batalla de Salta"),
+        (NaiveDate::from_ymd_res(2013, 4, 1)?, "Feriado con fines turísticos"),
+        (NaiveDate::from_ymd_res(2013, 6, 21)?, "Feriado con fines turísticos"),
+        ],
+        &mut map,
+        Country::AR,
+        "Argentina",
+    );
 
     build_year(
         years,

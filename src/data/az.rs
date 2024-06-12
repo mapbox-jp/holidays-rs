@@ -4,7 +4,7 @@ use super::*;
 /// Generate holiday map for Azerbaijan.
 #[allow(unused_mut, unused_variables)]
 pub fn build(
-    years: &Option<&std::ops::Range<Year>>,
+    years: Option<&std::ops::Range<Year>>,
 ) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
     let mut map = HashMap::new();
 
@@ -301,37 +301,37 @@ pub fn build(
     );
 
     build_year(
-    years,
-    2007,
-    vec![
+        years,
+        2007,
+        vec![
 
-      (NaiveDate::from_ymd_res(2007, 1, 1)?, "Qurban bayrami; Yeni il bayramı"),
-      (NaiveDate::from_ymd_res(2007, 1, 2)?, "Yeni il bayramı"),
-      (NaiveDate::from_ymd_res(2007, 1, 20)?, "Ümumxalq hüzn günü"),
-      (NaiveDate::from_ymd_res(2007, 3, 8)?, "Qadınlar günü"),
-      (NaiveDate::from_ymd_res(2007, 3, 20)?, "Novruz bayramı"),
-      (NaiveDate::from_ymd_res(2007, 3, 21)?, "Novruz bayramı"),
-      (NaiveDate::from_ymd_res(2007, 3, 22)?, "Novruz bayramı"),
-      (NaiveDate::from_ymd_res(2007, 3, 23)?, "Novruz bayramı"),
-      (NaiveDate::from_ymd_res(2007, 3, 24)?, "Novruz bayramı"),
-      (NaiveDate::from_ymd_res(2007, 5, 9)?, "Faşizm üzərində qələbə günü"),
-      (NaiveDate::from_ymd_res(2007, 5, 28)?, "Respublika Günü"),
-      (NaiveDate::from_ymd_res(2007, 6, 15)?, "Azərbaycan xalqının milli qurtuluş günü"),
-      (NaiveDate::from_ymd_res(2007, 6, 26)?, "Azərbaycan Respublikasının Silahlı Qüvvələri günü"),
-      (NaiveDate::from_ymd_res(2007, 12, 31)?, "Dünya azərbaycanlılarının həmrəyliyi günü"),
-      (NaiveDate::from_ymd_res(2007, 1, 3)?, "Dünya azərbaycanlılarının həmrəyliyi günü (müşahidə olunur); Qurban bayrami (müşahidə olunur)"),
-      (NaiveDate::from_ymd_res(2007, 10, 12)?, "Ramazan bayrami"),
-      (NaiveDate::from_ymd_res(2007, 10, 13)?, "Ramazan bayrami"),
-      (NaiveDate::from_ymd_res(2007, 12, 20)?, "Qurban bayrami"),
-      (NaiveDate::from_ymd_res(2007, 12, 21)?, "Qurban bayrami"),
-      (NaiveDate::from_ymd_res(2007, 3, 26)?, "Novruz bayramı (müşahidə olunur)"),
-      (NaiveDate::from_ymd_res(2007, 10, 15)?, "Ramazan bayrami (müşahidə olunur)"),
-      (NaiveDate::from_ymd_res(2007, 1, 4)?, "Qurban bayrami (müşahidə olunur)"),
-    ],
-    &mut map,
-    Country::AZ,
-    "Azerbaijan",
-  );
+        (NaiveDate::from_ymd_res(2007, 1, 1)?, "Qurban bayrami; Yeni il bayramı"),
+        (NaiveDate::from_ymd_res(2007, 1, 2)?, "Yeni il bayramı"),
+        (NaiveDate::from_ymd_res(2007, 1, 20)?, "Ümumxalq hüzn günü"),
+        (NaiveDate::from_ymd_res(2007, 3, 8)?, "Qadınlar günü"),
+        (NaiveDate::from_ymd_res(2007, 3, 20)?, "Novruz bayramı"),
+        (NaiveDate::from_ymd_res(2007, 3, 21)?, "Novruz bayramı"),
+        (NaiveDate::from_ymd_res(2007, 3, 22)?, "Novruz bayramı"),
+        (NaiveDate::from_ymd_res(2007, 3, 23)?, "Novruz bayramı"),
+        (NaiveDate::from_ymd_res(2007, 3, 24)?, "Novruz bayramı"),
+        (NaiveDate::from_ymd_res(2007, 5, 9)?, "Faşizm üzərində qələbə günü"),
+        (NaiveDate::from_ymd_res(2007, 5, 28)?, "Respublika Günü"),
+        (NaiveDate::from_ymd_res(2007, 6, 15)?, "Azərbaycan xalqının milli qurtuluş günü"),
+        (NaiveDate::from_ymd_res(2007, 6, 26)?, "Azərbaycan Respublikasının Silahlı Qüvvələri günü"),
+        (NaiveDate::from_ymd_res(2007, 12, 31)?, "Dünya azərbaycanlılarının həmrəyliyi günü"),
+        (NaiveDate::from_ymd_res(2007, 1, 3)?, "Dünya azərbaycanlılarının həmrəyliyi günü (müşahidə olunur); Qurban bayrami (müşahidə olunur)"),
+        (NaiveDate::from_ymd_res(2007, 10, 12)?, "Ramazan bayrami"),
+        (NaiveDate::from_ymd_res(2007, 10, 13)?, "Ramazan bayrami"),
+        (NaiveDate::from_ymd_res(2007, 12, 20)?, "Qurban bayrami"),
+        (NaiveDate::from_ymd_res(2007, 12, 21)?, "Qurban bayrami"),
+        (NaiveDate::from_ymd_res(2007, 3, 26)?, "Novruz bayramı (müşahidə olunur)"),
+        (NaiveDate::from_ymd_res(2007, 10, 15)?, "Ramazan bayrami (müşahidə olunur)"),
+        (NaiveDate::from_ymd_res(2007, 1, 4)?, "Qurban bayrami (müşahidə olunur)"),
+        ],
+        &mut map,
+        Country::AZ,
+        "Azerbaijan",
+    );
 
     build_year(
         years,

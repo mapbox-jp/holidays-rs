@@ -39,40 +39,26 @@ pub fn init() -> Result<()> {
 /// not available, it will return `Err(Error)`. If the specified date is not a holiday, it
 /// will return `Ok(None)`. Otherwise, it will return `Ok(Some(Holiday))`.
 pub fn get(country: Country, date: NaiveDate) -> Result<Option<Holiday>> {
-    let Some(data) = Lazy::get(&DATA) else {
-        return Err(Error::Uninitialized);
-    };
-
-    let data = data.read().map_err(|e| Error::LockError(e.to_string()))?;
-    let Some(map) = data.get(&country) else {
-        return Err(Error::CountryNotAvailable);
-    };
-
-    let Some(map) = map.get(&date.year()) else {
-        return Err(Error::YearNotAvailable);
-    };
-
-    Ok(map.get(&date).cloned())
+    get_map_for_country_any_year(country, date.year(), |map| map.get(&date).cloned())
 }
 
 /// Check if the specified date is a holiday. If the specified country or year is
 /// not available, it will return `Err(Error)`. If the date is not a holiday, it
 /// will return `Ok(false)`. Otherwise, it will return `Ok(true)`.
 pub fn contains(country: Country, date: NaiveDate) -> Result<bool> {
-    let Some(data) = Lazy::get(&DATA) else {
-        return Err(Error::Uninitialized);
-    };
+    get_map_for_country_any_year(country, date.year(), |map| map.get(&date).is_some())
+}
 
+fn get_map_for_country_any_year<T>(
+    country: Country,
+    year: Year,
+    result_getter: impl FnOnce(&BTreeMap<NaiveDate, Holiday>) -> T,
+) -> Result<T> {
+    let data = Lazy::get(&DATA).ok_or(Error::Uninitialized)?;
     let data = data.read().map_err(|e| Error::LockError(e.to_string()))?;
-    let Some(map) = data.get(&country) else {
-        return Err(Error::CountryNotAvailable);
-    };
-
-    let Some(map) = map.get(&date.year()) else {
-        return Err(Error::YearNotAvailable);
-    };
-
-    Ok(map.get(&date).is_some())
+    let map = data.get(&country).ok_or(Error::CountryNotAvailable)?;
+    let map = map.get(&year).ok_or(Error::YearNotAvailable)?;
+    Ok(result_getter(map))
 }
 
 /// Represents a holiday.
@@ -94,8 +80,8 @@ impl Holiday {
         country: impl Into<String>,
         date: NaiveDate,
         name: impl Into<String>,
-    ) -> Holiday {
-        Holiday {
+    ) -> Self {
+        Self {
             code,
             country: country.into(),
             date,
@@ -116,7 +102,7 @@ pub enum Error {
     /// Holiday database is not initialized yet.
     #[error("Holiday database is not initialized yet")]
     Uninitialized,
-    /// Failed to get RwLock.
+    /// Failed to get `RwLock`.
     #[error("Failed to get RwLock: {0}")]
     LockError(String),
     /// Unexpexted error occurred.

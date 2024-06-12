@@ -4,7 +4,7 @@ use super::*;
 /// Generate holiday map for Latvia.
 #[allow(unused_mut, unused_variables)]
 pub fn build(
-    years: &Option<&std::ops::Range<Year>>,
+    years: Option<&std::ops::Range<Year>>,
 ) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
     let mut map = HashMap::new();
 
@@ -772,32 +772,32 @@ pub fn build(
     );
 
     build_year(
-    years,
-    2023,
-    vec![
+        years,
+        2023,
+        vec![
 
-      (NaiveDate::from_ymd_res(2023, 1, 1)?, "Jaunais Gads"),
-      (NaiveDate::from_ymd_res(2023, 4, 7)?, "Lielā Piektdiena"),
-      (NaiveDate::from_ymd_res(2023, 4, 9)?, "Lieldienas"),
-      (NaiveDate::from_ymd_res(2023, 4, 10)?, "Otrās Lieldienas"),
-      (NaiveDate::from_ymd_res(2023, 5, 1)?, "Darba svētki"),
-      (NaiveDate::from_ymd_res(2023, 5, 4)?, "Latvijas Republikas Neatkarības atjaunošanas diena"),
-      (NaiveDate::from_ymd_res(2023, 5, 14)?, "Mātes diena"),
-      (NaiveDate::from_ymd_res(2023, 6, 23)?, "Līgo diena"),
-      (NaiveDate::from_ymd_res(2023, 6, 24)?, "Jāņu diena"),
-      (NaiveDate::from_ymd_res(2023, 11, 18)?, "Latvijas Republikas proklamēšanas diena"),
-      (NaiveDate::from_ymd_res(2023, 11, 20)?, "Latvijas Republikas proklamēšanas diena (brīvdiena)"),
-      (NaiveDate::from_ymd_res(2023, 12, 24)?, "Ziemassvētku vakars"),
-      (NaiveDate::from_ymd_res(2023, 12, 25)?, "Ziemassvētki"),
-      (NaiveDate::from_ymd_res(2023, 12, 26)?, "Otrie Ziemassvētki"),
-      (NaiveDate::from_ymd_res(2023, 12, 31)?, "Vecgada vakars"),
-      (NaiveDate::from_ymd_res(2023, 5, 29)?, "Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada Pasaules hokeja čempionātā"),
-      (NaiveDate::from_ymd_res(2023, 7, 10)?, "Vispārējo latviešu Dziesmu un deju svētku noslēguma dienu"),
-    ],
-    &mut map,
-    Country::LV,
-    "Latvia",
-  );
+        (NaiveDate::from_ymd_res(2023, 1, 1)?, "Jaunais Gads"),
+        (NaiveDate::from_ymd_res(2023, 4, 7)?, "Lielā Piektdiena"),
+        (NaiveDate::from_ymd_res(2023, 4, 9)?, "Lieldienas"),
+        (NaiveDate::from_ymd_res(2023, 4, 10)?, "Otrās Lieldienas"),
+        (NaiveDate::from_ymd_res(2023, 5, 1)?, "Darba svētki"),
+        (NaiveDate::from_ymd_res(2023, 5, 4)?, "Latvijas Republikas Neatkarības atjaunošanas diena"),
+        (NaiveDate::from_ymd_res(2023, 5, 14)?, "Mātes diena"),
+        (NaiveDate::from_ymd_res(2023, 6, 23)?, "Līgo diena"),
+        (NaiveDate::from_ymd_res(2023, 6, 24)?, "Jāņu diena"),
+        (NaiveDate::from_ymd_res(2023, 11, 18)?, "Latvijas Republikas proklamēšanas diena"),
+        (NaiveDate::from_ymd_res(2023, 11, 20)?, "Latvijas Republikas proklamēšanas diena (brīvdiena)"),
+        (NaiveDate::from_ymd_res(2023, 12, 24)?, "Ziemassvētku vakars"),
+        (NaiveDate::from_ymd_res(2023, 12, 25)?, "Ziemassvētki"),
+        (NaiveDate::from_ymd_res(2023, 12, 26)?, "Otrie Ziemassvētki"),
+        (NaiveDate::from_ymd_res(2023, 12, 31)?, "Vecgada vakars"),
+        (NaiveDate::from_ymd_res(2023, 5, 29)?, "Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada Pasaules hokeja čempionātā"),
+        (NaiveDate::from_ymd_res(2023, 7, 10)?, "Vispārējo latviešu Dziesmu un deju svētku noslēguma dienu"),
+        ],
+        &mut map,
+        Country::LV,
+        "Latvia",
+    );
 
     build_year(
         years,

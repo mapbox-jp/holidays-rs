@@ -3,6 +3,7 @@ use std::{collections::HashSet, ops::Range};
 
 /// Holiday database builder.
 #[derive(Default)]
+#[must_use]
 pub struct Builder {
     countries: Option<HashSet<Country>>,
     years: Option<std::ops::Range<Year>>,
@@ -15,13 +16,13 @@ impl Builder {
 
     /// Specify ISO 3166-1 alpha-2 country codes to load.
     pub fn countries(mut self, countries: &[Country]) -> Self {
-        self.countries = Some(countries.iter().copied().collect());
+        self.countries.replace(countries.iter().copied().collect());
         self
     }
 
     /// Specify range of years to load.
     pub fn years(mut self, years: Range<Year>) -> Self {
-        self.years = Some(years);
+        self.years.replace(years);
         self
     }
 
@@ -33,8 +34,7 @@ impl Builder {
 
     /// Build and initialize holiday database.
     pub fn init(self) -> Result<()> {
-        let Builder { countries, years } = self;
-        let map = build(countries.as_ref(), years.as_ref())?;
+        let map = self.build()?;
         init_holiday(map)
     }
 }
