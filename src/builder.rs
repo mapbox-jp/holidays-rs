@@ -27,12 +27,14 @@ impl Builder {
     }
 
     /// Build and get holiday database.
+    #[allow(clippy::missing_errors_doc)]
     pub fn build(self) -> Result<HolidayMap> {
         let Builder { countries, years } = self;
         build(countries.as_ref(), years.as_ref())
     }
 
     /// Build and initialize holiday database.
+    #[allow(clippy::missing_errors_doc)]
     pub fn init(self) -> Result<()> {
         let map = self.build()?;
         init_holiday(map)

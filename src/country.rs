@@ -539,6 +539,7 @@ impl std::fmt::Display for Country {
 }
 
 impl AsRef<str> for Country {
+    #[allow(clippy::too_many_lines)]
     fn as_ref(&self) -> &str {
         match self {
             #[cfg(feature = "AO")]
@@ -898,6 +899,7 @@ impl AsRef<str> for Country {
 impl std::str::FromStr for Country {
     type Err = Error;
 
+    #[allow(clippy::too_many_lines)]
     fn from_str(s: &str) -> std::result::Result<Self, Self::Err> {
         Ok(match s {
             #[cfg(feature = "AO")]

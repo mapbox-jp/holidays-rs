@@ -11,7 +11,7 @@ use chrono::{Datelike, NaiveDate};
 use once_cell::sync::Lazy;
 use std::{
     collections::{BTreeMap, HashMap},
-    sync::RwLock,
+    sync::{RwLock, RwLockReadGuard},
 };
 
 /// Type alias for Holiday map.
@@ -30,6 +30,7 @@ static DATA: Lazy<RwLock<HolidayMap>> = Lazy::new(|| RwLock::new(HolidayMap::new
 /// Note that this will use quite lots of memory. Please consider using
 /// `Builder` to specify countries and years to load for if you're concerned
 /// about memory usage.
+#[allow(clippy::missing_errors_doc)]
 pub fn init() -> Result<()> {
     let map = Builder::new().build()?;
     init_holiday(map)
@@ -38,27 +39,42 @@ pub fn init() -> Result<()> {
 /// Get holiday by ISO 3166-1 alpha-2 country code and date. If the specified country or year is
 /// not available, it will return `Err(Error)`. If the specified date is not a holiday, it
 /// will return `Ok(None)`. Otherwise, it will return `Ok(Some(Holiday))`.
+#[allow(clippy::missing_errors_doc)]
 pub fn get(country: Country, date: NaiveDate) -> Result<Option<Holiday>> {
-    get_map_for_country_any_year(country, date.year(), |map| map.get(&date).cloned())
+    let holiday_map = get_holiday_map()?;
+
+    let map = get_map_for_country_and_year(&holiday_map, country, date.year())?;
+
+    Ok(map.get(&date).cloned())
 }
 
 /// Check if the specified date is a holiday. If the specified country or year is
 /// not available, it will return `Err(Error)`. If the date is not a holiday, it
 /// will return `Ok(false)`. Otherwise, it will return `Ok(true)`.
+#[allow(clippy::missing_errors_doc)]
 pub fn contains(country: Country, date: NaiveDate) -> Result<bool> {
-    get_map_for_country_any_year(country, date.year(), |map| map.get(&date).is_some())
+    let holiday_map = get_holiday_map()?;
+
+    let map = get_map_for_country_and_year(&holiday_map, country, date.year())?;
+
+    Ok(map.get(&date).is_some())
 }
 
-fn get_map_for_country_any_year<T>(
+fn get_holiday_map() -> Result<RwLockReadGuard<'static, HolidayMap>> {
+    let data = Lazy::get(&DATA).ok_or(Error::Uninitialized)?;
+    data.read().map_err(|e| Error::LockError(e.to_string()))
+}
+
+fn get_map_for_country_and_year<'a>(
+    holiday_map: &'a RwLockReadGuard<'a, HolidayMap>,
     country: Country,
     year: Year,
-    result_getter: impl FnOnce(&BTreeMap<NaiveDate, Holiday>) -> T,
-) -> Result<T> {
-    let data = Lazy::get(&DATA).ok_or(Error::Uninitialized)?;
-    let data = data.read().map_err(|e| Error::LockError(e.to_string()))?;
-    let map = data.get(&country).ok_or(Error::CountryNotAvailable)?;
+) -> Result<&'a BTreeMap<NaiveDate, Holiday>> {
+    let map = holiday_map
+        .get(&country)
+        .ok_or(Error::CountryNotAvailable)?;
     let map = map.get(&year).ok_or(Error::YearNotAvailable)?;
-    Ok(result_getter(map))
+    Ok(map)
 }
 
 /// Represents a holiday.
@@ -105,8 +121,8 @@ pub enum Error {
     /// Failed to get `RwLock`.
     #[error("Failed to get RwLock: {0}")]
     LockError(String),
-    /// Unexpexted error occurred.
-    #[error("Unexpexted error occurred: {0}")]
+    /// Unexpected error occurred.
+    #[error("Unexpected error occurred: {0}")]
     Unexpected(String),
 }
 

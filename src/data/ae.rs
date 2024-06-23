@@ -1,8 +1,14 @@
 //! United Arab Emirates
+#[allow(clippy::wildcard_imports)]
 use super::*;
 
 /// Generate holiday map for United Arab Emirates.
-#[allow(unused_mut, unused_variables)]
+#[allow(
+    unused_mut,
+    unused_variables,
+    clippy::too_many_lines,
+    clippy::missing_errors_doc
+)]
 pub fn build(
     years: Option<&std::ops::Range<Year>>,
 ) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {

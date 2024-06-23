@@ -213,6 +213,7 @@ impl std::fmt::Display for Country {
 }
 
 impl AsRef<str> for Country {
+    #[allow(clippy::too_many_lines)]
     fn as_ref(&self) -> &str {
         match self {
 {%- for country in countries %}
@@ -226,6 +227,7 @@ impl AsRef<str> for Country {
 impl std::str::FromStr for Country {
     type Err = Error;
 
+    #[allow(clippy::too_many_lines)]
     fn from_str(s: &str) -> std::result::Result<Self, Self::Err> {
         Ok(match s {
 {%- for country in countries %}
@@ -244,13 +246,18 @@ use std::collections::HashSet;
 
 use crate::{data, prelude::*, HolidayMap, Result, Year};
 
+fn should_build(countries: Option<&HashSet<Country>>, country: Country) -> bool {
+    matches!(countries, Some(c) if c.contains(&country))
+}
+
 /// Generate holiday map for the specified countries and years.
+#[allow(clippy::too_many_lines)]
 pub fn build(countries: Option<&HashSet<Country>>, years: Option<&std::ops::Range<Year>>) -> Result<HolidayMap> {
     let mut map = HolidayMap::new();
 
 {% for country in countries %}
     #[cfg(feature = "{{country.code}}")]
-    if countries.map_or(true, |c| c.contains(&Country::{{country|enum_name}})) {
+    if should_build(countries, Country::{{country|enum_name}}) {
         map.insert(Country::{{country|enum_name}}, data::{{country|mod_name|escape}}::build(years)?);
     }
 {% endfor %}
@@ -278,10 +285,11 @@ pub mod {{country|mod_name|escape}};
 
 build_country = """
 //! {{country|display_name}}
+#[allow(clippy::wildcard_imports)]
 use super::*;
 
 /// Generate holiday map for {{country|display_name}}.
-#[allow(unused_mut, unused_variables)]
+#[allow(unused_mut, unused_variables, clippy::too_many_lines, clippy::missing_errors_doc)]
 pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
     let mut map = HashMap::new();
 

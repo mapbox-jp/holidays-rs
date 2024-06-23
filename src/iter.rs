@@ -30,20 +30,16 @@ impl std::iter::Iterator for Iter {
 }
 
 /// Iterate holidays by dates.
-#[allow(dead_code)]
+#[allow(dead_code, clippy::missing_errors_doc)]
 pub fn iter(country: Country, since: NaiveDate, until: NaiveDate) -> Result<Iter> {
-    let Some(data) = Lazy::get(&DATA) else {
-        return Err(Error::Uninitialized);
-    };
+    let data = Lazy::get(&DATA).ok_or(Error::Uninitialized)?;
 
     let mut buf = VecDeque::new();
 
     let mut y = since.year();
     while y <= until.year() {
         let data = data.read().map_err(|e| Error::LockError(e.to_string()))?;
-        let Some(map) = data.get(&country) else {
-            return Err(Error::CountryNotAvailable);
-        };
+        let map = data.get(&country).ok_or(Error::CountryNotAvailable)?;
 
         let Some(map) = map.get(&y) else {
             break;

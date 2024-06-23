@@ -1,8 +1,14 @@
 //! Germany (Rhineland-Palatinate (Rheinland-Pfalz))
+#[allow(clippy::wildcard_imports)]
 use super::*;
 
 /// Generate holiday map for Germany (Rhineland-Palatinate (Rheinland-Pfalz)).
-#[allow(unused_mut, unused_variables)]
+#[allow(
+    unused_mut,
+    unused_variables,
+    clippy::too_many_lines,
+    clippy::missing_errors_doc
+)]
 pub fn build(
     years: Option<&std::ops::Range<Year>>,
 ) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
