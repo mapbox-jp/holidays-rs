@@ -1,17 +1,24 @@
 //! Ukraine
+#[allow(clippy::wildcard_imports)]
 use super::*;
 
+const COUNTY_NAME: &str = "Ukraine";
+const COUNTY_CODE: Country = Country::UA;
+
 /// Generate holiday map for Ukraine.
-#[allow(unused_mut, unused_variables)]
-pub fn build(
-    years: &Option<&std::ops::Range<Year>>,
-) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+#[allow(
+    unused_mut,
+    unused_variables,
+    clippy::too_many_lines,
+    clippy::missing_errors_doc
+)]
+pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HolidayPerCountryMap> {
     let mut map = HashMap::new();
 
     build_year(
         years,
         2000,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2000, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2000, 1, 7)?,
@@ -56,14 +63,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2001,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2001, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2001, 1, 7)?,
@@ -127,14 +134,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2002,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2002, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2002, 1, 7)?,
@@ -186,14 +193,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2003,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2003, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2003, 1, 7)?,
@@ -245,14 +252,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2004,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2004, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2004, 1, 7)?,
@@ -316,14 +323,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2005,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2005, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2005, 1, 7)?,
@@ -371,14 +378,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2006,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2006, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2006, 1, 7)?,
@@ -443,14 +450,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2007,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2007, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2007, 1, 7)?,
@@ -522,14 +529,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2008,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2008, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2008, 1, 7)?,
@@ -597,14 +604,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2009,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2009, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2009, 1, 7)?,
@@ -668,14 +675,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2010,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2010, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2010, 1, 7)?,
@@ -743,14 +750,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2011,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2011, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2011, 1, 7)?,
@@ -799,14 +806,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2012,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2012, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2012, 1, 7)?,
@@ -863,14 +870,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2013,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2013, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2013, 1, 7)?,
@@ -918,14 +925,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2014,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2014, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2014, 1, 7)?,
@@ -985,14 +992,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2015,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2015, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2015, 1, 7)?,
@@ -1060,14 +1067,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2016,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2016, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2016, 1, 7)?,
@@ -1121,14 +1128,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2017,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2017, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2017, 1, 7)?,
@@ -1192,14 +1199,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2018,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2018, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2018, 1, 7)?,
@@ -1267,14 +1274,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2019,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2019, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2019, 1, 7)?,
@@ -1330,14 +1337,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2020,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2020, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2020, 1, 7)?,
@@ -1393,14 +1400,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2021,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2021, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2021, 1, 7)?,
@@ -1464,14 +1471,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2022,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2022, 1, 1)?, "Новий рік"),
             (
                 NaiveDate::from_ymd_res(2022, 1, 7)?,
@@ -1488,8 +1495,8 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::UA,
-        "Ukraine",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     Ok(map)

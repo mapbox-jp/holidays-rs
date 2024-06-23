@@ -1,17 +1,24 @@
 //! Singapore
+#[allow(clippy::wildcard_imports)]
 use super::*;
 
+const COUNTY_NAME: &str = "Singapore";
+const COUNTY_CODE: Country = Country::SG;
+
 /// Generate holiday map for Singapore.
-#[allow(unused_mut, unused_variables)]
-pub fn build(
-    years: &Option<&std::ops::Range<Year>>,
-) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+#[allow(
+    unused_mut,
+    unused_variables,
+    clippy::too_many_lines,
+    clippy::missing_errors_doc
+)]
+pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HolidayPerCountryMap> {
     let mut map = HashMap::new();
 
     build_year(
         years,
         2000,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2000, 1, 1)?, "New Year's Day"),
             (
                 NaiveDate::from_ymd_res(2000, 2, 5)?,
@@ -48,14 +55,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2001,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2001, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2001, 1, 24)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2001, 1, 25)?, "Chinese New Year"),
@@ -74,14 +81,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2001, 11, 3)?, "Polling Day"),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2002,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2002, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2002, 2, 12)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2002, 2, 13)?, "Chinese New Year"),
@@ -103,14 +110,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2003,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2003, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2003, 2, 1)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2003, 2, 2)?, "Chinese New Year"),
@@ -128,14 +135,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2004,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2004, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2004, 1, 22)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2004, 1, 23)?, "Chinese New Year"),
@@ -157,14 +164,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2005,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2005, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2005, 2, 9)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2005, 2, 10)?, "Chinese New Year"),
@@ -190,14 +197,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2006,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2006, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2006, 1, 30)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2006, 1, 31)?, "Chinese New Year"),
@@ -217,14 +224,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2006, 5, 6)?, "Polling Day"),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2007,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2007, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2007, 2, 19)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2007, 2, 20)?, "Chinese New Year"),
@@ -242,14 +249,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2008,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2008, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2008, 2, 7)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2008, 2, 8)?, "Chinese New Year"),
@@ -263,14 +270,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2008, 12, 25)?, "Christmas Day"),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2009,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2009, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2009, 1, 26)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2009, 1, 27)?, "Chinese New Year"),
@@ -296,14 +303,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2010,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2010, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2010, 2, 14)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2010, 2, 15)?, "Chinese New Year"),
@@ -321,14 +328,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2011,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2011, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2011, 2, 3)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2011, 2, 4)?, "Chinese New Year"),
@@ -355,14 +362,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2011, 5, 7)?, "Polling Day"),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2012,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2012, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2012, 1, 23)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2012, 1, 24)?, "Chinese New Year"),
@@ -384,14 +391,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2013,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2013, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2013, 2, 10)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2013, 2, 11)?, "Chinese New Year"),
@@ -409,14 +416,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2014,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2014, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2014, 1, 31)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2014, 2, 1)?, "Chinese New Year"),
@@ -434,14 +441,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2015,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2015, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2015, 2, 19)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2015, 2, 20)?, "Chinese New Year"),
@@ -461,14 +468,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2015, 9, 11)?, "Polling Day"),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2016,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2016, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2016, 2, 8)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2016, 2, 9)?, "Chinese New Year"),
@@ -490,14 +497,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2017,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2017, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2017, 1, 28)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2017, 1, 29)?, "Chinese New Year"),
@@ -523,14 +530,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2018,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2018, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2018, 2, 16)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2018, 2, 17)?, "Chinese New Year"),
@@ -544,14 +551,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2018, 12, 25)?, "Christmas Day"),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2019,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2019, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2019, 2, 5)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2019, 2, 6)?, "Chinese New Year"),
@@ -577,14 +584,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2020,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2020, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2020, 1, 25)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2020, 1, 26)?, "Chinese New Year"),
@@ -611,14 +618,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2020, 7, 10)?, "Polling Day"),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2021,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2021, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2021, 2, 12)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2021, 2, 13)?, "Chinese New Year"),
@@ -632,14 +639,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2021, 12, 25)?, "Christmas Day"),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2022,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2022, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2022, 2, 1)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2022, 2, 2)?, "Chinese New Year"),
@@ -669,14 +676,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2023,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2023, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2023, 1, 22)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2023, 1, 23)?, "Chinese New Year"),
@@ -703,14 +710,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2023, 9, 1)?, "Polling Day"),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2024,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2024, 1, 1)?, "New Year's Day"),
             (NaiveDate::from_ymd_res(2024, 2, 10)?, "Chinese New Year"),
             (NaiveDate::from_ymd_res(2024, 2, 11)?, "Chinese New Year"),
@@ -728,14 +735,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2025,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2025, 1, 1)?, "New Year's Day"),
             (
                 NaiveDate::from_ymd_res(2025, 1, 29)?,
@@ -772,14 +779,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2026,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2026, 1, 1)?, "New Year's Day"),
             (
                 NaiveDate::from_ymd_res(2026, 2, 17)?,
@@ -816,14 +823,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2027,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2027, 1, 1)?, "New Year's Day"),
             (
                 NaiveDate::from_ymd_res(2027, 2, 6)?,
@@ -860,14 +867,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2028,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2028, 1, 1)?, "New Year's Day"),
             (
                 NaiveDate::from_ymd_res(2028, 1, 26)?,
@@ -896,14 +903,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2028, 12, 25)?, "Christmas Day"),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2029,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2029, 1, 1)?, "New Year's Day"),
             (
                 NaiveDate::from_ymd_res(2029, 2, 13)?,
@@ -936,14 +943,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2030,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2030, 1, 1)?, "New Year's Day"),
             (
                 NaiveDate::from_ymd_res(2030, 2, 3)?,
@@ -972,8 +979,8 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SG,
-        "Singapore",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     Ok(map)

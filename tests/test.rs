@@ -40,6 +40,25 @@ fn build_by_country() -> anyhow::Result<()> {
 
 #[test]
 #[serial]
+fn build_by_country_with_subdivision() -> anyhow::Result<()> {
+    Builder::new()
+        .countries(&[Country::DE, Country::DE_NW])
+        .years(2024..2025)
+        .init()?;
+
+    let d = NaiveDate::from_ymd_res(2024, 5, 1)?;
+    assert_eq!("Erster Mai", get(Country::DE, d)?.unwrap().name);
+    assert_eq!("Erster Mai", get(Country::DE_NW, d)?.unwrap().name);
+
+    let d = NaiveDate::from_ymd_res(2024, 5, 30)?;
+    assert!(get(Country::DE, d)?.is_none());
+    assert_eq!("Fronleichnam", get(Country::DE_NW, d)?.unwrap().name);
+
+    Ok(())
+}
+
+#[test]
+#[serial]
 fn build_by_year() -> anyhow::Result<()> {
     Builder::new().years(2022..2023).init()?;
 

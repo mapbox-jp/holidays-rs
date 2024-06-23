@@ -1,17 +1,24 @@
 //! Azerbaijan
+#[allow(clippy::wildcard_imports)]
 use super::*;
 
+const COUNTY_NAME: &str = "Azerbaijan";
+const COUNTY_CODE: Country = Country::AZ;
+
 /// Generate holiday map for Azerbaijan.
-#[allow(unused_mut, unused_variables)]
-pub fn build(
-    years: &Option<&std::ops::Range<Year>>,
-) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+#[allow(
+    unused_mut,
+    unused_variables,
+    clippy::too_many_lines,
+    clippy::missing_errors_doc
+)]
+pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HolidayPerCountryMap> {
     let mut map = HashMap::new();
 
     build_year(
         years,
         2000,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2000, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2000, 1, 20)?, "Ümumxalq hüzn günü"),
             (NaiveDate::from_ymd_res(2000, 3, 8)?, "Qadınlar günü"),
@@ -52,14 +59,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2001,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2001, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2001, 1, 20)?, "Ümumxalq hüzn günü"),
             (NaiveDate::from_ymd_res(2001, 3, 8)?, "Qadınlar günü"),
@@ -96,14 +103,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2002,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2002, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2002, 1, 20)?, "Ümumxalq hüzn günü"),
             (NaiveDate::from_ymd_res(2002, 3, 8)?, "Qadınlar günü"),
@@ -134,14 +141,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2002, 2, 21)?, "Qurban bayrami"),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2003,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2003, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2003, 1, 20)?, "Ümumxalq hüzn günü"),
             (NaiveDate::from_ymd_res(2003, 3, 8)?, "Qadınlar günü"),
@@ -172,14 +179,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2003, 2, 11)?, "Qurban bayrami"),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2004,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2004, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2004, 1, 20)?, "Ümumxalq hüzn günü"),
             (NaiveDate::from_ymd_res(2004, 3, 8)?, "Qadınlar günü"),
@@ -210,14 +217,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2004, 2, 1)?, "Qurban bayrami"),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2005,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2005, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2005, 1, 20)?, "Ümumxalq hüzn günü"),
             (NaiveDate::from_ymd_res(2005, 3, 8)?, "Qadınlar günü"),
@@ -248,14 +255,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2005, 1, 22)?, "Qurban bayrami"),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2006,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2006, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2006, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2006, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -296,47 +303,46 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
-    years,
-    2007,
-    vec![
-
-      (NaiveDate::from_ymd_res(2007, 1, 1)?, "Qurban bayrami; Yeni il bayramı"),
-      (NaiveDate::from_ymd_res(2007, 1, 2)?, "Yeni il bayramı"),
-      (NaiveDate::from_ymd_res(2007, 1, 20)?, "Ümumxalq hüzn günü"),
-      (NaiveDate::from_ymd_res(2007, 3, 8)?, "Qadınlar günü"),
-      (NaiveDate::from_ymd_res(2007, 3, 20)?, "Novruz bayramı"),
-      (NaiveDate::from_ymd_res(2007, 3, 21)?, "Novruz bayramı"),
-      (NaiveDate::from_ymd_res(2007, 3, 22)?, "Novruz bayramı"),
-      (NaiveDate::from_ymd_res(2007, 3, 23)?, "Novruz bayramı"),
-      (NaiveDate::from_ymd_res(2007, 3, 24)?, "Novruz bayramı"),
-      (NaiveDate::from_ymd_res(2007, 5, 9)?, "Faşizm üzərində qələbə günü"),
-      (NaiveDate::from_ymd_res(2007, 5, 28)?, "Respublika Günü"),
-      (NaiveDate::from_ymd_res(2007, 6, 15)?, "Azərbaycan xalqının milli qurtuluş günü"),
-      (NaiveDate::from_ymd_res(2007, 6, 26)?, "Azərbaycan Respublikasının Silahlı Qüvvələri günü"),
-      (NaiveDate::from_ymd_res(2007, 12, 31)?, "Dünya azərbaycanlılarının həmrəyliyi günü"),
-      (NaiveDate::from_ymd_res(2007, 1, 3)?, "Dünya azərbaycanlılarının həmrəyliyi günü (müşahidə olunur); Qurban bayrami (müşahidə olunur)"),
-      (NaiveDate::from_ymd_res(2007, 10, 12)?, "Ramazan bayrami"),
-      (NaiveDate::from_ymd_res(2007, 10, 13)?, "Ramazan bayrami"),
-      (NaiveDate::from_ymd_res(2007, 12, 20)?, "Qurban bayrami"),
-      (NaiveDate::from_ymd_res(2007, 12, 21)?, "Qurban bayrami"),
-      (NaiveDate::from_ymd_res(2007, 3, 26)?, "Novruz bayramı (müşahidə olunur)"),
-      (NaiveDate::from_ymd_res(2007, 10, 15)?, "Ramazan bayrami (müşahidə olunur)"),
-      (NaiveDate::from_ymd_res(2007, 1, 4)?, "Qurban bayrami (müşahidə olunur)"),
-    ],
-    &mut map,
-    Country::AZ,
-    "Azerbaijan",
-  );
+        years,
+        2007,
+        [
+            (NaiveDate::from_ymd_res(2007, 1, 1)?, "Qurban bayrami; Yeni il bayramı"),
+            (NaiveDate::from_ymd_res(2007, 1, 2)?, "Yeni il bayramı"),
+            (NaiveDate::from_ymd_res(2007, 1, 20)?, "Ümumxalq hüzn günü"),
+            (NaiveDate::from_ymd_res(2007, 3, 8)?, "Qadınlar günü"),
+            (NaiveDate::from_ymd_res(2007, 3, 20)?, "Novruz bayramı"),
+            (NaiveDate::from_ymd_res(2007, 3, 21)?, "Novruz bayramı"),
+            (NaiveDate::from_ymd_res(2007, 3, 22)?, "Novruz bayramı"),
+            (NaiveDate::from_ymd_res(2007, 3, 23)?, "Novruz bayramı"),
+            (NaiveDate::from_ymd_res(2007, 3, 24)?, "Novruz bayramı"),
+            (NaiveDate::from_ymd_res(2007, 5, 9)?, "Faşizm üzərində qələbə günü"),
+            (NaiveDate::from_ymd_res(2007, 5, 28)?, "Respublika Günü"),
+            (NaiveDate::from_ymd_res(2007, 6, 15)?, "Azərbaycan xalqının milli qurtuluş günü"),
+            (NaiveDate::from_ymd_res(2007, 6, 26)?, "Azərbaycan Respublikasının Silahlı Qüvvələri günü"),
+            (NaiveDate::from_ymd_res(2007, 12, 31)?, "Dünya azərbaycanlılarının həmrəyliyi günü"),
+            (NaiveDate::from_ymd_res(2007, 1, 3)?, "Dünya azərbaycanlılarının həmrəyliyi günü (müşahidə olunur); Qurban bayrami (müşahidə olunur)"),
+            (NaiveDate::from_ymd_res(2007, 10, 12)?, "Ramazan bayrami"),
+            (NaiveDate::from_ymd_res(2007, 10, 13)?, "Ramazan bayrami"),
+            (NaiveDate::from_ymd_res(2007, 12, 20)?, "Qurban bayrami"),
+            (NaiveDate::from_ymd_res(2007, 12, 21)?, "Qurban bayrami"),
+            (NaiveDate::from_ymd_res(2007, 3, 26)?, "Novruz bayramı (müşahidə olunur)"),
+            (NaiveDate::from_ymd_res(2007, 10, 15)?, "Ramazan bayrami (müşahidə olunur)"),
+            (NaiveDate::from_ymd_res(2007, 1, 4)?, "Qurban bayrami (müşahidə olunur)"),
+        ],
+        &mut map,
+        COUNTY_CODE,
+        COUNTY_NAME,
+    );
 
     build_year(
         years,
         2008,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2008, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2008, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2008, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -385,14 +391,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2009,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2009, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2009, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2009, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -449,14 +455,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2010,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2010, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2010, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2010, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -513,14 +519,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2011,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2011, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2011, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2011, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -585,14 +591,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2012,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2012, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2012, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2012, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -645,14 +651,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2013,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2013, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2013, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2013, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -713,14 +719,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2014,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2014, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2014, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2014, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -793,14 +799,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2015,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2015, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2015, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2015, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -857,14 +863,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2016,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2016, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2016, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2016, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -917,14 +923,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2017,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2017, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2017, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2017, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -980,14 +986,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2018,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2018, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2018, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2018, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -1043,14 +1049,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2019,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2019, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2019, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2019, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -1107,14 +1113,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2020,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2020, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2020, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2020, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -1191,14 +1197,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2021,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2021, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2021, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2021, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -1268,14 +1274,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2022,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2022, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2022, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2022, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -1349,14 +1355,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2023,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2023, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2023, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2023, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -1422,14 +1428,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2024,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2024, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2024, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2024, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -1497,14 +1503,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2025,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2025, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2025, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2025, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -1586,14 +1592,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2026,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2026, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2026, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2026, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -1660,14 +1666,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2027,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2027, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2027, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2027, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -1741,14 +1747,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2028,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2028, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2028, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2028, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -1822,14 +1828,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2029,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2029, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2029, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2029, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -1887,14 +1893,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2030,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2030, 1, 1)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2030, 1, 2)?, "Yeni il bayramı"),
             (NaiveDate::from_ymd_res(2030, 1, 20)?, "Ümumxalq hüzn günü"),
@@ -1968,8 +1974,8 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AZ,
-        "Azerbaijan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     Ok(map)

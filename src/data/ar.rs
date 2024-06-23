@@ -1,40 +1,46 @@
 //! Argentina
+#[allow(clippy::wildcard_imports)]
 use super::*;
 
+const COUNTY_NAME: &str = "Argentina";
+const COUNTY_CODE: Country = Country::AR;
+
 /// Generate holiday map for Argentina.
-#[allow(unused_mut, unused_variables)]
-pub fn build(
-    years: &Option<&std::ops::Range<Year>>,
-) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+#[allow(
+    unused_mut,
+    unused_variables,
+    clippy::too_many_lines,
+    clippy::missing_errors_doc
+)]
+pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HolidayPerCountryMap> {
     let mut map = HashMap::new();
 
     build_year(
-    years,
-    2000,
-    vec![
-
-      (NaiveDate::from_ymd_res(2000, 1, 1)?, "Año Nuevo"),
-      (NaiveDate::from_ymd_res(2000, 4, 2)?, "Día del Veterano de Guerra"),
-      (NaiveDate::from_ymd_res(2000, 4, 21)?, "Viernes Santo"),
-      (NaiveDate::from_ymd_res(2000, 5, 1)?, "Día del Trabajo"),
-      (NaiveDate::from_ymd_res(2000, 5, 25)?, "Día de la Revolución de Mayo"),
-      (NaiveDate::from_ymd_res(2000, 6, 10)?, "Día de los Derechos Argentinos sobre las Islas Malvinas, Sandwich y del Atlántico Sur"),
-      (NaiveDate::from_ymd_res(2000, 6, 19)?, "Paso a la Inmortalidad del General Don Manuel Belgrano"),
-      (NaiveDate::from_ymd_res(2000, 7, 9)?, "Día de la Independencia"),
-      (NaiveDate::from_ymd_res(2000, 12, 8)?, "Inmaculada Concepción de María"),
-      (NaiveDate::from_ymd_res(2000, 12, 25)?, "Navidad"),
-      (NaiveDate::from_ymd_res(2000, 8, 21)?, "Paso a la Inmortalidad del General Don José de San Martin"),
-      (NaiveDate::from_ymd_res(2000, 10, 12)?, "Día de la Raza"),
-    ],
-    &mut map,
-    Country::AR,
-    "Argentina",
-  );
+        years,
+        2000,
+        [
+            (NaiveDate::from_ymd_res(2000, 1, 1)?, "Año Nuevo"),
+            (NaiveDate::from_ymd_res(2000, 4, 2)?, "Día del Veterano de Guerra"),
+            (NaiveDate::from_ymd_res(2000, 4, 21)?, "Viernes Santo"),
+            (NaiveDate::from_ymd_res(2000, 5, 1)?, "Día del Trabajo"),
+            (NaiveDate::from_ymd_res(2000, 5, 25)?, "Día de la Revolución de Mayo"),
+            (NaiveDate::from_ymd_res(2000, 6, 10)?, "Día de los Derechos Argentinos sobre las Islas Malvinas, Sandwich y del Atlántico Sur"),
+            (NaiveDate::from_ymd_res(2000, 6, 19)?, "Paso a la Inmortalidad del General Don Manuel Belgrano"),
+            (NaiveDate::from_ymd_res(2000, 7, 9)?, "Día de la Independencia"),
+            (NaiveDate::from_ymd_res(2000, 12, 8)?, "Inmaculada Concepción de María"),
+            (NaiveDate::from_ymd_res(2000, 12, 25)?, "Navidad"),
+            (NaiveDate::from_ymd_res(2000, 8, 21)?, "Paso a la Inmortalidad del General Don José de San Martin"),
+            (NaiveDate::from_ymd_res(2000, 10, 12)?, "Día de la Raza"),
+        ],
+        &mut map,
+        COUNTY_CODE,
+        COUNTY_NAME,
+    );
 
     build_year(
         years,
         2001,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2001, 1, 1)?, "Año Nuevo"),
             (
                 NaiveDate::from_ymd_res(2001, 4, 2)?,
@@ -66,14 +72,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2001, 10, 12)?, "Día de la Raza"),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2002,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2002, 1, 1)?, "Año Nuevo"),
             (
                 NaiveDate::from_ymd_res(2002, 4, 2)?,
@@ -105,14 +111,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2002, 10, 12)?, "Día de la Raza"),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2003,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2003, 1, 1)?, "Año Nuevo"),
             (
                 NaiveDate::from_ymd_res(2003, 4, 2)?,
@@ -144,14 +150,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2003, 10, 12)?, "Día de la Raza"),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2004,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2004, 1, 1)?, "Año Nuevo"),
             (
                 NaiveDate::from_ymd_res(2004, 4, 2)?,
@@ -183,14 +189,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2004, 10, 12)?, "Día de la Raza"),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2005,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2005, 1, 1)?, "Año Nuevo"),
             (
                 NaiveDate::from_ymd_res(2005, 4, 2)?,
@@ -222,14 +228,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2005, 10, 12)?, "Día de la Raza"),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2006,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2006, 1, 1)?, "Año Nuevo"),
             (
                 NaiveDate::from_ymd_res(2006, 3, 24)?,
@@ -265,14 +271,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2006, 10, 12)?, "Día de la Raza"),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2007,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2007, 1, 1)?, "Año Nuevo"),
             (
                 NaiveDate::from_ymd_res(2007, 3, 24)?,
@@ -308,14 +314,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2007, 10, 12)?, "Día de la Raza"),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2008,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2008, 1, 1)?, "Año Nuevo"),
             (
                 NaiveDate::from_ymd_res(2008, 3, 24)?,
@@ -351,14 +357,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2008, 10, 12)?, "Día de la Raza"),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2009,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2009, 1, 1)?, "Año Nuevo"),
             (
                 NaiveDate::from_ymd_res(2009, 3, 24)?,
@@ -394,14 +400,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2009, 10, 12)?, "Día de la Raza"),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2010,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2010, 1, 1)?, "Año Nuevo"),
             (
                 NaiveDate::from_ymd_res(2010, 3, 24)?,
@@ -443,14 +449,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2011,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2011, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2011, 3, 7)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2011, 3, 8)?, "Día de Carnaval"),
@@ -503,14 +509,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2012,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2012, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2012, 2, 20)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2012, 2, 21)?, "Día de Carnaval"),
@@ -571,44 +577,43 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
-    years,
-    2013,
-    vec![
-
-      (NaiveDate::from_ymd_res(2013, 1, 1)?, "Año Nuevo"),
-      (NaiveDate::from_ymd_res(2013, 2, 11)?, "Día de Carnaval"),
-      (NaiveDate::from_ymd_res(2013, 2, 12)?, "Día de Carnaval"),
-      (NaiveDate::from_ymd_res(2013, 3, 24)?, "Día Nacional de la Memoria por la Verdad y la Justicia"),
-      (NaiveDate::from_ymd_res(2013, 4, 2)?, "Día del Veterano y de los Caidos en la Guerra de Malvinas"),
-      (NaiveDate::from_ymd_res(2013, 3, 29)?, "Viernes Santo"),
-      (NaiveDate::from_ymd_res(2013, 5, 1)?, "Día del Trabajo"),
-      (NaiveDate::from_ymd_res(2013, 5, 25)?, "Día de la Revolución de Mayo"),
-      (NaiveDate::from_ymd_res(2013, 6, 20)?, "Paso a la Inmortalidad del General Don Manuel Belgrano"),
-      (NaiveDate::from_ymd_res(2013, 7, 9)?, "Día de la Independencia"),
-      (NaiveDate::from_ymd_res(2013, 12, 8)?, "Inmaculada Concepción de María"),
-      (NaiveDate::from_ymd_res(2013, 12, 25)?, "Navidad"),
-      (NaiveDate::from_ymd_res(2013, 8, 17)?, "Paso a la Inmortalidad del General Don José de San Martin"),
-      (NaiveDate::from_ymd_res(2013, 10, 12)?, "Día del Respeto a la Diversidad Cultural"),
-      (NaiveDate::from_ymd_res(2013, 11, 18)?, "Día de la Soberanía Nacional (observado)"),
-      (NaiveDate::from_ymd_res(2013, 1, 31)?, "Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente del año 1813"),
-      (NaiveDate::from_ymd_res(2013, 2, 20)?, "Bicentenario de la Batalla de Salta"),
-      (NaiveDate::from_ymd_res(2013, 4, 1)?, "Feriado con fines turísticos"),
-      (NaiveDate::from_ymd_res(2013, 6, 21)?, "Feriado con fines turísticos"),
-    ],
-    &mut map,
-    Country::AR,
-    "Argentina",
-  );
+        years,
+        2013,
+        [
+            (NaiveDate::from_ymd_res(2013, 1, 1)?, "Año Nuevo"),
+            (NaiveDate::from_ymd_res(2013, 2, 11)?, "Día de Carnaval"),
+            (NaiveDate::from_ymd_res(2013, 2, 12)?, "Día de Carnaval"),
+            (NaiveDate::from_ymd_res(2013, 3, 24)?, "Día Nacional de la Memoria por la Verdad y la Justicia"),
+            (NaiveDate::from_ymd_res(2013, 4, 2)?, "Día del Veterano y de los Caidos en la Guerra de Malvinas"),
+            (NaiveDate::from_ymd_res(2013, 3, 29)?, "Viernes Santo"),
+            (NaiveDate::from_ymd_res(2013, 5, 1)?, "Día del Trabajo"),
+            (NaiveDate::from_ymd_res(2013, 5, 25)?, "Día de la Revolución de Mayo"),
+            (NaiveDate::from_ymd_res(2013, 6, 20)?, "Paso a la Inmortalidad del General Don Manuel Belgrano"),
+            (NaiveDate::from_ymd_res(2013, 7, 9)?, "Día de la Independencia"),
+            (NaiveDate::from_ymd_res(2013, 12, 8)?, "Inmaculada Concepción de María"),
+            (NaiveDate::from_ymd_res(2013, 12, 25)?, "Navidad"),
+            (NaiveDate::from_ymd_res(2013, 8, 17)?, "Paso a la Inmortalidad del General Don José de San Martin"),
+            (NaiveDate::from_ymd_res(2013, 10, 12)?, "Día del Respeto a la Diversidad Cultural"),
+            (NaiveDate::from_ymd_res(2013, 11, 18)?, "Día de la Soberanía Nacional (observado)"),
+            (NaiveDate::from_ymd_res(2013, 1, 31)?, "Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente del año 1813"),
+            (NaiveDate::from_ymd_res(2013, 2, 20)?, "Bicentenario de la Batalla de Salta"),
+            (NaiveDate::from_ymd_res(2013, 4, 1)?, "Feriado con fines turísticos"),
+            (NaiveDate::from_ymd_res(2013, 6, 21)?, "Feriado con fines turísticos"),
+        ],
+        &mut map,
+        COUNTY_CODE,
+        COUNTY_NAME,
+    );
 
     build_year(
         years,
         2014,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2014, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2014, 3, 3)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2014, 3, 4)?, "Día de Carnaval"),
@@ -661,14 +666,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2015,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2015, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2015, 2, 16)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2015, 2, 17)?, "Día de Carnaval"),
@@ -721,14 +726,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2016,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2016, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2016, 2, 8)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2016, 2, 9)?, "Día de Carnaval"),
@@ -785,14 +790,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2017,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2017, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2017, 2, 27)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2017, 2, 28)?, "Día de Carnaval"),
@@ -841,14 +846,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2018,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2018, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2018, 2, 12)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2018, 2, 13)?, "Día de Carnaval"),
@@ -909,14 +914,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2019,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2019, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2019, 3, 4)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2019, 3, 5)?, "Día de Carnaval"),
@@ -977,14 +982,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2020,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2020, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2020, 2, 24)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2020, 2, 25)?, "Día de Carnaval"),
@@ -1045,14 +1050,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2021,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2021, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2021, 2, 15)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2021, 2, 16)?, "Día de Carnaval"),
@@ -1112,14 +1117,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2022,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2022, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2022, 2, 28)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2022, 3, 1)?, "Día de Carnaval"),
@@ -1181,14 +1186,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2023,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2023, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2023, 2, 20)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2023, 2, 21)?, "Día de Carnaval"),
@@ -1249,14 +1254,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2024,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2024, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2024, 2, 12)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2024, 2, 13)?, "Día de Carnaval"),
@@ -1317,14 +1322,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2025,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2025, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2025, 3, 3)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2025, 3, 4)?, "Día de Carnaval"),
@@ -1373,14 +1378,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2026,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2026, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2026, 2, 16)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2026, 2, 17)?, "Día de Carnaval"),
@@ -1429,14 +1434,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2027,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2027, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2027, 2, 8)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2027, 2, 9)?, "Día de Carnaval"),
@@ -1485,14 +1490,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2028,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2028, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2028, 2, 28)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2028, 2, 29)?, "Día de Carnaval"),
@@ -1541,14 +1546,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2029,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2029, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2029, 2, 12)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2029, 2, 13)?, "Día de Carnaval"),
@@ -1597,14 +1602,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2030,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2030, 1, 1)?, "Año Nuevo"),
             (NaiveDate::from_ymd_res(2030, 3, 4)?, "Día de Carnaval"),
             (NaiveDate::from_ymd_res(2030, 3, 5)?, "Día de Carnaval"),
@@ -1653,8 +1658,8 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::AR,
-        "Argentina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     Ok(map)

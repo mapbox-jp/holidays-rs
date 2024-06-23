@@ -1,17 +1,24 @@
 //! Latvia
+#[allow(clippy::wildcard_imports)]
 use super::*;
 
+const COUNTY_NAME: &str = "Latvia";
+const COUNTY_CODE: Country = Country::LV;
+
 /// Generate holiday map for Latvia.
-#[allow(unused_mut, unused_variables)]
-pub fn build(
-    years: &Option<&std::ops::Range<Year>>,
-) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+#[allow(
+    unused_mut,
+    unused_variables,
+    clippy::too_many_lines,
+    clippy::missing_errors_doc
+)]
+pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HolidayPerCountryMap> {
     let mut map = HashMap::new();
 
     build_year(
         years,
         2000,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2000, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2000, 4, 21)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2000, 4, 23)?, "Lieldienas"),
@@ -29,14 +36,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2000, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2001,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2001, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2001, 4, 13)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2001, 4, 15)?, "Lieldienas"),
@@ -54,14 +61,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2001, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2002,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2002, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2002, 3, 29)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2002, 3, 31)?, "Lieldienas"),
@@ -83,14 +90,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2002, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2003,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2003, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2003, 4, 18)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2003, 4, 20)?, "Lieldienas"),
@@ -112,14 +119,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2003, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2004,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2004, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2004, 4, 9)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2004, 4, 11)?, "Lieldienas"),
@@ -141,14 +148,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2004, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2005,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2005, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2005, 3, 25)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2005, 3, 27)?, "Lieldienas"),
@@ -170,14 +177,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2005, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2006,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2006, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2006, 4, 14)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2006, 4, 16)?, "Lieldienas"),
@@ -199,14 +206,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2006, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2007,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2007, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2007, 4, 6)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2007, 4, 8)?, "Lieldienas"),
@@ -236,14 +243,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2007, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2008,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2008, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2008, 3, 21)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2008, 3, 23)?, "Lieldienas"),
@@ -273,14 +280,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2008, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2009,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2009, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2009, 4, 10)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2009, 4, 12)?, "Lieldienas"),
@@ -306,14 +313,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2009, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2010,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2010, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2010, 4, 2)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2010, 4, 4)?, "Lieldienas"),
@@ -339,14 +346,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2010, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2011,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2011, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2011, 4, 22)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2011, 4, 24)?, "Lieldienas"),
@@ -372,14 +379,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2011, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2012,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2012, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2012, 4, 6)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2012, 4, 8)?, "Lieldienas"),
@@ -409,14 +416,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2012, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2013,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2013, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2013, 3, 29)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2013, 3, 31)?, "Lieldienas"),
@@ -446,14 +453,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2013, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2014,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2014, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2014, 4, 18)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2014, 4, 20)?, "Lieldienas"),
@@ -483,14 +490,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2014, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2015,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2015, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2015, 4, 3)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2015, 4, 5)?, "Lieldienas"),
@@ -516,14 +523,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2015, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2016,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2016, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2016, 3, 25)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2016, 3, 27)?, "Lieldienas"),
@@ -549,14 +556,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2016, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2017,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2017, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2017, 4, 14)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2017, 4, 16)?, "Lieldienas"),
@@ -586,14 +593,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2017, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2018,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2018, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2018, 3, 30)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2018, 4, 1)?, "Lieldienas"),
@@ -631,14 +638,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2019,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2019, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2019, 4, 19)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2019, 4, 21)?, "Lieldienas"),
@@ -668,14 +675,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2019, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2020,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2020, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2020, 4, 10)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2020, 4, 12)?, "Lieldienas"),
@@ -701,14 +708,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2020, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2021,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2021, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2021, 4, 2)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2021, 4, 4)?, "Lieldienas"),
@@ -734,14 +741,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2021, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2022,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2022, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2022, 4, 15)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2022, 4, 17)?, "Lieldienas"),
@@ -767,42 +774,41 @@ pub fn build(
             (NaiveDate::from_ymd_res(2022, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
-    years,
-    2023,
-    vec![
-
-      (NaiveDate::from_ymd_res(2023, 1, 1)?, "Jaunais Gads"),
-      (NaiveDate::from_ymd_res(2023, 4, 7)?, "Lielā Piektdiena"),
-      (NaiveDate::from_ymd_res(2023, 4, 9)?, "Lieldienas"),
-      (NaiveDate::from_ymd_res(2023, 4, 10)?, "Otrās Lieldienas"),
-      (NaiveDate::from_ymd_res(2023, 5, 1)?, "Darba svētki"),
-      (NaiveDate::from_ymd_res(2023, 5, 4)?, "Latvijas Republikas Neatkarības atjaunošanas diena"),
-      (NaiveDate::from_ymd_res(2023, 5, 14)?, "Mātes diena"),
-      (NaiveDate::from_ymd_res(2023, 6, 23)?, "Līgo diena"),
-      (NaiveDate::from_ymd_res(2023, 6, 24)?, "Jāņu diena"),
-      (NaiveDate::from_ymd_res(2023, 11, 18)?, "Latvijas Republikas proklamēšanas diena"),
-      (NaiveDate::from_ymd_res(2023, 11, 20)?, "Latvijas Republikas proklamēšanas diena (brīvdiena)"),
-      (NaiveDate::from_ymd_res(2023, 12, 24)?, "Ziemassvētku vakars"),
-      (NaiveDate::from_ymd_res(2023, 12, 25)?, "Ziemassvētki"),
-      (NaiveDate::from_ymd_res(2023, 12, 26)?, "Otrie Ziemassvētki"),
-      (NaiveDate::from_ymd_res(2023, 12, 31)?, "Vecgada vakars"),
-      (NaiveDate::from_ymd_res(2023, 5, 29)?, "Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada Pasaules hokeja čempionātā"),
-      (NaiveDate::from_ymd_res(2023, 7, 10)?, "Vispārējo latviešu Dziesmu un deju svētku noslēguma dienu"),
-    ],
-    &mut map,
-    Country::LV,
-    "Latvia",
-  );
+        years,
+        2023,
+        [
+            (NaiveDate::from_ymd_res(2023, 1, 1)?, "Jaunais Gads"),
+            (NaiveDate::from_ymd_res(2023, 4, 7)?, "Lielā Piektdiena"),
+            (NaiveDate::from_ymd_res(2023, 4, 9)?, "Lieldienas"),
+            (NaiveDate::from_ymd_res(2023, 4, 10)?, "Otrās Lieldienas"),
+            (NaiveDate::from_ymd_res(2023, 5, 1)?, "Darba svētki"),
+            (NaiveDate::from_ymd_res(2023, 5, 4)?, "Latvijas Republikas Neatkarības atjaunošanas diena"),
+            (NaiveDate::from_ymd_res(2023, 5, 14)?, "Mātes diena"),
+            (NaiveDate::from_ymd_res(2023, 6, 23)?, "Līgo diena"),
+            (NaiveDate::from_ymd_res(2023, 6, 24)?, "Jāņu diena"),
+            (NaiveDate::from_ymd_res(2023, 11, 18)?, "Latvijas Republikas proklamēšanas diena"),
+            (NaiveDate::from_ymd_res(2023, 11, 20)?, "Latvijas Republikas proklamēšanas diena (brīvdiena)"),
+            (NaiveDate::from_ymd_res(2023, 12, 24)?, "Ziemassvētku vakars"),
+            (NaiveDate::from_ymd_res(2023, 12, 25)?, "Ziemassvētki"),
+            (NaiveDate::from_ymd_res(2023, 12, 26)?, "Otrie Ziemassvētki"),
+            (NaiveDate::from_ymd_res(2023, 12, 31)?, "Vecgada vakars"),
+            (NaiveDate::from_ymd_res(2023, 5, 29)?, "Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada Pasaules hokeja čempionātā"),
+            (NaiveDate::from_ymd_res(2023, 7, 10)?, "Vispārējo latviešu Dziesmu un deju svētku noslēguma dienu"),
+        ],
+        &mut map,
+        COUNTY_CODE,
+        COUNTY_NAME,
+    );
 
     build_year(
         years,
         2024,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2024, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2024, 3, 29)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2024, 3, 31)?, "Lieldienas"),
@@ -832,14 +838,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2024, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2025,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2025, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2025, 4, 18)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2025, 4, 20)?, "Lieldienas"),
@@ -869,14 +875,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2025, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2026,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2026, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2026, 4, 3)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2026, 4, 5)?, "Lieldienas"),
@@ -902,14 +908,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2026, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2027,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2027, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2027, 3, 26)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2027, 3, 28)?, "Lieldienas"),
@@ -935,14 +941,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2027, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2028,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2028, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2028, 4, 14)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2028, 4, 16)?, "Lieldienas"),
@@ -972,14 +978,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2028, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2029,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2029, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2029, 3, 30)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2029, 4, 1)?, "Lieldienas"),
@@ -1009,14 +1015,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2029, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2030,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2030, 1, 1)?, "Jaunais Gads"),
             (NaiveDate::from_ymd_res(2030, 4, 19)?, "Lielā Piektdiena"),
             (NaiveDate::from_ymd_res(2030, 4, 21)?, "Lieldienas"),
@@ -1046,8 +1052,8 @@ pub fn build(
             (NaiveDate::from_ymd_res(2030, 12, 31)?, "Vecgada vakars"),
         ],
         &mut map,
-        Country::LV,
-        "Latvia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     Ok(map)

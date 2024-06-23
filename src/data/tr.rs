@@ -1,17 +1,24 @@
 //! Turkey
+#[allow(clippy::wildcard_imports)]
 use super::*;
 
+const COUNTY_NAME: &str = "Turkey";
+const COUNTY_CODE: Country = Country::TR;
+
 /// Generate holiday map for Turkey.
-#[allow(unused_mut, unused_variables)]
-pub fn build(
-    years: &Option<&std::ops::Range<Year>>,
-) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+#[allow(
+    unused_mut,
+    unused_variables,
+    clippy::too_many_lines,
+    clippy::missing_errors_doc
+)]
+pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HolidayPerCountryMap> {
     let mut map = HashMap::new();
 
     build_year(
         years,
         2000,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2000, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2000, 4, 23)?,
@@ -35,14 +42,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2000, 3, 19)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2001,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2001, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2001, 4, 23)?,
@@ -63,14 +70,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2001, 3, 8)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2002,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2002, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2002, 4, 23)?,
@@ -91,14 +98,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2002, 2, 25)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2003,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2003, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2003, 4, 23)?,
@@ -119,14 +126,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2003, 2, 14)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2004,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2004, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2004, 4, 23)?,
@@ -147,14 +154,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2004, 2, 4)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2005,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2005, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2005, 4, 23)?,
@@ -175,14 +182,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2005, 1, 23)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2006,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2006, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2006, 4, 23)?,
@@ -204,14 +211,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2006, 1, 13)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2007,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2007, 1, 1)?,
                 "Kurban Bayramı; Yılbaşı",
@@ -237,14 +244,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2007, 12, 23)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2008,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2008, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2008, 4, 23)?,
@@ -265,14 +272,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2008, 12, 11)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2009,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2009, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2009, 4, 23)?,
@@ -297,14 +304,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2009, 11, 30)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2010,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2010, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2010, 4, 23)?,
@@ -329,14 +336,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2010, 11, 19)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2011,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2011, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2011, 4, 23)?,
@@ -363,14 +370,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2011, 11, 9)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2012,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2012, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2012, 4, 23)?,
@@ -395,14 +402,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2012, 10, 28)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2013,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2013, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2013, 4, 23)?,
@@ -427,14 +434,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2013, 10, 18)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2014,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2014, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2014, 4, 23)?,
@@ -459,14 +466,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2014, 10, 7)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2015,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2015, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2015, 4, 23)?,
@@ -491,14 +498,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2015, 9, 27)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2016,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2016, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2016, 4, 23)?,
@@ -523,14 +530,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2016, 9, 15)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2017,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2017, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2017, 4, 23)?,
@@ -559,14 +566,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2017, 9, 4)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2018,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2018, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2018, 4, 23)?,
@@ -595,14 +602,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2018, 8, 24)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2019,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2019, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2019, 4, 23)?,
@@ -631,14 +638,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2019, 8, 14)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2020,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2020, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2020, 4, 23)?,
@@ -667,14 +674,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2020, 8, 3)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2021,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2021, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2021, 4, 23)?,
@@ -703,14 +710,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2021, 7, 23)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2022,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2022, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2022, 4, 23)?,
@@ -739,14 +746,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2022, 7, 12)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2023,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2023, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2023, 4, 23)?,
@@ -774,14 +781,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2023, 7, 1)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2024,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2024, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2024, 4, 23)?,
@@ -810,14 +817,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2024, 6, 19)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2025,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2025, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2025, 4, 23)?,
@@ -846,14 +853,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2025, 6, 9)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2026,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2026, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2026, 4, 23)?,
@@ -882,14 +889,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2026, 5, 30)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2027,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2027, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2027, 4, 23)?,
@@ -917,14 +924,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2027, 5, 18)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2028,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2028, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2028, 4, 23)?,
@@ -953,14 +960,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2028, 5, 8)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2029,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2029, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2029, 4, 23)?,
@@ -989,14 +996,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2029, 4, 27)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2030,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2030, 1, 1)?, "Yılbaşı"),
             (
                 NaiveDate::from_ymd_res(2030, 4, 23)?,
@@ -1025,8 +1032,8 @@ pub fn build(
             (NaiveDate::from_ymd_res(2030, 4, 16)?, "Kurban Bayramı"),
         ],
         &mut map,
-        Country::TR,
-        "Turkey",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     Ok(map)

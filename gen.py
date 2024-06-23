@@ -7,6 +7,8 @@ from jinja2 import Environment
 class Country:
     code: str
     name: str
+    subdivision_code: str = None
+    subdivision_name: str = None
 
 
 countries = [
@@ -45,6 +47,23 @@ countries = [
     Country("FR", "France"),
     Country("GE", "Georgia"),
     Country("DE", "Germany"),
+    Country("DE", "Germany", "BB", "Brandenburg"),
+    Country("DE", "Germany", "BE", "Berlin"),
+    Country("DE", "Germany", "BW", "Baden-Württemberg"),
+    Country("DE", "Germany", "BY", "Bavaria (Bayern)"),
+    Country("DE", "Germany", "BYP", "Bavaria (Bayern) with more protestants"),
+    Country("DE", "Germany", "HB", "Bremen"),
+    Country("DE", "Germany", "HE", "Hesse (Hessen)"),
+    Country("DE", "Germany", "HH", "Hamburg"),
+    Country("DE", "Germany", "MV", "Mecklenburg-Vorpommern"),
+    Country("DE", "Germany", "NI", "Lower Saxony (Niedersachsen)"),
+    Country("DE", "Germany", "NW", "North Rhine-Westphalia (Nordrhein-Westfalen)"),
+    Country("DE", "Germany", "RP", "Rhineland-Palatinate (Rheinland-Pfalz)"),
+    Country("DE", "Germany", "SH", "Schleswig-Holstein"),
+    Country("DE", "Germany", "SL", "Saarland"),
+    Country("DE", "Germany", "SN", "Saxony (Sachsen)"),
+    Country("DE", "Germany", "ST", "Saxony-Anhalt (Sachsen-Anhalt)"),
+    Country("DE", "Germany", "TH", "Thuringia (Thüringen)"),
     Country("GR", "Greece"),
     Country("HN", "Honduras"),
     Country("HK", "Hong Kong"),
@@ -105,6 +124,63 @@ countries = [
     Country("AE", "United Arab Emirates"),
     Country("GB", "United Kingdom"),
     Country("US", "United States"),
+    Country("US", "United States", "AK", "Alaska"),
+    Country("US", "United States", "AL", "Alabama"),
+    Country("US", "United States", "AR", "Arkansas"),
+    Country("US", "United States", "AS", "American Samoa"),
+    Country("US", "United States", "AZ", "Arizona"),
+    Country("US", "United States", "CA", "California"),
+    Country("US", "United States", "CO", "Colorado"),
+    Country("US", "United States", "CT", "Connecticut"),
+    Country("US", "United States", "DC", "District of Columbia"),
+    Country("US", "United States", "DE", "Delaware"),
+    Country("US", "United States", "FL", "Florida"),
+    Country("US", "United States", "GA", "Georgia"),
+    Country("US", "United States", "GU", "Guam"),
+    Country("US", "United States", "HI", "Hawaii"),
+    Country("US", "United States", "IA", "Iowa"),
+    Country("US", "United States", "ID", "Idaho"),
+    Country("US", "United States", "IL", "Illinois"),
+    Country("US", "United States", "IN", "Indiana"),
+    Country("US", "United States", "KS", "Kansas"),
+    Country("US", "United States", "KY", "Kentucky"),
+    Country("US", "United States", "LA", "Louisiana"),
+    Country("US", "United States", "MA", "Massachusetts"),
+    Country("US", "United States", "MD", "Maryland"),
+    Country("US", "United States", "ME", "Maine"),
+    Country("US", "United States", "MI", "Michigan"),
+    Country("US", "United States", "MN", "Minnesota"),
+    Country("US", "United States", "MO", "Missouri"),
+    Country("US", "United States", "MP", "Northern Mariana Islands"),
+    Country("US", "United States", "MS", "Mississippi"),
+    Country("US", "United States", "MT", "Montana"),
+    Country("US", "United States", "NC", "North Carolina"),
+    Country("US", "United States", "ND", "North Dakota"),
+    Country("US", "United States", "NE", "Nebraska"),
+    Country("US", "United States", "NH", "New Hampshire"),
+    Country("US", "United States", "NJ", "New Jersey"),
+    Country("US", "United States", "NM", "New Mexico"),
+    Country("US", "United States", "NV", "Nevada"),
+    Country("US", "United States", "NY", "New York"),
+    Country("US", "United States", "OH", "Ohio"),
+    Country("US", "United States", "OK", "Oklahoma"),
+    Country("US", "United States", "OR", "Oregon"),
+    Country("US", "United States", "PA", "Pennsylvania"),
+    Country("US", "United States", "PR", "Puerto Rico"),
+    Country("US", "United States", "RI", "Rhode Island"),
+    Country("US", "United States", "SC", "South Carolina"),
+    Country("US", "United States", "SD", "South Dakota"),
+    Country("US", "United States", "TN", "Tennessee"),
+    Country("US", "United States", "TX", "Texas"),
+    Country("US", "United States", "UM", "United States Minor Outlying Islands"),
+    Country("US", "United States", "UT", "Utah"),
+    Country("US", "United States", "VA", "Virginia"),
+    Country("US", "United States", "VI", "Virgin Islands, U.S.."),
+    Country("US", "United States", "VT", "Vermont"),
+    Country("US", "United States", "WA", "Washington"),
+    Country("US", "United States", "WI", "Wisconsin"),
+    Country("US", "United States", "WV", "West Virginia"),
+    Country("US", "United States", "WY", "Wyoming"),
     Country("UY", "Uruguay"),
     Country("UZ", "Uzbekistan"),
     Country("VE", "Venezuela"),
@@ -120,12 +196,13 @@ use crate::Error;
 
 /// Two-letter country codes defined in ISO 3166-1 alpha-2 .
 #[allow(dead_code)]
+#[allow(non_camel_case_types)]
 #[derive(Debug, Clone, Copy, Eq, PartialEq, Hash, PartialOrd, Ord)]
 pub enum Country {
 {%- for country in countries %}
-  #[cfg(feature = "{{country.code}}")]
-  /// {{country.name}}
-  {{country.code}},
+    #[cfg(feature = "{{country.code}}")]
+    /// {{country|display_name}}
+    {{country|enum_name}},
 {%- endfor %}
 }
 
@@ -136,28 +213,30 @@ impl std::fmt::Display for Country {
 }
 
 impl AsRef<str> for Country {
-  fn as_ref(&self) -> &str {
-    match self {
+    #[allow(clippy::too_many_lines)]
+    fn as_ref(&self) -> &str {
+        match self {
 {%- for country in countries %}
-      #[cfg(feature = "{{country.code}}")]
-      Country::{{country.code}} => "{{country.code}}",
+            #[cfg(feature = "{{country.code}}")]
+            Country::{{country|enum_name}} => "{{country|enum_name}}",
 {%- endfor %}
+        }
     }
-  }
 }
 
 impl std::str::FromStr for Country {
-  type Err = Error;
+    type Err = Error;
 
-  fn from_str(s: &str) -> std::result::Result<Self, Self::Err> {
-    Ok(match s {
+    #[allow(clippy::too_many_lines)]
+    fn from_str(s: &str) -> std::result::Result<Self, Self::Err> {
+        Ok(match s {
 {%- for country in countries %}
-      #[cfg(feature = "{{country.code}}")]
-      "{{country.code}}" => Country::{{country.code}}, 
+            #[cfg(feature = "{{country.code}}")]
+            "{{country|enum_name}}" => Country::{{country|enum_name}},
 {%- endfor %}
-      _ => return Err(Error::CountryNotAvailable),
-    })
-  }
+            _ => return Err(Error::CountryNotAvailable),
+        })
+    }
 }
 
 """
@@ -165,18 +244,28 @@ impl std::str::FromStr for Country {
 build = """
 use std::collections::HashSet;
 
-use crate::{data::*, prelude::*, HolidayMap, Result, Year};
+use crate::{data, prelude::*, HolidayMap, Result, Year};
+
+fn should_build(countries: Option<&HashSet<Country>>, country: Country) -> bool {
+    match countries {
+        Some(c) => c.contains(&country),
+        None => true,
+    }
+}
 
 /// Generate holiday map for the specified countries and years.
+#[allow(clippy::too_many_lines)]
 pub fn build(countries: Option<&HashSet<Country>>, years: Option<&std::ops::Range<Year>>) -> Result<HolidayMap> {
-  let mut map = HolidayMap::new();
+    let mut map = HolidayMap::new();
+
 {% for country in countries %}
-  #[cfg(feature = "{{country.code}}")]
-  if countries.is_none() || countries.unwrap().contains(&Country::{{country.code}}) {
-      map.insert(Country::{{country.code}}, {{country.code|escape}}::build(&years)?);
-  }
+    #[cfg(feature = "{{country.code}}")]
+    if should_build(countries, Country::{{country|enum_name}}) {
+        map.insert(Country::{{country|enum_name}}, data::{{country|mod_name|escape}}::build(years)?);
+    }
 {% endfor %}
-  Ok(map)
+
+    Ok(map)
 }
 
 """
@@ -184,53 +273,68 @@ pub fn build(countries: Option<&HashSet<Country>>, years: Option<&std::ops::Rang
 country_mod = """
 mod helper;
 
-use crate::{prelude::*, Holiday, NaiveDateExt, Result, Year};
-use helper::build_year;
+use crate::{prelude::*, HolidayPerCountryMap, NaiveDateExt, Result, Year};
+use helper::{build_subdivision_year, build_year};
 
 use chrono::NaiveDate;
-use std::collections::BTreeMap;
 use std::collections::HashMap;
 
 {% for country in countries %}
 #[cfg(feature = "{{country.code}}")]
-pub mod {{country.code|escape}};
+pub mod {{country|mod_name|escape}};
 {% endfor %}
 """
 
 build_country = """
-//! {{country}}
+//! {{country|display_name}}
+#[allow(clippy::wildcard_imports)]
 use super::*;
 
-/// Generate holiday map for {{country}}.
-#[allow(unused_mut, unused_variables)]
-pub fn build(years: &Option<&std::ops::Range<Year>>) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
-  let mut map = HashMap::new();
+const COUNTY_NAME: &str = "{{country|display_name}}";
+const COUNTY_CODE: Country = Country::{{country|enum_name}};
+
+/// Generate holiday map for {{country|display_name}}.
+#[allow(unused_mut, unused_variables, clippy::too_many_lines, clippy::missing_errors_doc)]
+pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HolidayPerCountryMap> {
+    let mut map = HashMap::new();
+{% if country.subdivision_code != None %}
+    let mut national_holidays = de::build(years)?;
+{%- endif %}
 
 {%- for year in years %}
-{% if holiday(years=year) %}
-  build_year(
-    years,
-    {{year}},
-    vec![
-{% for date, name in holiday(years=year).items() %}
-      (NaiveDate::from_ymd_res({{date|year}}, {{date|month}}, {{date|day}})?, "{{name}}"),
+{% if holiday(years=year, subdiv=country.subdivision_code) %}
+
+{%- if country.subdivision_code != None %}
+    build_subdivision_year(
+        years,
+        {{year}},
+        &mut national_holidays,
+{%- else %}
+    build_year(
+        years,
+        {{year}},
+{%- endif %}
+        [
+{%- for date, name in holiday(years=year, subdiv=country.subdivision_code).items() %}
+{%- if country.subdivision_code == None or date not in holiday(years=year) %}
+            (NaiveDate::from_ymd_res({{date|year}}, {{date|month}}, {{date|day}})?, "{{name}}"),
+{%- endif %}
 {%- endfor %}
-    ],
-    &mut map,
-    Country::{{code}},
-    "{{country}}",
-  );
+        ],
+        &mut map,
+        COUNTY_CODE,
+        COUNTY_NAME,
+    );
 {%- endif %}
 {%- endfor  %}
 
-  Ok(map)
+    Ok(map)
 }
 """
 
 
 def lower(code: str) -> str:
     return code.lower()
-
 
 def escape(code: str) -> str:
     rust_keywords = ["as", "in", "do"]
@@ -240,10 +344,20 @@ def escape(code: str) -> str:
     else:
         return lower
 
+def enum_name(country: Country) -> str:
+    if country.subdivision_code == None:
+        return country.code
+    else:
+        return country.code + "_" + country.subdivision_code
 
-def empty_holiday(**kwargs):
-    return {}
+def mod_name(country: Country) -> str:
+    return enum_name(country).lower()
 
+def display_name(country: Country) -> str:
+    if country.subdivision_name == None:
+        return country.name
+    else:
+        return country.name + " (" + country.subdivision_name + ")"
 
 if __name__ == "__main__":
     env = Environment()
@@ -251,7 +365,10 @@ if __name__ == "__main__":
     env.filters["month"] = lambda d: d.month
     env.filters["day"] = lambda d: d.day
     env.filters["escape"] = escape
-    env.filters["lower"] = lower
+    env.filters["enum_name"] = enum_name
+    env.filters["mod_name"] = mod_name
+    env.filters["display_name"] = display_name
+
     with open("src/country.rs", "w") as f:
         rendered = env.from_string(country).render(countries=countries)
         f.write(rendered)
@@ -263,13 +380,13 @@ if __name__ == "__main__":
     with open("src/data/mod.rs", "w") as f:
         rendered = env.from_string(country_mod).render(countries=countries)
         f.write(rendered)
-        
+
     for country in countries:
-        with open("src/data/{}.rs".format(country.code.lower()), "w") as f:
-            holiday = getattr(holidays, country.code, None)
+        with open("src/data/{}.rs".format(mod_name(country)), "w") as f:
+            # Could use `getattr(holidays, country.code, {}).subdivisions` but this only has the codes and not the names.
+            holiday = getattr(holidays, country.code, {})
             rendered = env.from_string(build_country).render(
-                    code=country.code,
-                    country=country.name,
+                    country=country,
                     years=years,
-                    holiday=holiday or empty_holiday)
+                    holiday=holiday)
             f.write(rendered)
