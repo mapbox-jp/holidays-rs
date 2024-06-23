@@ -2,6 +2,9 @@
 #[allow(clippy::wildcard_imports)]
 use super::*;
 
+const COUNTY_NAME: &str = "Saudi Arabia";
+const COUNTY_CODE: Country = Country::SA;
+
 /// Generate holiday map for Saudi Arabia.
 #[allow(
     unused_mut,
@@ -9,15 +12,13 @@ use super::*;
     clippy::too_many_lines,
     clippy::missing_errors_doc
 )]
-pub fn build(
-    years: Option<&std::ops::Range<Year>>,
-) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HolidayPerCountryMap> {
     let mut map = HashMap::new();
 
     build_year(
         years,
         2000,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2000, 1, 8)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -77,14 +78,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2001,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2001, 12, 16)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -120,14 +121,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2002,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2002, 12, 5)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -175,14 +176,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2003,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2003, 11, 25)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -226,14 +227,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2004,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2004, 11, 14)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -265,14 +266,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2005,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2005, 11, 3)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -325,14 +326,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2006,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2006, 10, 23)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -378,14 +379,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2006, 9, 23)?, "اليوم الوطني"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2007,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2007, 10, 13)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -434,14 +435,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2007, 9, 23)?, "اليوم الوطني"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2008,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2008, 10, 1)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -482,14 +483,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2008, 9, 23)?, "اليوم الوطني"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2009,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2009, 9, 20)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -529,14 +530,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2010,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2010, 9, 10)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -581,14 +582,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2011,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2011, 8, 30)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -633,14 +634,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2012,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2012, 8, 19)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -681,14 +682,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2012, 9, 23)?, "اليوم الوطني"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2013,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2013, 8, 8)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -729,14 +730,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2013, 9, 23)?, "اليوم الوطني"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2014,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2014, 7, 28)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -777,14 +778,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2014, 9, 23)?, "اليوم الوطني"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2015,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2015, 7, 17)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -828,14 +829,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2016,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2016, 7, 6)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -884,14 +885,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2017,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2017, 6, 25)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -936,14 +937,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2018,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2018, 6, 15)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -984,14 +985,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2018, 9, 23)?, "اليوم الوطني"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2019,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2019, 6, 4)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -1032,14 +1033,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2019, 9, 23)?, "اليوم الوطني"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2020,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2020, 5, 24)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -1080,14 +1081,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2020, 9, 23)?, "اليوم الوطني"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2021,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2021, 5, 13)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -1128,14 +1129,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2021, 9, 23)?, "اليوم الوطني"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2022,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2022, 5, 2)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -1182,14 +1183,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2022, 11, 23)?, "يوم وطني"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2023,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2023, 4, 21)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -1239,14 +1240,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2023, 2, 22)?, "يوم التأسيسي"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2024,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2024, 4, 10)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -1292,14 +1293,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2024, 2, 22)?, "يوم التأسيسي"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2025,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2025, 3, 30)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -1345,14 +1346,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2026,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2026, 3, 20)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -1398,14 +1399,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2026, 2, 22)?, "يوم التأسيسي"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2027,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2027, 3, 9)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -1447,14 +1448,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2027, 2, 22)?, "يوم التأسيسي"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2028,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2028, 2, 26)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -1504,14 +1505,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2028, 2, 22)?, "يوم التأسيسي"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2029,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2029, 2, 14)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -1553,14 +1554,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2029, 2, 22)?, "يوم التأسيسي"),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2030,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2030, 2, 4)?,
                 "(تقدير) عطلة عيد الفطر",
@@ -1606,8 +1607,8 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::SA,
-        "Saudi Arabia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     Ok(map)

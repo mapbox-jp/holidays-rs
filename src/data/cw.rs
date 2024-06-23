@@ -2,6 +2,9 @@
 #[allow(clippy::wildcard_imports)]
 use super::*;
 
+const COUNTY_NAME: &str = "Curaçao";
+const COUNTY_CODE: Country = Country::CW;
+
 /// Generate holiday map for Curaçao.
 #[allow(
     unused_mut,
@@ -9,15 +12,13 @@ use super::*;
     clippy::too_many_lines,
     clippy::missing_errors_doc
 )]
-pub fn build(
-    years: Option<&std::ops::Range<Year>>,
-) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HolidayPerCountryMap> {
     let mut map = HashMap::new();
 
     build_year(
         years,
         2000,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2000, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2000, 3, 6)?,
@@ -46,14 +47,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2001,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2001, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2001, 2, 26)?,
@@ -82,14 +83,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2002,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2002, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2002, 2, 11)?,
@@ -118,14 +119,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2003,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2003, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2003, 3, 3)?,
@@ -154,14 +155,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2004,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2004, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2004, 2, 23)?,
@@ -190,14 +191,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2005,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2005, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2005, 2, 7)?,
@@ -226,14 +227,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2006,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2006, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2006, 2, 27)?,
@@ -262,14 +263,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2007,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2007, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2007, 2, 19)?,
@@ -295,14 +296,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2008,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2008, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2008, 2, 4)?,
@@ -333,14 +334,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2009,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2009, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2009, 2, 23)?,
@@ -369,14 +370,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2010,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2010, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2010, 2, 15)?,
@@ -403,14 +404,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2011,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2011, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2011, 3, 7)?,
@@ -440,14 +441,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2012,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2012, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2012, 2, 20)?,
@@ -474,14 +475,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2013,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2013, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2013, 2, 11)?,
@@ -511,14 +512,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2014,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2014, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2014, 3, 3)?,
@@ -548,14 +549,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2015,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2015, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2015, 2, 16)?,
@@ -582,14 +583,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2016,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2016, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2016, 2, 8)?,
@@ -619,14 +620,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2017,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2017, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2017, 2, 27)?,
@@ -656,14 +657,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2018,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2018, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2018, 2, 12)?,
@@ -690,14 +691,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2019,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2019, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2019, 3, 4)?,
@@ -727,14 +728,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2020,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2020, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2020, 2, 24)?,
@@ -764,14 +765,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2021,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2021, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2021, 2, 15)?,
@@ -798,14 +799,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2022,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2022, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2022, 2, 28)?,
@@ -835,14 +836,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2023,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2023, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2023, 2, 20)?,
@@ -869,14 +870,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2024,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2024, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2024, 2, 12)?,
@@ -906,14 +907,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2025,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2025, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2025, 3, 3)?,
@@ -943,14 +944,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2026,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2026, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2026, 2, 16)?,
@@ -977,14 +978,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2027,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2027, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2027, 2, 8)?,
@@ -1014,14 +1015,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2028,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2028, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2028, 2, 28)?,
@@ -1051,14 +1052,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2029,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2029, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2029, 2, 12)?,
@@ -1085,14 +1086,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2030,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2030, 1, 1)?, "Aña Nobo"),
             (
                 NaiveDate::from_ymd_res(2030, 3, 4)?,
@@ -1122,8 +1123,8 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::CW,
-        "Curaçao",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     Ok(map)

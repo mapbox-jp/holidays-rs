@@ -2,6 +2,9 @@
 #[allow(clippy::wildcard_imports)]
 use super::*;
 
+const COUNTY_NAME: &str = "Pakistan";
+const COUNTY_CODE: Country = Country::PK;
+
 /// Generate holiday map for Pakistan.
 #[allow(
     unused_mut,
@@ -9,15 +12,13 @@ use super::*;
     clippy::too_many_lines,
     clippy::missing_errors_doc
 )]
-pub fn build(
-    years: Option<&std::ops::Range<Year>>,
-) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HolidayPerCountryMap> {
     let mut map = HashMap::new();
 
     build_year(
         years,
         2000,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2000, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -71,14 +72,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2000, 4, 15)?, "Ashura (estimated)"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2001,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2001, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -120,14 +121,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2001, 4, 4)?, "Ashura (estimated)"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2002,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2002, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -171,14 +172,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2002, 3, 24)?, "Ashura (estimated)"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2003,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2003, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -220,14 +221,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2003, 3, 13)?, "Ashura (estimated)"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2004,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2004, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -268,14 +269,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2004, 3, 1)?, "Ashura (estimated)"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2005,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2005, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -296,14 +297,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2005, 2, 18)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2006,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2006, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -325,14 +326,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2006, 2, 8)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2007,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2007, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -355,14 +356,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2007, 1, 28)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2008,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2008, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -383,14 +384,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2008, 1, 18)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2009,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2009, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -415,14 +416,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2009, 12, 26)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2010,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2010, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -443,14 +444,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2010, 12, 16)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2011,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2011, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -473,14 +474,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2011, 12, 5)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2012,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2012, 2, 5)?,
                 "Eid Milad-un-Nabi; Kashmir Solidarity Day",
@@ -500,14 +501,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2012, 11, 23)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2013,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2013, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -528,14 +529,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2013, 11, 13)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2014,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2014, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -556,14 +557,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2014, 11, 3)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2015,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2015, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -583,14 +584,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2015, 10, 23)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2016,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2016, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -610,14 +611,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2016, 10, 11)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2017,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2017, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -637,14 +638,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2017, 9, 30)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2018,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2018, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -664,14 +665,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2018, 9, 21)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2019,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2019, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -693,14 +694,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2019, 9, 9)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2020,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2020, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -720,14 +721,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2020, 8, 29)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2021,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2021, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -747,14 +748,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2021, 8, 18)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2022,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2022, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -775,14 +776,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2022, 8, 9)?, "Ashura"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2023,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2023, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -806,14 +807,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2023, 7, 28)?, "Ashura (estimated)"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2024,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2024, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -846,14 +847,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2024, 7, 16)?, "Ashura (estimated)"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2025,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2025, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -895,14 +896,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2025, 7, 5)?, "Ashura (estimated)"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2026,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2026, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -944,14 +945,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2026, 6, 25)?, "Ashura (estimated)"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2027,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2027, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -992,14 +993,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2027, 6, 15)?, "Ashura (estimated)"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2028,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2028, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -1041,14 +1042,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2028, 6, 3)?, "Ashura (estimated)"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2029,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2029, 2, 5)?,
                 "Kashmir Solidarity Day",
@@ -1090,14 +1091,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2029, 5, 23)?, "Ashura (estimated)"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2030,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2030, 2, 5)?,
                 "Eid-ul-Fitr (estimated); Kashmir Solidarity Day",
@@ -1135,8 +1136,8 @@ pub fn build(
             (NaiveDate::from_ymd_res(2030, 5, 12)?, "Ashura (estimated)"),
         ],
         &mut map,
-        Country::PK,
-        "Pakistan",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     Ok(map)

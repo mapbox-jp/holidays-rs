@@ -2,6 +2,9 @@
 #[allow(clippy::wildcard_imports)]
 use super::*;
 
+const COUNTY_NAME: &str = "Indonesia";
+const COUNTY_CODE: Country = Country::ID;
+
 /// Generate holiday map for Indonesia.
 #[allow(
     unused_mut,
@@ -9,15 +12,13 @@ use super::*;
     clippy::too_many_lines,
     clippy::missing_errors_doc
 )]
-pub fn build(
-    years: Option<&std::ops::Range<Year>>,
-) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HolidayPerCountryMap> {
     let mut map = HashMap::new();
 
     build_year(
         years,
         2000,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2000, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2000, 4, 21)?, "Wafat Yesus Kristus"),
             (
@@ -67,14 +68,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2001,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2001, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2001, 4, 13)?, "Wafat Yesus Kristus"),
             (
@@ -110,14 +111,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2002,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2002, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2002, 3, 29)?, "Wafat Yesus Kristus"),
             (
@@ -150,14 +151,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2003,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2003, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2003, 2, 1)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2003, 4, 18)?, "Wafat Yesus Kristus"),
@@ -194,14 +195,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2004,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2004, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2004, 1, 22)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2004, 4, 9)?, "Wafat Yesus Kristus"),
@@ -238,14 +239,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2005,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2005, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2005, 2, 9)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2005, 3, 25)?, "Wafat Yesus Kristus"),
@@ -279,14 +280,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2006,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2006, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2006, 1, 30)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2006, 4, 14)?, "Wafat Yesus Kristus"),
@@ -324,14 +325,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2007,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2007, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2007, 2, 19)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2007, 4, 6)?, "Wafat Yesus Kristus"),
@@ -365,14 +366,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2008,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2008, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2008, 2, 7)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2008, 3, 21)?, "Wafat Yesus Kristus"),
@@ -404,14 +405,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2009,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2009, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2009, 1, 26)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2009, 3, 26)?, "Hari Suci Nyepi"),
@@ -440,14 +441,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2010,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2010, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2010, 2, 15)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2010, 3, 16)?, "Hari Suci Nyepi"),
@@ -479,14 +480,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2011,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2011, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2011, 2, 3)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2011, 3, 5)?, "Hari Suci Nyepi"),
@@ -518,14 +519,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2012,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2012, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2012, 1, 23)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2012, 3, 23)?, "Hari Suci Nyepi"),
@@ -554,14 +555,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2013,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2013, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2013, 2, 11)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2013, 3, 12)?, "Hari Suci Nyepi"),
@@ -593,14 +594,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2014,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2014, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2014, 1, 31)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2014, 3, 31)?, "Hari Suci Nyepi"),
@@ -636,14 +637,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2015,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2015, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2015, 2, 19)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2015, 3, 21)?, "Hari Suci Nyepi"),
@@ -680,14 +681,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2016,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2016, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2016, 2, 8)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2016, 3, 9)?, "Hari Suci Nyepi"),
@@ -724,14 +725,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2017,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2017, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2017, 1, 28)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2017, 3, 28)?, "Hari Suci Nyepi"),
@@ -768,14 +769,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2018,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2018, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2018, 2, 16)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2018, 3, 17)?, "Hari Suci Nyepi"),
@@ -813,14 +814,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2018, 6, 27)?, "Hari Pemilihan"),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2019,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2019, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2019, 2, 5)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2019, 3, 7)?, "Hari Suci Nyepi"),
@@ -858,14 +859,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2019, 4, 17)?, "Hari Pemilihan"),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2020,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2020, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2020, 1, 25)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2020, 3, 25)?, "Hari Suci Nyepi"),
@@ -903,14 +904,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2020, 12, 9)?, "Hari Pemilihan"),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2021,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2021, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2021, 2, 12)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2021, 3, 14)?, "Hari Suci Nyepi"),
@@ -946,14 +947,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2022,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2022, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2022, 2, 1)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2022, 3, 3)?, "Hari Suci Nyepi"),
@@ -990,14 +991,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2023,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2023, 1, 1)?, "Tahun Baru Masehi"),
             (NaiveDate::from_ymd_res(2023, 1, 22)?, "Tahun Baru Imlek"),
             (NaiveDate::from_ymd_res(2023, 3, 22)?, "Hari Suci Nyepi"),
@@ -1034,14 +1035,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2024,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2024, 1, 1)?, "Tahun Baru Masehi"),
             (
                 NaiveDate::from_ymd_res(2024, 2, 10)?,
@@ -1090,14 +1091,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2025,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2025, 1, 1)?, "Tahun Baru Masehi"),
             (
                 NaiveDate::from_ymd_res(2025, 1, 29)?,
@@ -1149,14 +1150,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2026,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2026, 1, 1)?, "Tahun Baru Masehi"),
             (
                 NaiveDate::from_ymd_res(2026, 2, 17)?,
@@ -1208,14 +1209,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2027,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2027, 1, 1)?, "Tahun Baru Masehi"),
             (
                 NaiveDate::from_ymd_res(2027, 2, 6)?,
@@ -1269,14 +1270,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2028,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2028, 1, 1)?, "Tahun Baru Masehi"),
             (
                 NaiveDate::from_ymd_res(2028, 1, 26)?,
@@ -1323,14 +1324,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2029,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2029, 1, 1)?, "Tahun Baru Masehi"),
             (
                 NaiveDate::from_ymd_res(2029, 2, 13)?,
@@ -1381,14 +1382,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2030,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2030, 1, 1)?, "Tahun Baru Masehi"),
             (
                 NaiveDate::from_ymd_res(2030, 2, 3)?,
@@ -1439,8 +1440,8 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::ID,
-        "Indonesia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     Ok(map)

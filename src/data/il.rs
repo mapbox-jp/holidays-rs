@@ -2,6 +2,9 @@
 #[allow(clippy::wildcard_imports)]
 use super::*;
 
+const COUNTY_NAME: &str = "Israel";
+const COUNTY_CODE: Country = Country::IL;
+
 /// Generate holiday map for Israel.
 #[allow(
     unused_mut,
@@ -9,15 +12,13 @@ use super::*;
     clippy::too_many_lines,
     clippy::missing_errors_doc
 )]
-pub fn build(
-    years: Option<&std::ops::Range<Year>>,
-) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HolidayPerCountryMap> {
     let mut map = HashMap::new();
 
     build_year(
         years,
         2000,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2000, 9, 30)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2000, 10, 1)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2000, 10, 9)?, "יום כיפור"),
@@ -32,14 +33,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2000, 6, 9)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2001,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2001, 9, 18)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2001, 9, 19)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2001, 9, 27)?, "יום כיפור"),
@@ -54,14 +55,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2001, 5, 28)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2002,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2002, 9, 7)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2002, 9, 8)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2002, 9, 16)?, "יום כיפור"),
@@ -76,14 +77,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2002, 5, 17)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2003,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2003, 9, 27)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2003, 9, 28)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2003, 10, 6)?, "יום כיפור"),
@@ -98,14 +99,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2003, 6, 6)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2004,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2004, 9, 16)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2004, 9, 17)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2004, 9, 25)?, "יום כיפור"),
@@ -120,14 +121,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2004, 5, 26)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2005,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2005, 10, 4)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2005, 10, 5)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2005, 10, 13)?, "יום כיפור"),
@@ -142,14 +143,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2005, 6, 13)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2006,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2006, 9, 23)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2006, 9, 24)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2006, 10, 2)?, "יום כיפור"),
@@ -164,14 +165,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2006, 6, 2)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2007,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2007, 9, 13)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2007, 9, 14)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2007, 9, 22)?, "יום כיפור"),
@@ -186,14 +187,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2007, 5, 23)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2008,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2008, 9, 30)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2008, 10, 1)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2008, 10, 9)?, "יום כיפור"),
@@ -208,14 +209,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2008, 6, 9)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2009,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2009, 9, 19)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2009, 9, 20)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2009, 9, 28)?, "יום כיפור"),
@@ -230,14 +231,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2009, 5, 29)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2010,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2010, 9, 9)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2010, 9, 10)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2010, 9, 18)?, "יום כיפור"),
@@ -252,14 +253,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2010, 5, 19)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2011,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2011, 9, 29)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2011, 9, 30)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2011, 10, 8)?, "יום כיפור"),
@@ -274,14 +275,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2011, 6, 8)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2012,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2012, 9, 17)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2012, 9, 18)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2012, 9, 26)?, "יום כיפור"),
@@ -296,14 +297,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2012, 5, 27)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2013,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2013, 9, 5)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2013, 9, 6)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2013, 9, 14)?, "יום כיפור"),
@@ -318,14 +319,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2013, 5, 15)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2014,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2014, 9, 25)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2014, 9, 26)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2014, 10, 4)?, "יום כיפור"),
@@ -340,14 +341,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2014, 6, 4)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2015,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2015, 9, 14)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2015, 9, 15)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2015, 9, 23)?, "יום כיפור"),
@@ -362,14 +363,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2015, 5, 24)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2016,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2016, 10, 3)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2016, 10, 4)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2016, 10, 12)?, "יום כיפור"),
@@ -384,14 +385,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2016, 6, 12)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2017,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2017, 9, 21)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2017, 9, 22)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2017, 9, 30)?, "יום כיפור"),
@@ -406,14 +407,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2017, 5, 31)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2018,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2018, 9, 10)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2018, 9, 11)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2018, 9, 19)?, "יום כיפור"),
@@ -428,14 +429,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2018, 5, 20)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2019,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2019, 9, 30)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2019, 10, 1)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2019, 10, 9)?, "יום כיפור"),
@@ -450,14 +451,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2019, 6, 9)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2020,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2020, 9, 19)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2020, 9, 20)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2020, 9, 28)?, "יום כיפור"),
@@ -472,14 +473,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2020, 5, 29)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2021,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2021, 9, 7)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2021, 9, 8)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2021, 9, 16)?, "יום כיפור"),
@@ -494,14 +495,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2021, 5, 17)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2022,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2022, 9, 26)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2022, 9, 27)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2022, 10, 5)?, "יום כיפור"),
@@ -516,14 +517,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2022, 6, 5)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2023,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2023, 9, 16)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2023, 9, 17)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2023, 9, 25)?, "יום כיפור"),
@@ -538,14 +539,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2023, 5, 26)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2024,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2024, 10, 3)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2024, 10, 4)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2024, 10, 12)?, "יום כיפור"),
@@ -560,14 +561,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2024, 6, 12)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2025,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2025, 9, 23)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2025, 9, 24)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2025, 10, 2)?, "יום כיפור"),
@@ -582,14 +583,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2025, 6, 2)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2026,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2026, 9, 12)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2026, 9, 13)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2026, 9, 21)?, "יום כיפור"),
@@ -604,14 +605,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2026, 5, 22)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2027,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2027, 10, 2)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2027, 10, 3)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2027, 10, 11)?, "יום כיפור"),
@@ -626,14 +627,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2027, 6, 11)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2028,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2028, 9, 21)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2028, 9, 22)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2028, 9, 30)?, "יום כיפור"),
@@ -648,14 +649,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2028, 5, 31)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2029,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2029, 9, 10)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2029, 9, 11)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2029, 9, 19)?, "יום כיפור"),
@@ -670,14 +671,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2029, 5, 20)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2030,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2030, 9, 28)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2030, 9, 29)?, "ראש השנה"),
             (NaiveDate::from_ymd_res(2030, 10, 7)?, "יום כיפור"),
@@ -692,8 +693,8 @@ pub fn build(
             (NaiveDate::from_ymd_res(2030, 6, 7)?, "שבועות"),
         ],
         &mut map,
-        Country::IL,
-        "Israel",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     Ok(map)

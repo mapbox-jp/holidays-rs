@@ -2,6 +2,9 @@
 #[allow(clippy::wildcard_imports)]
 use super::*;
 
+const COUNTY_NAME: &str = "Bosnia and Herzegovina";
+const COUNTY_CODE: Country = Country::BA;
+
 /// Generate holiday map for Bosnia and Herzegovina.
 #[allow(
     unused_mut,
@@ -9,15 +12,13 @@ use super::*;
     clippy::too_many_lines,
     clippy::missing_errors_doc
 )]
-pub fn build(
-    years: Option<&std::ops::Range<Year>>,
-) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HolidayPerCountryMap> {
     let mut map = HashMap::new();
 
     build_year(
         years,
         2000,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2000, 4, 28)?,
                 "Veliki petak (Pravoslavni)",
@@ -52,14 +53,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2000, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2001,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2001, 4, 13)?,
                 "Veliki petak (Pravoslavni)",
@@ -84,14 +85,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2001, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2002,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2002, 5, 3)?,
                 "Veliki petak (Pravoslavni)",
@@ -116,14 +117,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2002, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2003,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2003, 4, 25)?,
                 "Veliki petak (Pravoslavni)",
@@ -148,14 +149,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2003, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2004,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2004, 4, 9)?,
                 "Veliki petak (Pravoslavni)",
@@ -180,14 +181,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2004, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2005,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2005, 4, 29)?,
                 "Veliki petak (Pravoslavni)",
@@ -212,14 +213,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2005, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2006,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2006, 4, 21)?,
                 "Veliki petak (Pravoslavni)",
@@ -245,14 +246,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2006, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2007,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2007, 4, 6)?,
                 "Veliki petak (Pravoslavni)",
@@ -277,14 +278,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2007, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2008,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2008, 4, 25)?,
                 "Veliki petak (Pravoslavni)",
@@ -309,14 +310,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2008, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2009,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2009, 4, 17)?,
                 "Veliki petak (Pravoslavni)",
@@ -341,14 +342,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2009, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2010,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2010, 4, 2)?,
                 "Veliki petak (Pravoslavni)",
@@ -373,14 +374,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2010, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2011,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2011, 4, 22)?,
                 "Veliki petak (Pravoslavni)",
@@ -405,14 +406,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2011, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2012,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2012, 4, 13)?,
                 "Veliki petak (Pravoslavni)",
@@ -437,14 +438,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2012, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2013,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2013, 5, 3)?,
                 "Veliki petak (Pravoslavni)",
@@ -469,14 +470,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2013, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2014,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2014, 4, 18)?,
                 "Veliki petak (Pravoslavni)",
@@ -501,14 +502,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2014, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2015,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2015, 4, 10)?,
                 "Veliki petak (Pravoslavni)",
@@ -533,14 +534,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2015, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2016,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2016, 4, 29)?,
                 "Veliki petak (Pravoslavni)",
@@ -565,14 +566,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2016, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2017,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2017, 4, 14)?,
                 "Veliki petak (Pravoslavni)",
@@ -597,14 +598,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2017, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2018,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2018, 4, 6)?,
                 "Veliki petak (Pravoslavni)",
@@ -629,14 +630,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2018, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2019,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2019, 4, 26)?,
                 "Veliki petak (Pravoslavni)",
@@ -661,14 +662,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2019, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2020,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2020, 4, 17)?,
                 "Veliki petak (Pravoslavni)",
@@ -693,14 +694,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2020, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2021,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2021, 4, 30)?,
                 "Veliki petak (Pravoslavni)",
@@ -725,14 +726,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2021, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2022,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2022, 4, 22)?,
                 "Veliki petak (Pravoslavni)",
@@ -756,14 +757,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2022, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2023,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2023, 4, 14)?,
                 "Veliki petak (Pravoslavni)",
@@ -788,14 +789,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2023, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2024,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2024, 5, 3)?,
                 "Veliki petak (Pravoslavni)",
@@ -823,14 +824,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2024, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2025,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2025, 4, 18)?,
                 "Veliki petak (Pravoslavni)",
@@ -861,14 +862,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2025, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2026,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2026, 4, 10)?,
                 "Veliki petak (Pravoslavni)",
@@ -899,14 +900,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2026, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2027,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2027, 4, 30)?,
                 "Veliki petak (Pravoslavni)",
@@ -937,14 +938,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2027, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2028,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2028, 4, 14)?,
                 "Veliki petak (Pravoslavni)",
@@ -975,14 +976,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2028, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2029,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2029, 4, 6)?,
                 "Veliki petak (Pravoslavni)",
@@ -1013,14 +1014,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2029, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2030,
-        vec![
+        [
             (
                 NaiveDate::from_ymd_res(2030, 4, 26)?,
                 "Veliki petak (Pravoslavni)",
@@ -1051,8 +1052,8 @@ pub fn build(
             (NaiveDate::from_ymd_res(2030, 12, 25)?, "Božić (Katolički)"),
         ],
         &mut map,
-        Country::BA,
-        "Bosnia and Herzegovina",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     Ok(map)

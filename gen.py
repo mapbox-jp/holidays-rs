@@ -273,11 +273,10 @@ pub fn build(countries: Option<&HashSet<Country>>, years: Option<&std::ops::Rang
 country_mod = """
 mod helper;
 
-use crate::{prelude::*, Holiday, NaiveDateExt, Result, Year};
-use helper::build_year;
+use crate::{prelude::*, HolidayPerCountryMap, NaiveDateExt, Result, Year};
+use helper::{build_subdivision_year, build_year};
 
 use chrono::NaiveDate;
-use std::collections::BTreeMap;
 use std::collections::HashMap;
 
 {% for country in countries %}
@@ -291,24 +290,40 @@ build_country = """
 #[allow(clippy::wildcard_imports)]
 use super::*;
 
+const COUNTY_NAME: &str = "{{country|display_name}}";
+const COUNTY_CODE: Country = Country::{{country|enum_name}};
+
 /// Generate holiday map for {{country|display_name}}.
 #[allow(unused_mut, unused_variables, clippy::too_many_lines, clippy::missing_errors_doc)]
-pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HolidayPerCountryMap> {
     let mut map = HashMap::new();
+{% if country.subdivision_code != None %}
+    let mut national_holidays = de::build(years)?;
+{%- endif %}
 
-{% for year in years %}
+{%- for year in years %}
 {% if holiday(years=year, subdiv=country.subdivision_code) %}
+
+{%- if country.subdivision_code != None %}
+    build_subdivision_year(
+        years,
+        {{year}},
+        &mut national_holidays,
+{%- else %}
     build_year(
         years,
         {{year}},
-        vec![
-{% for date, name in holiday(years=year, subdiv=country.subdivision_code).items() %}
-        (NaiveDate::from_ymd_res({{date|year}}, {{date|month}}, {{date|day}})?, "{{name}}"),
+{%- endif %}
+        [
+{%- for date, name in holiday(years=year, subdiv=country.subdivision_code).items() %}
+{%- if country.subdivision_code == None or date not in holiday(years=year) %}
+            (NaiveDate::from_ymd_res({{date|year}}, {{date|month}}, {{date|day}})?, "{{name}}"),
+{%- endif %}
 {%- endfor %}
         ],
         &mut map,
-        Country::{{country|enum_name}},
-        "{{country|display_name}}",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 {%- endif %}
 {%- endfor  %}
@@ -320,7 +335,6 @@ pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HashMap<Year, BTre
 
 def lower(code: str) -> str:
     return code.lower()
-
 
 def escape(code: str) -> str:
     rust_keywords = ["as", "in", "do"]

@@ -2,6 +2,9 @@
 #[allow(clippy::wildcard_imports)]
 use super::*;
 
+const COUNTY_NAME: &str = "Ethiopia";
+const COUNTY_CODE: Country = Country::ET;
+
 /// Generate holiday map for Ethiopia.
 #[allow(
     unused_mut,
@@ -9,15 +12,13 @@ use super::*;
     clippy::too_many_lines,
     clippy::missing_errors_doc
 )]
-pub fn build(
-    years: Option<&std::ops::Range<Year>>,
-) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HolidayPerCountryMap> {
     let mut map = HashMap::new();
 
     build_year(
         years,
         2000,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2000, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2000, 1, 20)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2000, 3, 2)?, "አድዋ"),
@@ -34,14 +35,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2000, 6, 14)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2001,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2001, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2001, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2001, 3, 2)?, "አድዋ"),
@@ -57,14 +58,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2001, 6, 4)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2002,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2002, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2002, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2002, 3, 2)?, "አድዋ"),
@@ -79,14 +80,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2002, 5, 24)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2003,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2003, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2003, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2003, 3, 2)?, "አድዋ"),
@@ -102,14 +103,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2003, 5, 13)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2004,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2004, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2004, 1, 20)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2004, 3, 2)?, "አድዋ"),
@@ -127,14 +128,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2004, 2, 1)?, "አረፋ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2005,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2005, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2005, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2005, 3, 2)?, "አድዋ"),
@@ -149,14 +150,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2005, 4, 21)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2006,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2006, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2006, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2006, 3, 2)?, "አድዋ"),
@@ -173,14 +174,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2006, 4, 10)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2007,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2007, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2007, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2007, 3, 2)?, "አድዋ"),
@@ -196,14 +197,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2007, 3, 31)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2008,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2008, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2008, 1, 20)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2008, 3, 2)?, "አድዋ"),
@@ -219,14 +220,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2008, 3, 20)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2009,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2009, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2009, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2009, 3, 2)?, "አድዋ"),
@@ -242,14 +243,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2009, 3, 9)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2010,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2010, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2010, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2010, 3, 2)?, "አድዋ"),
@@ -265,14 +266,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2010, 2, 26)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2011,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2011, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2011, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2011, 3, 2)?, "አድዋ"),
@@ -288,14 +289,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2011, 2, 15)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2012,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2012, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2012, 1, 20)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2012, 3, 2)?, "አድዋ"),
@@ -311,14 +312,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2012, 2, 4)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2013,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2013, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2013, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2013, 3, 2)?, "አድዋ"),
@@ -333,14 +334,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2013, 1, 24)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2014,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2014, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2014, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2014, 3, 2)?, "አድዋ"),
@@ -356,14 +357,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2014, 1, 13)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2015,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2015, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2015, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2015, 3, 2)?, "አድዋ"),
@@ -380,14 +381,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2015, 12, 23)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2016,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2016, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2016, 1, 20)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2016, 3, 2)?, "አድዋ"),
@@ -401,14 +402,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2016, 12, 11)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2017,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2017, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2017, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2017, 3, 2)?, "አድዋ"),
@@ -424,14 +425,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2017, 11, 30)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2018,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2018, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2018, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2018, 3, 2)?, "አድዋ"),
@@ -447,14 +448,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2018, 11, 21)?, "መውሊድ"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2019,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2019, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2019, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2019, 3, 2)?, "አድዋ"),
@@ -470,14 +471,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2019, 11, 10)?, "መውሊድ"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2020,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2020, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2020, 1, 20)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2020, 3, 2)?, "አድዋ"),
@@ -493,14 +494,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2020, 10, 29)?, "መውሊድ"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2021,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2021, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2021, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2021, 3, 2)?, "አድዋ"),
@@ -516,14 +517,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2021, 10, 18)?, "መውሊድ"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2022,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2022, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2022, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2022, 3, 2)?, "አድዋ"),
@@ -539,14 +540,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2022, 10, 8)?, "መውሊድ"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2023,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2023, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2023, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2023, 3, 2)?, "አድዋ"),
@@ -562,14 +563,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2023, 9, 27)?, "መውሊድ"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2024,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2024, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2024, 1, 20)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2024, 3, 2)?, "አድዋ"),
@@ -584,14 +585,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2024, 9, 15)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2025,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2025, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2025, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2025, 3, 2)?, "አድዋ"),
@@ -607,14 +608,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2025, 9, 4)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2026,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2026, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2026, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2026, 3, 2)?, "አድዋ"),
@@ -630,14 +631,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2026, 8, 25)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2027,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2027, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2027, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2027, 3, 2)?, "አድዋ"),
@@ -653,14 +654,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2027, 8, 14)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2028,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2028, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2028, 1, 20)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2028, 3, 2)?, "አድዋ"),
@@ -675,14 +676,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2028, 8, 3)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2029,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2029, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2029, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2029, 3, 2)?, "አድዋ"),
@@ -698,14 +699,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2029, 7, 24)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2030,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2030, 1, 7)?, "ገና"),
             (NaiveDate::from_ymd_res(2030, 1, 19)?, "ጥምቀት"),
             (NaiveDate::from_ymd_res(2030, 3, 2)?, "አድዋ"),
@@ -721,8 +722,8 @@ pub fn build(
             (NaiveDate::from_ymd_res(2030, 7, 13)?, "መውሊድ (ግምት)"),
         ],
         &mut map,
-        Country::ET,
-        "Ethiopia",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     Ok(map)

@@ -2,6 +2,9 @@
 #[allow(clippy::wildcard_imports)]
 use super::*;
 
+const COUNTY_NAME: &str = "Hungary";
+const COUNTY_CODE: Country = Country::HU;
+
 /// Generate holiday map for Hungary.
 #[allow(
     unused_mut,
@@ -9,15 +12,13 @@ use super::*;
     clippy::too_many_lines,
     clippy::missing_errors_doc
 )]
-pub fn build(
-    years: Option<&std::ops::Range<Year>>,
-) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
+pub fn build(years: Option<&std::ops::Range<Year>>) -> Result<HolidayPerCountryMap> {
     let mut map = HashMap::new();
 
     build_year(
         years,
         2000,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2000, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2000, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2000, 4, 23)?, "Húsvét"),
@@ -35,14 +36,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2000, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2001,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2001, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2001, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2001, 4, 15)?, "Húsvét"),
@@ -60,14 +61,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2001, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2002,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2002, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2002, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2002, 3, 31)?, "Húsvét"),
@@ -85,14 +86,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2002, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2003,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2003, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2003, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2003, 4, 20)?, "Húsvét"),
@@ -110,14 +111,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2003, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2004,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2004, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2004, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2004, 4, 11)?, "Húsvét"),
@@ -135,14 +136,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2004, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2005,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2005, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2005, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2005, 3, 27)?, "Húsvét"),
@@ -160,14 +161,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2005, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2006,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2006, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2006, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2006, 4, 16)?, "Húsvét"),
@@ -185,14 +186,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2006, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2007,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2007, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2007, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2007, 4, 8)?, "Húsvét"),
@@ -210,14 +211,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2007, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2008,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2008, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2008, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2008, 3, 23)?, "Húsvét"),
@@ -235,14 +236,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2008, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2009,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2009, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2009, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2009, 4, 12)?, "Húsvét"),
@@ -260,14 +261,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2009, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2010,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2010, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2010, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2010, 4, 4)?, "Húsvét"),
@@ -289,14 +290,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2011,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2011, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2011, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2011, 4, 24)?, "Húsvét"),
@@ -322,14 +323,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2012,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2012, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2012, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2012, 4, 8)?, "Húsvét"),
@@ -371,14 +372,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2013,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2013, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2013, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2013, 3, 31)?, "Húsvét"),
@@ -408,14 +409,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2014,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2014, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2014, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2014, 4, 20)?, "Húsvét"),
@@ -445,14 +446,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2015,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2015, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2015, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2015, 4, 5)?, "Húsvét"),
@@ -482,14 +483,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2016,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2016, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2016, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2016, 3, 27)?, "Húsvét"),
@@ -515,14 +516,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2017,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2017, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2017, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2017, 4, 14)?, "Nagypéntek"),
@@ -541,14 +542,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2017, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2018,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2018, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2018, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2018, 3, 30)?, "Nagypéntek"),
@@ -591,14 +592,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2019,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2019, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2019, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2019, 4, 19)?, "Nagypéntek"),
@@ -629,14 +630,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2020,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2020, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2020, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2020, 4, 10)?, "Nagypéntek"),
@@ -663,14 +664,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2021,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2021, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2021, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2021, 4, 2)?, "Nagypéntek"),
@@ -693,14 +694,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2022,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2022, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2022, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2022, 4, 15)?, "Nagypéntek"),
@@ -727,14 +728,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2023,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2023, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2023, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2023, 4, 7)?, "Nagypéntek"),
@@ -753,14 +754,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2023, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2024,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2024, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2024, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2024, 3, 29)?, "Nagypéntek"),
@@ -791,14 +792,14 @@ pub fn build(
             ),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2025,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2025, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2025, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2025, 4, 18)?, "Nagypéntek"),
@@ -817,14 +818,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2025, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2026,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2026, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2026, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2026, 4, 3)?, "Nagypéntek"),
@@ -843,14 +844,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2026, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2027,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2027, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2027, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2027, 3, 26)?, "Nagypéntek"),
@@ -869,14 +870,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2027, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2028,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2028, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2028, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2028, 4, 14)?, "Nagypéntek"),
@@ -895,14 +896,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2028, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2029,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2029, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2029, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2029, 3, 30)?, "Nagypéntek"),
@@ -921,14 +922,14 @@ pub fn build(
             (NaiveDate::from_ymd_res(2029, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     build_year(
         years,
         2030,
-        vec![
+        [
             (NaiveDate::from_ymd_res(2030, 1, 1)?, "Újév"),
             (NaiveDate::from_ymd_res(2030, 3, 15)?, "Nemzeti ünnep"),
             (NaiveDate::from_ymd_res(2030, 4, 19)?, "Nagypéntek"),
@@ -947,8 +948,8 @@ pub fn build(
             (NaiveDate::from_ymd_res(2030, 12, 26)?, "Karácsony másnapja"),
         ],
         &mut map,
-        Country::HU,
-        "Hungary",
+        COUNTY_CODE,
+        COUNTY_NAME,
     );
 
     Ok(map)
