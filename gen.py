@@ -247,7 +247,10 @@ use std::collections::HashSet;
 use crate::{data, prelude::*, HolidayMap, Result, Year};
 
 fn should_build(countries: Option<&HashSet<Country>>, country: Country) -> bool {
-    matches!(countries, Some(c) if c.contains(&country))
+    match countries {
+        Some(c) => c.contains(&country),
+        None => true,
+    }
 }
 
 /// Generate holiday map for the specified countries and years.
