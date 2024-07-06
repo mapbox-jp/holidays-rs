@@ -40,6 +40,25 @@ fn build_by_country() -> anyhow::Result<()> {
 
 #[test]
 #[serial]
+fn build_by_subdivision() -> anyhow::Result<()> {
+    Builder::new()
+        .countries(&[Country::DE_NW])
+        .years(2024..2025)
+        .init()?;
+
+    let d = NaiveDate::from_ymd_res(2024, 5, 1)?;
+    assert_eq!("Erster Mai", get(Country::DE, d)?.unwrap().name);
+    assert_eq!("Erster Mai", get(Country::DE_NW, d)?.unwrap().name);
+
+    let d = NaiveDate::from_ymd_res(2024, 5, 30)?;
+    assert!(get(Country::DE, d)?.is_none());
+    assert_eq!("Fronleichnam", get(Country::DE_NW, d)?.unwrap().name);
+
+    Ok(())
+}
+
+#[test]
+#[serial]
 fn build_by_year() -> anyhow::Result<()> {
     Builder::new().years(2022..2023).init()?;
 
@@ -123,6 +142,31 @@ fn iterate_year_not_available() -> anyhow::Result<()> {
     assert_eq!(
         Vec::<NaiveDate>::new(),
         iter(Country::JP, s, u)?.map(|h| h.date).collect::<Vec<_>>()
+    );
+
+    Ok(())
+}
+
+#[test]
+#[serial]
+fn iterate_subdivision() -> anyhow::Result<()> {
+    Builder::new()
+        .countries(&[Country::DE, Country::DE_NW])
+        .years(2024..2025)
+        .init()?;
+
+    let s = NaiveDate::from_ymd_res(2024, 5, 1)?;
+    let u = NaiveDate::from_ymd_res(2024, 5, 31)?;
+    assert_eq!(
+        vec![
+            NaiveDate::from_ymd_res(2024, 5, 1)?,
+            NaiveDate::from_ymd_res(2024, 5, 9)?,
+            NaiveDate::from_ymd_res(2024, 5, 20)?,
+            NaiveDate::from_ymd_res(2024, 5, 30)?,
+        ],
+        iter(Country::DE_NW, s, u)?
+            .map(|h| h.date)
+            .collect::<Vec<_>>()
     );
 
     Ok(())

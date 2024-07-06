@@ -1,7 +1,7 @@
 use chrono::{Datelike, NaiveDate};
 use once_cell::sync::Lazy;
 
-use crate::{prelude::*, Error, Holiday, Result, DATA};
+use crate::{get_map_for_country_and_year, prelude::*, Error, Holiday, Result, DATA};
 use std::collections::VecDeque;
 
 #[derive(Debug)]
@@ -30,29 +30,40 @@ impl std::iter::Iterator for Iter {
 }
 
 /// Iterate holidays by dates.
-#[allow(dead_code)]
+#[allow(dead_code, clippy::missing_errors_doc)]
 pub fn iter(country: Country, since: NaiveDate, until: NaiveDate) -> Result<Iter> {
-    let Some(data) = Lazy::get(&DATA) else {
-        return Err(Error::Uninitialized);
-    };
+    let data = Lazy::get(&DATA).ok_or(Error::Uninitialized)?;
 
-    let mut buf = VecDeque::new();
+    let mut buf = Vec::new();
 
-    let mut y = since.year();
-    while y <= until.year() {
+    for y in since.year()..=until.year() {
         let data = data.read().map_err(|e| Error::LockError(e.to_string()))?;
-        let Some(map) = data.get(&country) else {
-            return Err(Error::CountryNotAvailable);
+
+        let country_map = match get_map_for_country_and_year(&data, country, y) {
+            Err(Error::CountryNotAvailable) => return Err(Error::CountryNotAvailable),
+            Err(_) => break,
+            Ok(map) => map,
         };
 
-        let Some(map) = map.get(&y) else {
-            break;
-        };
-
-        buf.extend(map.values().cloned());
-
-        y += 1;
+        buf.extend(
+            country_map
+                .country
+                .values()
+                .chain(
+                    country_map
+                        .subdivision
+                        .map(|s| s.values())
+                        .unwrap_or_default(),
+                )
+                .cloned(),
+        );
     }
 
-    Ok(Iter { since, until, buf })
+    buf.sort_by_key(|h| h.date);
+
+    Ok(Iter {
+        since,
+        until,
+        buf: buf.into_iter().collect(),
+    })
 }

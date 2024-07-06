@@ -225,3 +225,10 @@ VE = []
 VN = []
 ZM = []
 ZW = []
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+enum_glob_use = "forbid"
+pedantic = { level = "deny", priority = -1 }

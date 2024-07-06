@@ -11,12 +11,13 @@ use chrono::{Datelike, NaiveDate};
 use once_cell::sync::Lazy;
 use std::{
     collections::{BTreeMap, HashMap},
-    sync::RwLock,
+    sync::{RwLock, RwLockReadGuard},
 };
 
 /// Type alias for Holiday map.
-pub type HolidayPerCountryMap = HashMap<Year, BTreeMap<NaiveDate, Holiday>>;
-pub type HolidayMap = HashMap<Country, HolidayPerCountryMap>;
+pub type HolidayPerDayMap = BTreeMap<NaiveDate, Holiday>;
+pub type HolidayPerYearMap = HashMap<Year, HolidayPerDayMap>;
+pub type HolidayMap = HashMap<Country, HolidayPerYearMap>;
 
 /// Type alias for Year.
 pub type Year = i32;
@@ -30,6 +31,7 @@ static DATA: Lazy<RwLock<HolidayMap>> = Lazy::new(|| RwLock::new(HolidayMap::new
 /// Note that this will use quite lots of memory. Please consider using
 /// `Builder` to specify countries and years to load for if you're concerned
 /// about memory usage.
+#[allow(clippy::missing_errors_doc)]
 pub fn init() -> Result<()> {
     let map = Builder::new().build()?;
     init_holiday(map)
@@ -38,41 +40,65 @@ pub fn init() -> Result<()> {
 /// Get holiday by ISO 3166-1 alpha-2 country code and date. If the specified country or year is
 /// not available, it will return `Err(Error)`. If the specified date is not a holiday, it
 /// will return `Ok(None)`. Otherwise, it will return `Ok(Some(Holiday))`.
+#[allow(clippy::missing_errors_doc)]
 pub fn get(country: Country, date: NaiveDate) -> Result<Option<Holiday>> {
-    let Some(data) = Lazy::get(&DATA) else {
-        return Err(Error::Uninitialized);
-    };
+    let holiday_map = get_holiday_map()?;
 
-    let data = data.read().map_err(|e| Error::LockError(e.to_string()))?;
-    let Some(map) = data.get(&country) else {
-        return Err(Error::CountryNotAvailable);
-    };
+    let map = get_map_for_country_and_year(&holiday_map, country, date.year())?;
 
-    let Some(map) = map.get(&date.year()) else {
-        return Err(Error::YearNotAvailable);
-    };
-
-    Ok(map.get(&date).cloned())
+    Ok(map.get(date).cloned())
 }
 
 /// Check if the specified date is a holiday. If the specified country or year is
 /// not available, it will return `Err(Error)`. If the date is not a holiday, it
 /// will return `Ok(false)`. Otherwise, it will return `Ok(true)`.
+#[allow(clippy::missing_errors_doc)]
 pub fn contains(country: Country, date: NaiveDate) -> Result<bool> {
-    let Some(data) = Lazy::get(&DATA) else {
-        return Err(Error::Uninitialized);
-    };
+    let holiday_map = get_holiday_map()?;
 
-    let data = data.read().map_err(|e| Error::LockError(e.to_string()))?;
-    let Some(map) = data.get(&country) else {
-        return Err(Error::CountryNotAvailable);
-    };
+    let map = get_map_for_country_and_year(&holiday_map, country, date.year())?;
 
-    let Some(map) = map.get(&date.year()) else {
-        return Err(Error::YearNotAvailable);
-    };
+    Ok(map.get(date).is_some())
+}
 
-    Ok(map.get(&date).is_some())
+fn get_holiday_map() -> Result<RwLockReadGuard<'static, HolidayMap>> {
+    let data = Lazy::get(&DATA).ok_or(Error::Uninitialized)?;
+    data.read().map_err(|e| Error::LockError(e.to_string()))
+}
+
+struct CountryWithSubdivision<'a> {
+    country: &'a HolidayPerDayMap,
+    subdivision: Option<&'a HolidayPerDayMap>,
+}
+
+impl<'a> CountryWithSubdivision<'a> {
+    pub fn get(&self, date: NaiveDate) -> Option<&Holiday> {
+        self.country
+            .get(&date)
+            .or_else(|| self.subdivision.and_then(|s| s.get(&date)))
+    }
+}
+
+fn get_map_for_country_and_year<'a>(
+    holiday_map: &'a RwLockReadGuard<'a, HolidayMap>,
+    country: Country,
+    year: Year,
+) -> Result<CountryWithSubdivision<'a>> {
+    let (country, subdivision) = Country::country_from_subdivision(country)
+        .map_or_else(|| (country, None), |c| (c, Some(country)));
+
+    let map = holiday_map
+        .get(&country)
+        .ok_or(Error::CountryNotAvailable)?;
+
+    let map = map.get(&year).ok_or(Error::YearNotAvailable)?;
+
+    Ok(CountryWithSubdivision {
+        country: map,
+        subdivision: subdivision
+            .and_then(|subdiv| holiday_map.get(&subdiv))
+            .and_then(|m| m.get(&year)),
+    })
 }
 
 /// Represents a holiday.
@@ -94,8 +120,8 @@ impl Holiday {
         country: impl Into<String>,
         date: NaiveDate,
         name: impl Into<String>,
-    ) -> Holiday {
-        Holiday {
+    ) -> Self {
+        Self {
             code,
             country: country.into(),
             date,
@@ -116,11 +142,11 @@ pub enum Error {
     /// Holiday database is not initialized yet.
     #[error("Holiday database is not initialized yet")]
     Uninitialized,
-    /// Failed to get RwLock.
+    /// Failed to get `RwLock`.
     #[error("Failed to get RwLock: {0}")]
     LockError(String),
-    /// Unexpexted error occurred.
-    #[error("Unexpexted error occurred: {0}")]
+    /// Unexpected error occurred.
+    #[error("Unexpected error occurred: {0}")]
     Unexpected(String),
 }
 
