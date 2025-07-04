@@ -1,18 +1,11 @@
-use chrono::NaiveDate;
 use holidays::Country;
+use holidays::internal::Date; // use chrono or time types instead
 
-fn main() -> anyhow::Result<()> {
-    holidays::Builder::new()
-        .countries(&[Country::JP])
-        .years(2022..2023)
-        .init()?;
-
-    let s = NaiveDate::from_ymd_opt(2022, 1, 1).expect("Invalid date");
-    let u = NaiveDate::from_ymd_opt(2023, 1, 1).expect("Invalid date");
-
-    for holiday in holidays::iter(Country::JP, s, u)?.map(|h| h.date) {
+fn main() {
+    let date = Date::from_ymd(2022, 1, 1);
+    
+    let holidays = holidays::get_holidays(Country::JP, date).map(|h| h.date::<Date>().unwrap());
+    for holiday in holidays {
         println!("{holiday:?}",);
     }
-
-    Ok(())
 }

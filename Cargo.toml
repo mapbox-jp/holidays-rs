@@ -11,217 +11,227 @@ keywords = ["holiday", "date", "time"]
 categories = ["date-and-time"]
 
 [dependencies]
-chrono = "0.4"
-once_cell = "1"
-thiserror = "1"
+phf_shared = "0.12"
+phf = { version = "0.12", features = ["macros"] }
 
-[dev-dependencies]
-anyhow = "1"
-serial_test = "0.10"
+chrono = { version = "0.4", optional = true }
+time = { version = "0.3", optional = true }
+
+[build-dependencies]
+phf = { version = "0.12", default-features = false }
+phf_codegen = "0.12"
+phf_shared = "0.12"
+csv = "1.3"
 
 [features]
-default = [
+default = ["all-countries"]
+
+chrono = ["dep:chrono"]
+time = ["dep:time"]
+
+# Must be last
+all-countries = [
+  "AE",
+  "AM",
   "AO",
   "AR",
-  "AM",
-  "AW",
-  "AU",
   "AT",
+  "AU",
+  "AW",
   "AZ",
-  "BD",
-  "BY",
-  "BE",
-  "BO",
   "BA",
-  "BW",
-  "BR",
+  "BD",
+  "BE",
   "BG",
   "BI",
+  "BO",
+  "BR",
+  "BW",
+  "BY",
   "CA",
+  "CH",
   "CL",
   "CN",
   "CO",
-  "HR",
   "CU",
   "CW",
   "CY",
   "CZ",
-  "DK",
+  "DE",
   "DJ",
+  "DK",
   "DO",
-  "EG",
   "EE",
+  "EG",
+  "ES",
   "ET",
   "FI",
   "FR",
+  "GB",
   "GE",
-  "DE",
   "GR",
-  "HN",
   "HK",
+  "HN",
+  "HR",
   "HU",
-  "IS",
-  "IN",
   "ID",
   "IE",
-  "IM",
   "IL",
+  "IM",
+  "IN",
+  "IS",
   "IT",
   "JM",
   "JP",
-  "KZ",
   "KE",
-  "LV",
-  "LS",
+  "KR",
+  "KZ",
   "LI",
+  "LS",
   "LT",
   "LU",
-  "MG",
-  "MY",
-  "MW",
-  "MT",
-  "MX",
-  "MD",
+  "LV",
   "MA",
-  "MZ",
-  "NL",
-  "NA",
-  "NZ",
-  "NI",
-  "NG",
+  "MD",
+  "MG",
   "MK",
+  "MT",
+  "MW",
+  "MX",
+  "MY",
+  "MZ",
+  "NA",
+  "NG",
+  "NI",
+  "NL",
   "NO",
-  "PK",
-  "PY",
+  "NZ",
   "PE",
+  "PK",
   "PL",
   "PT",
+  "PY",
   "RO",
+  "RS",
   "RU",
   "SA",
-  "RS",
-  "SG",
-  "SK",
-  "SI",
-  "ZA",
-  "KR",
-  "ES",
-  "SZ",
   "SE",
-  "CH",
-  "TW",
-  "TR",
+  "SG",
+  "SI",
+  "SK",
+  "SZ",
   "TN",
+  "TR",
+  "TW",
   "UA",
-  "AE",
-  "GB",
   "US",
   "UY",
   "UZ",
   "VE",
   "VN",
+  "ZA",
   "ZM",
-  "ZW",
+  "ZW"
 ]
 
+AE = []
+AM = []
 AO = []
 AR = []
-AM = []
-AW = []
-AU = []
 AT = []
+AU = []
+AW = []
 AZ = []
-BD = []
-BY = []
-BE = []
-BO = []
 BA = []
-BW = []
-BR = []
+BD = []
+BE = []
 BG = []
 BI = []
+BO = []
+BR = []
+BW = []
+BY = []
 CA = []
+CH = []
 CL = []
 CN = []
 CO = []
-HR = []
 CU = []
 CW = []
 CY = []
 CZ = []
-DK = []
+DE = []
 DJ = []
+DK = []
 DO = []
-EG = []
 EE = []
+EG = []
+ES = []
 ET = []
 FI = []
 FR = []
+GB = []
 GE = []
-DE = []
 GR = []
-HN = []
 HK = []
+HN = []
+HR = []
 HU = []
-IS = []
-IN = []
 ID = []
 IE = []
-IM = []
 IL = []
+IM = []
+IN = []
+IS = []
 IT = []
 JM = []
 JP = []
-KZ = []
 KE = []
-LV = []
-LS = []
+KR = []
+KZ = []
 LI = []
+LS = []
 LT = []
 LU = []
-MG = []
-MY = []
-MW = []
-MT = []
-MX = []
-MD = []
+LV = []
 MA = []
-MZ = []
-NL = []
-NA = []
-NZ = []
-NI = []
-NG = []
+MD = []
+MG = []
 MK = []
+MT = []
+MW = []
+MX = []
+MY = []
+MZ = []
+NA = []
+NG = []
+NI = []
+NL = []
 NO = []
-PK = []
-PY = []
+NZ = []
 PE = []
+PK = []
 PL = []
 PT = []
+PY = []
 RO = []
+RS = []
 RU = []
 SA = []
-RS = []
-SG = []
-SK = []
-SI = []
-ZA = []
-KR = []
-ES = []
-SZ = []
 SE = []
-CH = []
-TW = []
-TR = []
+SG = []
+SI = []
+SK = []
+SZ = []
 TN = []
+TR = []
+TW = []
 UA = []
-AE = []
-GB = []
 US = []
 UY = []
 UZ = []
 VE = []
 VN = []
+ZA = []
 ZM = []
 ZW = []

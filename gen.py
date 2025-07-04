@@ -1,6 +1,18 @@
+#!/usr/bin/env python3
+
 import holidays
 from dataclasses import dataclass
-from jinja2 import Environment
+import csv
+import datetime
+import hashlib
+
+
+current_year = datetime.date.today().year
+
+# Make sure to also update ./build.rs constants.
+# This range should be more LESS conservative to ensure holidays.csv contains
+# all data that might be needed.
+years = list(range(0, current_year + 11))
 
 
 @dataclass
@@ -9,267 +21,98 @@ class Country:
     name: str
 
 
-countries = [
-    Country("AO", "Angola"),
-    Country("AR", "Argentina"),
-    Country("AM", "Armenia"),
-    Country("AW", "Aruba"),
-    Country("AU", "Australia"),
-    Country("AT", "Austria"),
-    Country("AZ", "Azerbaijan"),
-    Country("BD", "Bangladesh"),
-    Country("BY", "Belarus"),
-    Country("BE", "Belgium"),
-    Country("BO", "Bolivia"),
-    Country("BA", "Bosnia and Herzegovina"),
-    Country("BW", "Botswana"),
-    Country("BR", "Brazil"),
-    Country("BG", "Bulgaria"),
-    Country("BI", "Burundi"),
-    Country("CA", "Canada"),
-    Country("CL", "Chile"),
-    Country("CN", "China"),
-    Country("CO", "Colombia"),
-    Country("HR", "Croatia"),
-    Country("CU", "Cuba"),
-    Country("CW", "Curaçao"),
-    Country("CY", "Cyprus"),
-    Country("CZ", "Czechia"),
-    Country("DK", "Denmark"),
-    Country("DJ", "Djibouti"),
-    Country("DO", "Dominican Republic"),
-    Country("EG", "Egypt"),
-    Country("EE", "Estonia"),
-    Country("ET", "Ethiopia"),
-    Country("FI", "Finland"),
-    Country("FR", "France"),
-    Country("GE", "Georgia"),
-    Country("DE", "Germany"),
-    Country("GR", "Greece"),
-    Country("HN", "Honduras"),
-    Country("HK", "Hong Kong"),
-    Country("HU", "Hungary"),
-    Country("IS", "Iceland"),
-    Country("IN", "India"),
-    Country("ID", "Indonesia"),
-    Country("IE", "Ireland"),
-    Country("IM", "Isle of Man"),
-    Country("IL", "Israel"),
-    Country("IT", "Italy"),
-    Country("JM", "Jamaica"),
-    Country("JP", "Japan"),
-    Country("KZ", "Kazakhstan"),
-    Country("KE", "Kenya"),
-    Country("LV", "Latvia"),
-    Country("LS", "Lesotho"),
-    Country("LI", "Liechtenstein"),
-    Country("LT", "Lithuania"),
-    Country("LU", "Luxembourg"),
-    Country("MG", "Madagascar"),
-    Country("MY", "Malaysia"),
-    Country("MW", "Malawi"),
-    Country("MT", "Malta"),
-    Country("MX", "Mexico"),
-    Country("MD", "Moldova"),
-    Country("MA", "Morocco"),
-    Country("MZ", "Mozambique"),
-    Country("NL", "Netherlands"),
-    Country("NA", "Namibia"),
-    Country("NZ", "New Zealand"),
-    Country("NI", "Nicaragua"),
-    Country("NG", "Nigeria"),
-    Country("MK", "North Macedonia"),
-    Country("NO", "Norway"),
-    Country("PK", "Pakistan"),
-    Country("PY", "Paraguay"),
-    Country("PE", "Peru"),
-    Country("PL", "Poland"),
-    Country("PT", "Portugal"),
-    Country("RO", "Romania"),
-    Country("RU", "Russia"),
-    Country("SA", "Saudi Arabia"),
-    Country("RS", "Serbia"),
-    Country("SG", "Singapore"),
-    Country("SK", "Slovakia"),
-    Country("SI", "Slovenia"),
-    Country("ZA", "South Africa"),
-    Country("KR", "South Korea"),
-    Country("ES", "Spain"),
-    Country("SZ", "Swaziland"),
-    Country("SE", "Sweden"),
-    Country("CH", "Switzerland"),
-    Country("TW", "Taiwan"),
-    Country("TR", "Turkey"),
-    Country("TN", "Tunisia"),
-    Country("UA", "Ukraine"),
-    Country("AE", "United Arab Emirates"),
-    Country("GB", "United Kingdom"),
-    Country("US", "United States"),
-    Country("UY", "Uruguay"),
-    Country("UZ", "Uzbekistan"),
-    Country("VE", "Venezuela"),
-    Country("VN", "Vietnam"),
-    Country("ZM", "Zambia"),
-    Country("ZW", "Zimbabwe"),
-]
-
-years = range(2000, 2031)
-
-country = """
-use crate::Error;
-
-/// Two-letter country codes defined in ISO 3166-1 alpha-2 .
-#[allow(dead_code)]
-#[derive(Debug, Clone, Copy, Eq, PartialEq, Hash, PartialOrd, Ord)]
-pub enum Country {
-{%- for country in countries %}
-  #[cfg(feature = "{{country.code}}")]
-  /// {{country.name}}
-  {{country.code}},
-{%- endfor %}
-}
-
-impl std::fmt::Display for Country {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.as_ref())
-    }
-}
-
-impl AsRef<str> for Country {
-  fn as_ref(&self) -> &str {
-    match self {
-{%- for country in countries %}
-      #[cfg(feature = "{{country.code}}")]
-      Country::{{country.code}} => "{{country.code}}",
-{%- endfor %}
-    }
-  }
-}
-
-impl std::str::FromStr for Country {
-  type Err = Error;
-
-  fn from_str(s: &str) -> std::result::Result<Self, Self::Err> {
-    Ok(match s {
-{%- for country in countries %}
-      #[cfg(feature = "{{country.code}}")]
-      "{{country.code}}" => Country::{{country.code}}, 
-{%- endfor %}
-      _ => return Err(Error::CountryNotAvailable),
-    })
-  }
-}
-
-"""
-
-build = """
-use std::collections::HashSet;
-
-use crate::{data::*, prelude::*, HolidayMap, Result, Year};
-
-/// Generate holiday map for the specified countries and years.
-pub fn build(countries: Option<&HashSet<Country>>, years: Option<&std::ops::Range<Year>>) -> Result<HolidayMap> {
-  let mut map = HolidayMap::new();
-{% for country in countries %}
-  #[cfg(feature = "{{country.code}}")]
-  if countries.is_none() || countries.unwrap().contains(&Country::{{country.code}}) {
-      map.insert(Country::{{country.code}}, {{country.code|escape}}::build(&years)?);
-  }
-{% endfor %}
-  Ok(map)
-}
-
-"""
-
-country_mod = """
-mod helper;
-
-use crate::{prelude::*, Holiday, NaiveDateExt, Result, Year};
-use helper::build_year;
-
-use chrono::NaiveDate;
-use std::collections::BTreeMap;
-use std::collections::HashMap;
-
-{% for country in countries %}
-#[cfg(feature = "{{country.code}}")]
-pub mod {{country.code|escape}};
-{% endfor %}
-"""
-
-build_country = """
-//! {{country}}
-use super::*;
-
-/// Generate holiday map for {{country}}.
-#[allow(unused_mut, unused_variables)]
-pub fn build(years: &Option<&std::ops::Range<Year>>) -> Result<HashMap<Year, BTreeMap<NaiveDate, Holiday>>> {
-  let mut map = HashMap::new();
-
-{%- for year in years %}
-{% if holiday(years=year) %}
-  build_year(
-    years,
-    {{year}},
-    vec![
-{% for date, name in holiday(years=year).items() %}
-      (NaiveDate::from_ymd_res({{date|year}}, {{date|month}}, {{date|day}})?, "{{name}}"),
-{%- endfor %}
-    ],
-    &mut map,
-    Country::{{code}},
-    "{{country}}",
-  );
-{%- endif %}
-{%- endfor  %}
-
-  Ok(map)
-}
-"""
+# Read countries from CSV
+def read_countries(countries_csv):
+    countries = []
+    with open(countries_csv, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            code = row["ISO 3166-1 A2"].strip().upper()
+            name = row["Name"].strip()
+            if code:
+                countries.append(Country(code, name))
+    return countries
 
 
-def lower(code: str) -> str:
-    return code.lower()
+def gen_holiday_csv(countries, output_csv, years):
+    all_holidays = []
+
+    for country in countries:
+        try:
+            HolidayClass = getattr(holidays, country.code)
+        except AttributeError:
+            print(f"No holiday class found for country code: {country.code}")
+            continue
+
+        holiday_data = HolidayClass(years=years)
+        for date, name in holiday_data.items():
+            all_holidays.append((date, country.code, name))
+
+    # Sort by date, then country_code, then holiday name
+    all_holidays.sort(key=lambda x: (x[0], x[1], x[2]))
+
+    with open(output_csv, mode="w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["country_code", "date", "holiday_name"])  # Header
+
+        for date, country_code, name in all_holidays:
+            writer.writerow([country_code, date.isoformat(), name])
+
+    print(f"[OK] CSV generated: {output_csv}")
 
 
-def escape(code: str) -> str:
-    rust_keywords = ["as", "in", "do"]
-    lower = code.lower()
-    if lower in rust_keywords:
-        return "r#" + lower
-    else:
-        return lower
+def write_csv_hash(csv_path):
+    hasher = hashlib.sha256()
+    with open(csv_path, "rb") as f:
+        hasher.update(f.read())
+    hash_hex = hasher.hexdigest()
+
+    hash_path = csv_path + ".hash"
+    with open(hash_path, "w") as f:
+        f.write(hash_hex + "\n")
+
+    print(f"[OK] Wrote hash to: {hash_path}")
 
 
-def empty_holiday(**kwargs):
-    return {}
+def update_cargo_toml(cargo_toml_path, countries):
+    country_codes = list(sorted(map(lambda it: it.code, countries)))
 
+    with open(cargo_toml_path, "r", encoding="utf-8") as f:
+        lines = f.readlines()
+
+    start_index = None
+    for i, line in enumerate(lines):
+        if line.strip().startswith("all-countries"):
+            start_index = i
+            break
+
+    if start_index is None:
+        raise ValueError("Could not find `all-countries` in Cargo.toml")
+
+    # Truncate from all-countries line onward
+    lines = lines[:start_index]
+
+    def sorted_repr(seq):
+        return "[\n  " + ",\n  ".join(f'"{x}"' for x in seq) + "\n]\n"
+
+    # Prepare new lines
+    lines.append("\n")
+    lines.append(f"all-countries = {sorted_repr(country_codes)}\n")
+    for code in country_codes:
+        lines.append(f"{code} = []\n")
+
+    # Write back
+    with open(cargo_toml_path, "w", encoding="utf-8") as f:
+        f.writelines(lines)
+
+    print(f"[OK] Updated features in {cargo_toml_path}")
+
+
+countries_csv = "countries.csv"
+output_csv = "holidays.csv"
 
 if __name__ == "__main__":
-    env = Environment()
-    env.filters["year"] = lambda d: d.year
-    env.filters["month"] = lambda d: d.month
-    env.filters["day"] = lambda d: d.day
-    env.filters["escape"] = escape
-    env.filters["lower"] = lower
-    with open("src/country.rs", "w") as f:
-        rendered = env.from_string(country).render(countries=countries)
-        f.write(rendered)
-
-    with open("src/build.rs", "w") as f:
-        rendered = env.from_string(build).render(countries=countries)
-        f.write(rendered)
-    
-    with open("src/data/mod.rs", "w") as f:
-        rendered = env.from_string(country_mod).render(countries=countries)
-        f.write(rendered)
-        
-    for country in countries:
-        with open("src/data/{}.rs".format(country.code.lower()), "w") as f:
-            holiday = getattr(holidays, country.code, None)
-            rendered = env.from_string(build_country).render(
-                    code=country.code,
-                    country=country.name,
-                    years=years,
-                    holiday=holiday or empty_holiday)
-            f.write(rendered)
+    countries = read_countries(countries_csv)
+    gen_holiday_csv(countries, output_csv, years)
+    write_csv_hash(output_csv)
+    update_cargo_toml("Cargo.toml", countries)
